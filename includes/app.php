@@ -4,17 +4,21 @@ use Dotenv\Dotenv;
 use Model\ActiveRecord;
 require __DIR__ . '/../vendor/autoload.php';
 
-// Añadir Dotenv
+// Add Dotenv
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
-require 'funciones.php';
+require 'functions.php';
 require 'database.php';
 
-// Rutas absolutas
+// Secure login
+require 'csrf.php';
+require 'session.php';
+
+// Absolute paths
 define('ROOT_PATH', dirname(__DIR__));
 define('PUBLIC_PATH', ROOT_PATH);
 define('BASE_URL', $_ENV['HOST'] ?? '');
 
-// Conectarnos a la base de datos
+// Connect DB
 ActiveRecord::setDB($db);

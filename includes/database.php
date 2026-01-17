@@ -7,7 +7,7 @@ $db = mysqli_connect(
 );
 
 if (!$db) {
-    error_log('Error de conexión a la base de datos');
+    error_log('Database connection error');
     header('Location: /error');
     exit;
 }
