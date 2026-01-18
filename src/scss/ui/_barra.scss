@@ -1,0 +1,153 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.barra {
+    background-color: v.$blanco;
+    
+    &__contenido {
+        @include m.contenedor;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: 3.5rem;
+        
+        a {
+            color: v.$negro;
+        }
+    }
+    &__enlace {
+        position:relative;
+        text-decoration:none;
+        transition: all .2s ease-in-out;
+
+        &::after{
+            content:"";
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:0;
+            height:.4rem;
+            background-color:v.$principal;
+            transition: width .3s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        &:hover{
+            color:v.$principal;
+        }
+
+        &:hover::after{
+            width:100%;
+        }
+
+        &.underline2{
+            &::after{
+                left:auto;
+                right:0;
+            }
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    &__logotipo {
+        font-size: clamp(3rem, 4vw, 5rem);
+        
+        flex-shrink: 1;
+        min-width: 0;
+    }
+    &__titulo {
+        @include m.texto-fluido(2rem, 3.5rem);
+        color: v.$negro;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    // BUSCADORES
+    &__buscadores {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        padding: 2rem 0;
+
+        margin-left: auto; // empuja a la derecha
+        flex-shrink: 0;
+    }
+    &__buscador {
+        display: flex;
+        background: v.$terciario;
+        border-radius: 3rem;
+        padding: 1rem 1.5rem;
+        align-items: center;
+    }
+    &__input {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: v.$principal;
+
+        width: 20rem;
+    }
+    //FILTROS
+    &__filtros {
+        @include m.boton(v.$principal, v.$blanco);
+    }
+
+    &__nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    &__nav-enlaces {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: v.$secundario;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        span {
+            font-size: 3rem;
+            color: v.$secundario;
+        }
+    }
+    &__nav-text {
+        font-size: 1.4rem;
+        font-weight: v.$bold;
+    }
+
+    &__darkmode {
+        margin-left: auto;
+        cursor: pointer;
+    }
+    &__darkmode-contenedor {
+        padding: .5rem;
+        border-radius: 50%;
+        box-shadow: 0 0 5px 1px v.$principal;
+
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            box-shadow: 0 0 15px rgb(112, 14, 177);
+        }
+
+        span {
+            font-size: 4rem;
+            color: v.$principal;
+            transition: all .3s ease-out;
+
+            &:hover {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
