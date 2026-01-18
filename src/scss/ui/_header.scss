@@ -12,7 +12,12 @@
         align-items: center;
         gap: 3.5rem;
         padding: 1rem 0;
-            
+        justify-content: space-between;
+
+        @include m.tablet {
+            justify-content: inherit;
+        }
+        
         a {
             color: v.$negro;
         }
@@ -53,18 +58,17 @@
 
     &__logo {
         display: flex;
-        justify-content: center;
         align-items: center;
         gap: 1.5rem;
     }
     &__logotipo {
-        font-size: clamp(4rem, 4vw, 5rem);
-        
+        font-size: clamp(3.5rem, 4vw, 5rem);
+    
         flex-shrink: 1;
         min-width: 0;
     }
     &__titulo {
-        @include m.texto-fluido(3rem, 3.5rem);
+        @include m.texto-fluido(2.5rem, 3.5rem);
         color: v.$negro;
         margin: 0;
         white-space: nowrap;
@@ -171,15 +175,72 @@
     }
 
     // MOBILE MENU
-    &__mobile-mebu-button {
+    .barra__mobile-button {
         display: flex;
-        cursor: pointer;
-        margin-left: auto;
-        span {
-            font-size: 4rem;
-        }
         @include m.desktop {
             display: none;
+        }
+        --color: #F47B25;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        outline: none;
+        position: relative;
+        border: none;
+        background: none;
+        cursor: pointer;
+        -webkit-appearence: none;
+        -webkit-tap-highlight-color: transparent;
+        svg {
+            margin: 0;
+            padding: 0;
+            width: 64px;
+            height: 48px;
+            top: -6px;
+            left: -19px;
+            stroke: var(--color);
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            display: block;
+            position: absolute;
+            path {
+                transition: stroke-dasharray var(--duration, .85s) var(--easing, ease) var(--delay, 0s), stroke-dashoffset var(--duration, .85s) var(--easing, ease) var(--delay, 0s);
+                stroke-dasharray: var(--array-1, 26px) var(--array-2, 100px);
+                stroke-dashoffset: var(--offset, 126px);
+                transform: translateZ(0);
+                &:nth-child(2) {
+                    --duration: .7s;
+                    --easing: ease-in;
+                    --offset: 100px;
+                    --array-2: 74px;
+                }
+                &:nth-child(3) {
+                    --offset: 133px;
+                    --array-2: 107px;
+                }
+            }
+        }
+        &.active {
+            svg {
+                path {
+                    --offset: 57px;
+                    &:nth-child(1),
+                    &:nth-child(3) {
+                        --delay: .15s;
+                        --easing: cubic-bezier(.2, .4, .2, 1.1);
+                    }
+                    &:nth-child(2) {
+                        --duration: .4s;
+                        --offset: 2px;
+                        --array-1: 1px;
+                    }
+                    &:nth-child(3) {
+                        --offset: 58px;
+                    }
+                }
+            }
         }
     }
 
@@ -187,7 +248,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 29rem;
+        width: 40%;
+        min-width: 27rem;
         height: 100vh;
         padding: 5rem 1.5rem;
 
@@ -203,14 +265,6 @@
         transform: translateX(0);
     }
 
-
-    &__buscadores--mobile {
-        display: flex;
-
-        @include m.tablet {
-            display: none;
-        }
-    }
     &__buscadores--mobile {
         display: flex;
         gap: 2.5rem;
@@ -220,6 +274,14 @@
             display: none;
         }
     }
+    &__input--mobile {
+        @extend .barra__input;
+        font-size: 1.4rem;
+    }
+    &__filtros--mobile {
+        @extend .barra__filtros;
+        width: 10rem;
+    }
 
     &__nav--mobile {
         display: flex;
@@ -227,9 +289,17 @@
         flex-direction: column;
 
 
+
         @include m.desktop {
             display: none;
         }
+    }
+    &__nav-enlaces--mobile {
+        @extend .barra__nav-enlaces;
+        border-left: 3px solid v.$principal;
+    }
+    &__search-img--mobile {
+        margin-left: 1rem;
     }
 
     &__darkmode--mobile {

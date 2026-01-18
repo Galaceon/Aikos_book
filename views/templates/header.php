@@ -53,10 +53,15 @@
             </div>
         </div>
 
+
         <!-- MOBILE MENU BUTTON -->
-        <div class="barra__mobile-mebu-button">
-            <span class="material-symbols-outlined">menu</span>
-        </div>
+        <button class="barra__mobile-button">
+            <svg viewBox="0 0 64 48">
+                <path d="M19,15 L45,15 C70,15 58,-2 49.0177126,7 L19,37"></path>
+                <path d="M19,24 L45,24 C61.2371586,24 57,49 41,33 L32,24"></path>
+                <path d="M45,33 L19,33 C-8,33 6,-2 22,14 L45,37"></path>
+            </svg>
+        </button>
 
         <!-- MOBILE MENU -->
         <div class="barra__mobile-menu">
@@ -66,11 +71,11 @@
                 <!-- BUSCADOR -->
                 <div class="barra__buscador barra__buscador--mobile">
                     <span class="barra__search-img material-symbols-outlined">search</span>
-                    <input class="barra__input" id="buscador" type="text" placeholder="Buscar reseña...">
+                    <input class="barra__input--mobile" id="buscador" type="text" placeholder="Buscar reseña...">
                 </div> 
 
                 <!-- FILTROS -->
-                <div class="barra__filtros">
+                <div class="barra__filtros--mobile">
                     Tags
                     <span class="barra__symbol material-symbols-outlined">keyboard_arrow_down</span>
                 </div>
@@ -80,20 +85,20 @@
             <!-- NAVEGACION -->
             <nav class="barra__nav--mobile">
                 <a href="/">
-                    <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">frame_person</span>
+                    <div class="barra__nav-enlaces--mobile">
+                        <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
                         <p class="barra__nav-text-mobile">PERFIL</p>
                     </div>
                 </a>
                 <a href="/">
-                    <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">bookmarks</span>
+                    <div class="barra__nav-enlaces--mobile">
+                        <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
                         <p class="barra__nav-text-mobile">GUARDADOS</p>
                     </div>
                 </a>
                 <a href="/">
-                    <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">login</span>
+                    <div class="barra__nav-enlaces--mobile">
+                        <span class="barra__search-img--mobile material-symbols-outlined">login</span>
                         <p class="barra__nav-text-mobile">LOGIN</p>
                     </div>
                 </a>

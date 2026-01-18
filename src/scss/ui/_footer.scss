@@ -1,0 +1,63 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.footer {
+    background-color: v.$blanco;
+
+    &__contenedor {
+        @include m.contenedor;
+        padding: 7rem 0 8rem 0;
+        display: block;
+
+        @include m.tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &__logotipo {
+        @include m.logo;
+        justify-content: center;
+
+    }
+    &__logo {
+        @include m.logo-svg;
+    }
+    &__titulo {
+        @include m.logo-titulo;
+    }
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        margin-top: 6rem;
+
+        @include m.tablet {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+        }
+    }
+
+    .menu-redes {
+        @include m.menu-social(v.$secundario, 2.6rem);
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__copyright {
+        color: v.$secundario;
+        line-height: 1.5;
+        font-weight: v.$regular;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1rem;
+        background-color: color.scale(v.$blanco, $lightness: -7%);
+    }
+    &__copyright--bold {
+        color: v.$principal;
+        font-weight: v.$bold;
+    }
+}

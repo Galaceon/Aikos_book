@@ -138,16 +138,32 @@
         display: inline-block;
     }
 }
+
 @mixin logo {
-    color: v.$blanco;
-    text-align: center;
-    margin: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    color: v.$negro;
     white-space: nowrap;
+
     @include desktop {
-        text-align: left;
         margin: 0;
     }
 }
+@mixin logo-svg {
+    font-size: clamp(3.5rem, 4vw, 5rem);
+
+    flex-shrink: 1;
+    min-width: 0;
+}
+@mixin logo-titulo {
+    @include texto-fluido(3rem, 3.5rem);
+    color: v.$negro;
+    margin: 0;
+    white-space: nowrap;
+}
+
 @mixin menu-social($color, $size) {
 
     &__enlace {
@@ -177,8 +193,8 @@
         &[href*="youtube.com"]::before {
             content: "\f167";
         }
-        &[href*="twitter.com"]::before {
-            content: "\f099";
+        &[href*="x.com"]::before {
+            content: "\e61b";
         }
     }
     &__ocultar {

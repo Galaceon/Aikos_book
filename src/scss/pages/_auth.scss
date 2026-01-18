@@ -1,0 +1,8 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.auth {
+    min-height: 100vh;
+    background-color: v.$gris;
+}
