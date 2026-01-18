@@ -11,7 +11,8 @@
         flex: 1;
         align-items: center;
         gap: 3.5rem;
-        
+        padding: 1rem 0;
+            
         a {
             color: v.$negro;
         }
@@ -57,13 +58,13 @@
         gap: 1.5rem;
     }
     &__logotipo {
-        font-size: clamp(3rem, 4vw, 5rem);
+        font-size: clamp(4rem, 4vw, 5rem);
         
         flex-shrink: 1;
         min-width: 0;
     }
     &__titulo {
-        @include m.texto-fluido(2rem, 3.5rem);
+        @include m.texto-fluido(3rem, 3.5rem);
         color: v.$negro;
         margin: 0;
         white-space: nowrap;
@@ -71,13 +72,16 @@
 
     // BUSCADORES
     &__buscadores {
-        display: flex;
+        display: none;
         gap: 1.5rem;
         align-items: center;
-        padding: 2rem 0;
 
-        margin-left: auto; // empuja a la derecha
+        margin-left: auto;
         flex-shrink: 0;
+
+        @include m.tablet {
+            display: flex;
+        }
     }
     &__buscador {
         display: flex;
@@ -99,10 +103,17 @@
         @include m.boton(v.$principal, v.$blanco);
     }
 
+    // NAVEGACIÓN
     &__nav {
-        display: flex;
-        gap: 2rem;
+        display: none;
+        flex: 1;
+        
         align-items: center;
+        justify-content: space-evenly;
+        gap: 2;
+        @include m.desktop {
+            display: flex;
+        }
     }
     &__nav-enlaces {
         display: flex;
@@ -116,18 +127,29 @@
         }
 
         span {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: v.$secundario;
         }
     }
     &__nav-text {
+        display: none;
         font-size: 1.4rem;
         font-weight: v.$bold;
+
+        @include m.xl-desktop {
+            display: flex;
+        }
     }
 
+    // DARKMODE BUTTON
     &__darkmode {
+        display: none;
         margin-left: auto;
         cursor: pointer;
+
+        @include m.desktop {
+            display: flex;
+        }
     }
     &__darkmode-contenedor {
         padding: .5rem;
@@ -137,17 +159,90 @@
         transition: all .3s ease-in-out;
 
         &:hover {
-            box-shadow: 0 0 15px rgb(112, 14, 177);
+            box-shadow: 0 0 17px rgb(112, 14, 177);
+            transform: rotate(180deg) scale(1.05);
         }
 
         span {
             font-size: 4rem;
             color: v.$principal;
             transition: all .3s ease-out;
-
-            &:hover {
-                transform: rotate(180deg);
-            }
         }
+    }
+
+    // MOBILE MENU
+    &__mobile-mebu-button {
+        display: flex;
+        cursor: pointer;
+        margin-left: auto;
+        span {
+            font-size: 4rem;
+        }
+        @include m.desktop {
+            display: none;
+        }
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 29rem;
+        height: 100vh;
+        padding: 5rem 1.5rem;
+
+        background-color: #111;
+        border-right: solid 3px v.$principal;
+        box-shadow: 0px 0px 40px 10px v.$principal;
+
+        transform: translateX(-150%);
+        transition: transform .4s ease;
+        z-index: 100;
+    }
+    &__mobile-menu.mostrar {
+        transform: translateX(0);
+    }
+
+
+    &__buscadores--mobile {
+        display: flex;
+
+        @include m.tablet {
+            display: none;
+        }
+    }
+    &__buscadores--mobile {
+        display: flex;
+        gap: 2.5rem;
+        flex-direction: column;
+
+        @include m.desktop {
+            display: none;
+        }
+    }
+
+    &__nav--mobile {
+        display: flex;
+        margin-top: 5rem;
+        flex-direction: column;
+
+
+        @include m.desktop {
+            display: none;
+        }
+    }
+
+    &__darkmode--mobile {
+        display: flex;
+        width: 100%;
+
+        @include m.desktop {
+            display: none;
+        }
+    }
+    &__darkmode-contenedor--mobile {
+        @extend .barra__darkmode-contenedor;
+        margin: 5rem auto;
+        cursor: pointer;
     }
 }
