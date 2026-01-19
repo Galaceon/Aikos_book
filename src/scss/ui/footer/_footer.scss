@@ -51,7 +51,8 @@
         font-size: 1.2rem;
         text-align: center;
         padding: 1rem;
-        background-color: color.scale(v.$blanco, $lightness: -7%);
+        background-color: color.scale(v.$blanco, $lightness: -10%);
+        border-bottom: 3px solid v.$principal;
     }
     &__copyright--bold {
         color: v.$principal;

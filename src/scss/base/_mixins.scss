@@ -110,13 +110,13 @@
 }
 @mixin headings {
     font-family: v.$fuente_secundaria;
-    font-weight: v.$black;
-    margin: 2rem 0;
+    font-weight: v.$bold;
 }
 @mixin nombre-pagina {
     @include headings;
-    margin: 6rem 0 3rem 0;
-    text-align: center;
+    font-size: 4.5rem;
+    font-weight: v.$bold;
+    margin: 2rem 0 0 0;
 }
 @mixin descripcion-pagina {
     font-size: 1.8rem;

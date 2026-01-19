@@ -131,12 +131,16 @@
     &__nav-text {
         display: none;
         font-size: 1.4rem;
-        font-weight: v.$bold;
+        font-weight: v.$regular;
 
         @include m.xl-desktop {
             display: flex;
         }
     }
+    &__search-img {
+        font-weight: v.$delgada;
+    }
+    
 
     // DARKMODE BUTTON
     &__darkmode {
@@ -153,11 +157,11 @@
         border-radius: 50%;
         box-shadow: 0 0 6px 1px v.$principal;
 
-        transition: all .2s ease-in-out;
+        transition: all .1s ease-in-out;
 
         &:hover {
             box-shadow: 0 0 14px 1px rgb(112, 14, 177);
-            transform: rotate(180deg) scale(1.05);
+            transform: scale(0.95);
         }
 
         span {

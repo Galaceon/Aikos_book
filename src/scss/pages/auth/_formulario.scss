@@ -1,0 +1,83 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+/* ---------- Configuración base interna ---------- */
+
+$space-xs: 0.5rem;
+$space-s: 0.75rem;
+$space-m: 1rem;
+$space-l: 1.5rem;
+$space-xl: 2rem;
+
+$radius: 5rem;
+$duration: 350ms;
+$ease: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+$primary: v.$principal;
+$secondary: v.$secundario;
+$white: v.$blanco;
+
+/* ---------- formularioulario ---------- */
+
+.auth-formulario {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+
+    @include m.desktop {
+        transform: skewY(-5deg) translateY(0%) scale(0.94);
+        transition:
+        box-shadow $duration $ease,
+        transform $duration $ease;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 auto;
+            width: 25%;
+            background-color: color.scale($white, $lightness: -10%);
+            pointer-events: none;
+            transition:
+            background-color $duration $ease,
+            transform $duration $ease;
+            opacity: .9;
+        }
+
+        &::before {
+            right: 100%;
+            transform-origin: 100% 100%;
+            transform: skewY(35deg) scaleX(-1);
+            z-index: 1;
+        }
+
+        &::after {
+            left: 100%;
+            transform-origin: 0 0;
+            transform: skewY(-35deg) scaleX(-1);
+        }
+
+        &:hover,
+        &:focus-within {
+            transform: scale(1);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+
+            &::before,
+            &::after {
+                background-color: $white;
+                transform: skewY(0);
+            }
+        }
+    }
+
+}
+
+/* ---------- Contenedor ---------- */
+
+.auth-formulario__contenedor {
+    background-color: $white;
+    padding: $space-xl;
+    position: relative;
+}

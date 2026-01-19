@@ -1,0 +1,8 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.auth {
+    margin: 5rem 0 10rem;
+    z-index: 1;
+    position: relative;
+}

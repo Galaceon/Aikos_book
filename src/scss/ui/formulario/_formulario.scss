@@ -1,0 +1,123 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+/* ---------- Configuración base interna ---------- */
+
+$space-xs: 0.5rem;
+$space-s: 0.75rem;
+$space-m: 1rem;
+$space-l: 1.5rem;
+$space-xl: 2.5rem;
+
+$radius: 5rem;
+$duration: 350ms;
+$ease: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+$primary: v.$principal;
+$secondary: v.$secundario;
+$white: v.$blanco;
+
+/* ---------- formularioulario ---------- */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Inputs ---------- */
+
+.formulario__input {
+    + .formulario__input {
+        margin-top: $space-xl;
+    }
+
+    &:focus-within {
+        label {
+            color: $secondary;
+        }
+
+        .formulario__icon {
+            background-color: $secondary;
+        }
+
+        input {
+            border-color: $secondary;
+        }
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: $space-xs;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+    color: $primary;
+}
+
+/* ---------- Grupo input + icono ---------- */
+
+.formulario__input-group {
+    position: relative;
+
+    input {
+        width: 100%;
+        padding: $space-m;
+        padding-left: calc(#{$space-s} + 60px);
+        border-radius: $radius;
+        border: 2px solid $primary;
+        outline: none;
+        font-size: 1.6rem;
+        color: $secondary;
+
+        &:focus {
+            color: $primary;
+        }
+    }
+}
+
+.formulario__icon {
+    position: absolute;
+    inset: 0 auto 0 0;
+    display: flex;
+    align-items: center;
+    padding: $space-m;
+    background-color: $primary;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    pointer-events: none;
+
+    color: $white !important; 
+}
+
+/* ---------- Botones ---------- */
+
+.formulario__btn-group {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulario__btn {
+    display: flex;
+    align-items: center;
+    padding: $space-m $space-l;
+    border-radius: $radius;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+}
+
+/* reutiliza tu modificador */
+.formulario__submit {
+    @include m.boton(v.$principal, v.$blanco);
+    border: 1px solid v.$principal;
+
+    margin: 5rem 0 3rem 0;
+}
