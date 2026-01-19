@@ -3,8 +3,8 @@
 
         <!-- LOGOTIPO -->
         <a href="/" class="barra__enlace" data-value="AIKO'S BOOK">
-            <div class="barra__logo">
-                <span class="barra__logotipo material-symbols-outlined">auto_stories</span>
+            <div class="barra__logotipo">
+                <span class="barra__logo material-symbols-outlined">auto_stories</span>
                 <h2 class="barra__titulo">AIKO'S BOOK</h2>
             </div>
         </a>
@@ -115,3 +115,11 @@
         <!-- MOBILE MENU -->
     </div>
 </div>
+
+<!-- HEADER IMAGE -->
+<header class="header">
+    <div class="header__contenido">
+        <h1 class="header__titulo">AIKO'S BOOK</h1>
+        <h3 class="header__descripcion">Reseñas literatias de Laura Ruiz</h3>
+    </div>
+</header>

@@ -158,7 +158,7 @@
     min-width: 0;
 }
 @mixin logo-titulo {
-    @include texto-fluido(3rem, 3.5rem);
+    @include texto-fluido(2.5rem, 3.5rem);
     color: v.$negro;
     margin: 0;
     white-space: nowrap;
