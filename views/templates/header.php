@@ -64,7 +64,7 @@
         </button>
 
         <!-- MOBILE MENU -->
-        <div class="barra__mobile-menu">
+        <aside class="barra__mobile-menu">
 
             <!-- BUSCADORES -->
             <div class="barra__buscadores--mobile">
@@ -111,7 +111,7 @@
                     <span class="material-symbols-outlined">brightness_4</span>
                 </div>
             </div>
-        </div>
+        </aside>
         <!-- MOBILE MENU -->
     </div>
 </div>

@@ -119,11 +119,10 @@
     text-align: center;
 }
 @mixin descripcion-pagina {
-    text-align: center;
     font-size: 1.8rem;
     font-weight: v.$delgada;
-    color: v.$gris-oscuro;
-    margin-bottom: 5rem;
+    color: v.$secundario;
+    margin: 1rem 0 4rem 0;
 }
 @mixin texto-fluido($min, $max) {
     font-size: clamp($min, 2.5vw + 1rem, $max);

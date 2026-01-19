@@ -9,7 +9,7 @@
         linear-gradient(
             rgba(0, 0, 0, 0.4)
         ),
-        url('/build/img/unnamed.png');
+        url('/build/img/header.png');
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,6 +22,7 @@
 
     &__contenido {
         color: v.$blanco;
+        text-align: center
     }
     &__titulo {
         @include m.texto-fluido(4rem, 6rem);
