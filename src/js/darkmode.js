@@ -1,5 +1,7 @@
 (function () {
     const darkBtn = document.querySelector('.barra__darkmode-contenedor');
+    const darkBtnMobile = document.querySelector('.barra__darkmode-contenedor--mobile');
+
     const DARK_CLASS = 'darkmode';
     const STORAGE_KEY = 'theme';
 
@@ -12,14 +14,18 @@
     }
 
     // Añadir evento al botón para alternar el modo oscuro
-    if (darkBtn) {
-        darkBtn.addEventListener('click', () => {
-            const isDark = document.body.classList.toggle(DARK_CLASS);
-
-            localStorage.setItem(
-                STORAGE_KEY,
-                isDark ? 'dark' : 'light'
-            );
-        });
+    if (darkBtn || darkBtnMobile) {
+        darkBtn.addEventListener('click', darkmodeActivator);
+        darkBtnMobile.addEventListener('click', darkmodeActivator);
     }
+
+    function darkmodeActivator() {
+        const isDark = document.body.classList.toggle(DARK_CLASS);
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            isDark ? 'dark' : 'light'
+        );
+    }
+    
 })();
