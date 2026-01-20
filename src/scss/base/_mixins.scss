@@ -33,11 +33,11 @@
     border-radius: 5rem;
     cursor: pointer;
 
-    transition: all 0.5s;
+    transition: all 0.3s;
     position: relative;
 
     span {
-        color: v.$blanco;
+        color: var(--blanco);
         transition: all .5s ease-in-out;
     }
 
@@ -49,7 +49,6 @@
         width: 100%;
         height: 100%;
         z-index: 1;
-        background-color: color.change(color.scale($bgColor, $lightness: 10%), $alpha: 0.2);
         border-radius: 5rem;
         transition: all 0.3s;
     }
@@ -121,7 +120,7 @@
 @mixin descripcion-pagina {
     font-size: 1.8rem;
     font-weight: v.$delgada;
-    color: v.$secundario;
+    color: var(--color-text-muted);
     margin: 1rem 0 4rem 0;
 }
 @mixin texto-fluido($min, $max) {
@@ -143,7 +142,7 @@
     align-items: center;
     gap: 1.5rem;
 
-    color: v.$negro;
+    color: var(--color-text);
     white-space: nowrap;
 
     @include desktop {
@@ -152,13 +151,14 @@
 }
 @mixin logo-svg {
     font-size: clamp(3.5rem, 4vw, 5rem);
-
     flex-shrink: 1;
     min-width: 0;
+
+    color: var(--color-primary) !important;
 }
 @mixin logo-titulo {
     @include texto-fluido(2.5rem, 3.5rem);
-    color: v.$negro;
+    color: var(--color-text);
     margin: 0;
     white-space: nowrap;
 }
@@ -201,7 +201,7 @@
     }
 }
 @mixin enlace {
-    color: v.$secundario;
+    color: var(--color-text-muted);
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: v.$bold; 
@@ -211,7 +211,7 @@
     transition: color .2s ease-out;
     
     &:hover {
-        color: v.$principal;
+        color: var(--color-primary);
     }
 }
 @mixin shadow {
@@ -230,8 +230,8 @@
     margin-top: 1.5rem;
 
     > li {
-        background-color: v.$azul;
-        color: v.$blanco;
+        background-color: var(--azul);
+        color: var(--color-text-inverse);
         padding: 1rem;
         border-radius: .5rem;
         font-size: 1.4rem;
@@ -240,16 +240,16 @@
 }
 
 @mixin card {
-    border: 1px solid color.scale(v.$gris, $lightness: 10%);
+    border: var(--color-border);
     padding: 3rem;
 
     &__nombre {
-        font-weight: v.$black;
+        font-weight: var(--color-text);
         font-size: 2.6rem;
         margin: 2rem 0;
     }
 }
 
 @mixin bg-gradient($bg_color) {
-    background-image: linear-gradient(to left top, $bg_color, color.scale($bg_color, $lightness: 15%));
+    background-image: linear-gradient(to left top, var(--color-primary), var(--color-primary-active));
 }

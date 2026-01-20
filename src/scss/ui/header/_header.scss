@@ -7,7 +7,7 @@
 
     background-image:
         linear-gradient(
-            rgba(0, 0, 0, 0.4)
+            var(--color-overlay)
         ),
         url('/build/img/header.png');
 
@@ -21,18 +21,18 @@
 
 
     &__contenido {
-        color: v.$blanco;
+        color: var(--blanco);
         text-align: center
     }
     &__titulo {
         @include m.texto-fluido(4rem, 6rem);
         white-space: nowrap;
-        border-bottom: solid 2px v.$principal;
+        border-bottom: solid 2px var(--color-primary);
         margin-bottom: 3rem;
         padding-bottom: 1rem;
     }
     &__descripcion {
-        color: v.$blanco;
+        color: var(--blanco);
     }
 }
 

@@ -2,5 +2,5 @@
 @use 'base/mixins' as m;
 
 .material-symbols-outlined {
-    color: v.$principal;
+    color: var(--blanco);
 }

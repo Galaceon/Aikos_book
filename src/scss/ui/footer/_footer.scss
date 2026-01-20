@@ -3,7 +3,7 @@
 @use 'sass:color';
 
 .footer {
-    background-color: v.$blanco;
+    background-color: var(--color-surface);
 
     // GENERAL
     &__contenedor {
@@ -45,35 +45,35 @@
 
     // Copyright
     &__copyright {
-        color: v.$secundario;
+        color: var(--color-text-muted);
         line-height: 1.5;
         font-weight: v.$regular;
         font-size: 1.2rem;
         text-align: center;
         padding: 1rem;
-        background-color: color.scale(v.$blanco, $lightness: -10%);
-        border-bottom: 3px solid v.$principal;
+        background-color: var(--color-surface-alt);
+        border-bottom: 3px solid var(--color-primary);
     }
     &__copyright--bold {
-        color: v.$principal;
+        color: var(--color-primary);
         font-weight: v.$bold;
     }
 }
 
 // Redes Sociales
 .menu-redes {
-    @include m.menu-social(v.$secundario, 2.6rem);
+    @include m.menu-social(var(--color-text-muted), 2.6rem);
     display: flex;
     gap: 2rem;
     align-items: center;
 
     &__enlace {
-        transition: all .2s ease-in;
-        border-bottom: solid 0px v.$principal;
+        transition: all .15s ease-in;
+        border-bottom: solid 0px var(--color-primary);
 
         &:hover {
             transform: translateY(-7px) scale(1.2);
-            border-bottom: solid 3px v.$principal;
+            border-bottom: solid 3px var(--color-primary);
         }
     }
 }

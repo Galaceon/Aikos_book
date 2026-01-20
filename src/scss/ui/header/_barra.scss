@@ -3,7 +3,7 @@
 @use 'sass:color';
 
 .barra {
-    background-color: v.$blanco;
+    background-color: var(--color-surface);
 
     
     &__contenido {
@@ -18,10 +18,6 @@
         @include m.tablet {
             justify-content: inherit;
         }
-        
-        a {
-            color: v.$negro;
-        }
     }
     &__enlace {
         position:relative;
@@ -35,14 +31,14 @@
             left:0;
             width:0;
             height:.4rem;
-            background-color:v.$principal;
+            background-color:var(--color-primary);
             transition: width .3s ease;
             margin: 0;
             padding: 0;
         }
 
         &:hover{
-            color:v.$principal;
+            color:var(--color-primary);
         }
 
         &:hover::after{
@@ -82,22 +78,25 @@
     }
     &__buscador {
         display: flex;
-        background: v.$terciario;
+        background: var(--color-bg);
         border-radius: 3rem;
         padding: 1rem 1.5rem;
         align-items: center;
+    }
+    &__search-img {
+        color: var(--color-primary) !important;
     }
     &__input {
         border: none;
         background-color: transparent;
         outline: none;
-        color: v.$principal;
+        color: var(--color-primary);
 
         width: 20rem;
     }
     //FILTROS
     &__filtros {
-        @include m.boton(v.$principal, v.$blanco);
+        @include m.boton(var(--color-primary), var(--blanco));
     }
 
     // NAVEGACIÓN
@@ -116,7 +115,7 @@
         display: flex;
         gap: 1rem;
         align-items: center;
-        color: v.$secundario;
+        color: var(--color-text-muted);
         transition: all .2s ease-in-out;
 
         &:hover {
@@ -125,7 +124,7 @@
 
         span {
             font-size: 3.5rem;
-            color: v.$secundario;
+            color: var(--color-text-muted);
         }
     }
     &__nav-text {
@@ -139,6 +138,7 @@
     }
     &__search-img {
         font-weight: v.$delgada;
+        color: var(--color-text-muted) !important;
     }
     
 
@@ -155,18 +155,18 @@
     &__darkmode-contenedor {
         padding: .5rem;
         border-radius: 50%;
-        box-shadow: 0 0 6px 1px v.$principal;
+        box-shadow: 0 0 6px 1px var(--color-primary);
 
         transition: all .1s ease-in-out;
 
         &:hover {
-            box-shadow: 0 0 14px 1px rgb(112, 14, 177);
+            box-shadow: 0 0 14px 1px var(--color-primary-mode);
             transform: scale(0.95);
         }
 
         span {
             font-size: 4rem;
-            color: v.$principal;
+            color: var(--color-primary);
         }
     }
 
@@ -177,7 +177,7 @@
         @include m.desktop {
             display: none;
         }
-        --color: #F47B25;
+        --color: var(--color-primary);
         width: 36px;
         height: 36px;
         padding: 0;
@@ -250,9 +250,9 @@
         height: 100vh;
         padding: 5rem 1.5rem;
 
-        background-color: #111;
-        border-right: solid 3px v.$principal;
-        box-shadow: 0px 0px 40px 10px v.$principal;
+        background-color: var(--color-surface);
+        border-right: solid 3px var(--color-primary);
+        box-shadow: 0px 0px 40px 10px var(--color-primary);
 
         transform: translateX(-150%);
         transition: transform .4s ease;
@@ -293,7 +293,7 @@
     }
     &__nav-enlaces--mobile {
         @extend .barra__nav-enlaces;
-        border-left: 3px solid v.$principal;
+        border-left: 3px solid var(--color-primary);
     }
     &__search-img--mobile {
         margin-left: 1rem;

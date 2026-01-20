@@ -12,7 +12,7 @@ html {
 body {
     font-family: v.$fuente_principal;
     font-size: 1.8rem;
-    background-color: v.$terciario;
+    background-color: var(--color-bg);
 }
 body.menu-abierto {
     overflow: hidden;

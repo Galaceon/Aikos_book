@@ -10,6 +10,9 @@
         font-weight: v.$bold;
         text-decoration: underline;
     }
+    &__heading {
+        color: var(--color-text);
+    }
 }
 
 .auth--no-style {
@@ -20,7 +23,7 @@
     @include m.contenedor-sm;
     margin: 0 auto;
     padding: 3rem 1rem;
-    background-color: v.$blanco;
+    background-color: var(--color-surface);
 
     @include m.tablet {
         padding: 3rem 5rem;

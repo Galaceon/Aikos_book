@@ -14,10 +14,6 @@ $radius: 5rem;
 $duration: 350ms;
 $ease: cubic-bezier(0.075, 0.82, 0.165, 1);
 
-$primary: v.$principal;
-$secondary: v.$secundario;
-$white: v.$blanco;
-
 /* ---------- formularioulario ---------- */
 
 .formulario {
@@ -34,15 +30,15 @@ $white: v.$blanco;
 
     &:focus-within {
         label {
-            color: $secondary;
+            color: var(--color-text-muted);
         }
 
         .formulario__icon {
-            background-color: $secondary;
+            background-color: var(--color-secondary);
         }
 
         input {
-            border-color: $secondary;
+            border-color: var(--color-secondary);
         }
     }
 }
@@ -54,7 +50,7 @@ label {
     font-weight: 700;
     letter-spacing: 0.06rem;
     text-transform: uppercase;
-    color: $primary;
+    color: var(--color-primary);
 }
 
 /* ---------- Grupo input + icono ---------- */
@@ -67,13 +63,13 @@ label {
         padding: $space-m;
         padding-left: calc(#{$space-s} + 60px);
         border-radius: $radius;
-        border: 2px solid $primary;
+        border: 2px solid var(--color-border);
         outline: none;
         font-size: 1.6rem;
-        color: $secondary;
+        color: var(--color-text-muted-bold);
 
         &:focus {
-            color: $primary;
+            color: var(--color-primary);
         }
     }
 }
@@ -84,12 +80,12 @@ label {
     display: flex;
     align-items: center;
     padding: $space-m;
-    background-color: $primary;
+    background-color: var(--color-primary);
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
     pointer-events: none;
 
-    color: $white !important; 
+    color: var(--blanco) !important; 
 }
 
 /* ---------- Botones ---------- */
@@ -114,10 +110,9 @@ label {
     text-transform: uppercase;
 }
 
-/* reutiliza tu modificador */
 .formulario__submit {
-    @include m.boton(v.$principal, v.$blanco);
-    border: 1px solid v.$principal;
+    @include m.boton(var(--color-primary), var(--blanco));
+    border: 1px solid var(--color-primary);
 
     margin: 6rem 0 3rem 0;
     width: auto;

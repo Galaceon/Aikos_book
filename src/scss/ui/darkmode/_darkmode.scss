@@ -1,0 +1,44 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+body.darkmode {
+
+    --color-bg: #0F0B1E;
+    --color-surface: #1A142E;
+    --color-surface-alt: #0b0818;
+
+    --color-surface-extra: #161125;
+    --color-primary-mode: #F47B25;
+
+    --color-border: #8B5CF6;
+
+    --color-text: #F8F4F4;
+    --color-text-muted: #A29DBD;
+    --color-text-muted-bold: #807c99;
+    --color-text-inverse: #11130F;
+
+    --color-primary: #8B5CF6;
+    --color-primary-hover: #754bd8;
+    --color-primary-active: #9c47e2;
+
+    --color-secondary: #A29DBD;
+
+    --color-success: #1eda56;
+    --color-warning: #f1c40f;
+    --color-error: #e43b28;
+
+    --color-overlay: rgba(0, 0, 0, 0.7);
+    --color-shadow: rgba(0, 0, 0, 0.6);
+
+    --negro: #11130f;
+    --blanco: #f8f4f4;
+    --blanco_oscuro: #E6D7D7;
+    --gris: #64748B;
+    --gris-claro: #d0d5d8;
+    --gris-oscuro: #1E293B;
+
+    --rojo: #b81414;
+    --azul: #1187f5;
+    --verde: #26eb26;
+}
