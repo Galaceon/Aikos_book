@@ -10,5 +10,17 @@
 
     &__enlace {
         color: v.$principal;
+        border-bottom: solid 1px v.$principal;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            color: v.$secundario;
+            border-bottom: solid 1px v.$secundario;
+        }
+    }
+
+    &__unique {
+        justify-content: center;
+        text-align: center;
     }
 }

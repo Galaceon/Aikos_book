@@ -5,26 +5,6 @@
             <p class="auth__descripcion">Iniciar Sesión en Aiko's Book</p>
 
             <div class="formulario__input">
-                <label for="nombre">NOMBRE</label>
-                <div class="formulario__input-group">
-                    <span class="material-symbols-outlined formulario__icon">
-                        person
-                    </span>
-                    <input type="text" id="nombre" placeholder="Tu nombre..." name="nombre" value=""/>
-                </div>
-            </div>
-
-            <div class="formulario__input">
-                <label for="apellido">APELLIDO</label>
-                <div class="formulario__input-group">
-                    <span class="material-symbols-outlined formulario__icon">
-                        person
-                    </span>
-                    <input type="text" id="apellido" placeholder="Tu apellido..." name="apellido" value=""/>
-                </div>
-            </div>
-
-            <div class="formulario__input">
                 <label for="email">EMAIL</label>
                 <div class="formulario__input-group">
                     <span class="material-symbols-outlined formulario__icon">
@@ -44,21 +24,11 @@
                 </div>
             </div>
 
-            <div class="formulario__input">
-                <label for="password2">REPETIR CONTRASEÑA</label>
-                <div class="formulario__input-group">
-                    <span class="material-symbols-outlined formulario__icon">
-                        lock
-                    </span>
-                    <input type="password" id="password2" placeholder="Repite tu contraseña..." name="password2" value=""/>
-                </div>
-            </div>
-
             <input type="submit" value="Crear Cuenta" class="formulario__submit" />
 
             <div class="acciones">
-                <a class="acciones__enlace" href="/">Iniciar Sesión</a>
-                <a class="acciones__enlace" href="/">¿Olvidaste tu Contraseña?</a>
+                <a class="acciones__enlace" href="/register">Crear Cuenta</a>
+                <a class="acciones__enlace" href="/forget">¿Olvidaste tu Contraseña?</a>
             </div>
         </div>
     </form>

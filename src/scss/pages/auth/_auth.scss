@@ -5,4 +5,24 @@
     margin: 5rem 0 10rem;
     z-index: 1;
     position: relative;
+
+    &__resalto {
+        font-weight: v.$bold;
+        text-decoration: underline;
+    }
+}
+
+.auth--no-style {
+    margin: 7rem 0;
+}
+
+.auth-contenedor {
+    @include m.contenedor-sm;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    background-color: v.$blanco;
+
+    @include m.tablet {
+        padding: 3rem 5rem;
+    }
 }

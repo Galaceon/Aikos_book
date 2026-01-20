@@ -119,5 +119,7 @@ label {
     @include m.boton(v.$principal, v.$blanco);
     border: 1px solid v.$principal;
 
-    margin: 5rem 0 3rem 0;
+    margin: 6rem 0 3rem 0;
+    width: auto;
+    align-self: flex-start;
 }
