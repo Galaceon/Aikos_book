@@ -103,9 +103,35 @@ class AuthController {
 
     public static function forget(Router $router) {
 
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new User($_POST);
+            $alertas = $user->validarEmail();
+            
+            if(empty($alertas)) {
+                $user = User::where('email', $user->email);
+                if($user && $user->confirmed) {
+                    $user->crearToken();
+
+                    unset($user->password2);
+
+                    $user->guardar();
+
+                    // Enviar el email
+                    $email = new Email( $user->email, $user->name, $user->token );
+                    $email->enviarInstrucciones();
+
+                    User::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
+                } else {
+                    User::setAlerta('error', 'El usuario no esta Registrado o no esta Confirmado');
+                }
+            }
+        }
+
+        $alertas = User::getAlertas();
 
         $router->render('auth/forget', [
-            'titulo' => 'Olvide mi Contraseña'
+            'titulo' => 'Olvide mi Contraseña',
+            'alertas' => $alertas
         ]);
     }
 
@@ -121,7 +147,7 @@ class AuthController {
             User::setAlerta('error', 'Token no válido, la cuenta no se confirmó');
             $alertas = User::getAlertas();
         } else {
-            $user->confirmado = 1;
+            $user->confirmed = 1;
             $user->token = '';
             unset($user->password2);
             
@@ -141,6 +167,7 @@ class AuthController {
 
 
     public static function restore(Router $router) {
+        $token = $_GET['token'];
 
 
         $router->render('auth/restore', [
