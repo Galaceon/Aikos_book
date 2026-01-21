@@ -2,6 +2,9 @@
     <div class="auth-contenedor">
         <h2 class="auth__heading">Reestablecer Contraseña</h2>
         <p class="auth__descripcion">Coloca tu nueva contraseña</p>
+
+        <?php require_once __DIR__ . '/../templates/alerts.php' ;?>
+
         <form class="formulario" onsubmit="return false" autocomplete="off">
             <div class="formulario__input">
                 <label for="password">CONTRASEÑA</label>

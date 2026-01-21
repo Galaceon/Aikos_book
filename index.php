@@ -8,10 +8,19 @@ $router =  new Router();
 
 // AUTH
 $router->get('/login', [AuthController::class, 'login']);
+$router->post('/login', [AuthController::class, 'login']);
+
 $router->get('/register', [AuthController::class, 'register']);
+$router->post('/register', [AuthController::class, 'register']);
+
 $router->get('/forget', [AuthController::class, 'forget']);
+$router->post('/forget', [AuthController::class, 'forget']);
+
 $router->get('/confirm', [AuthController::class, 'confirm']);
+
 $router->get('/restore', [AuthController::class, 'restore']);
+$router->post('/restore', [AuthController::class, 'restore']);
+
 $router->get('/message', [AuthController::class, 'message']);
 
 

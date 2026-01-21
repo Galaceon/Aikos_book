@@ -1,8 +1,10 @@
 <div class="auth">
-    <form class="auth-formulario" onsubmit="return false" autocomplete="off">
+    <form class="auth-formulario" method="POST" action="/register">
         <div class="auth-formulario__contenedor">
             <h2 class="auth__heading">AIKO'S BOOK</h2>
             <p class="auth__descripcion">Crear tu cuenta en Sesión en Aiko's Book</p>
+
+            <?php require_once __DIR__ . '/../templates/alerts.php' ;?>
 
             <div class="formulario__input">
                 <label for="nombre">NOMBRE</label>
@@ -10,7 +12,7 @@
                     <span class="material-symbols-outlined formulario__icon">
                         person
                     </span>
-                    <input type="text" id="nombre" placeholder="Tu nombre..." name="nombre" value=""/>
+                    <input type="text" id="nombre" placeholder="Tu nombre..." name="name" value="<?php echo $user->name; ?>"/>
                 </div>
             </div>
 
@@ -20,7 +22,7 @@
                     <span class="material-symbols-outlined formulario__icon">
                         person
                     </span>
-                    <input type="text" id="apellido" placeholder="Tu apellido..." name="apellido" value=""/>
+                    <input type="text" id="apellido" placeholder="Tu apellido..." name="surname" value="<?php echo $user->surname; ?>"/>
                 </div>
             </div>
 
@@ -30,7 +32,7 @@
                     <span class="material-symbols-outlined formulario__icon">
                         alternate_email
                     </span>
-                    <input type="email" id="email" placeholder="Tu email..." name="email" value=""/>
+                    <input type="email" id="email" placeholder="Tu email..." name="email" value="<?php echo $user->email; ?>"/>
                 </div>
             </div>
 

@@ -67,6 +67,7 @@ label {
         outline: none;
         font-size: 1.6rem;
         color: var(--color-text-muted-bold);
+        font-weight: v.$bold;
 
         &:focus {
             color: var(--color-primary);

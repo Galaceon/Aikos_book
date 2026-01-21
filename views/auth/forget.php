@@ -4,6 +4,8 @@
             <h2 class="auth__heading">AIKO'S BOOK</h2>
             <p class="auth__descripcion">Escribe tu email para recuperar tu Cuenta</p>
 
+            <?php require_once __DIR__ . '/../templates/alerts.php' ;?>
+
             <div class="formulario__input">
                 <label for="email">EMAIL</label>
                 <div class="formulario__input-group">

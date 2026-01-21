@@ -1,0 +1,29 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+.alerta {
+
+    padding: 1.5rem;
+    text-transform: uppercase;
+    margin: 1rem 0 2rem 0;
+    font-size: 1.2rem;
+    font-weight: v.$bold;
+
+    &__error {
+        background-color: transparent;
+        border-left: 1.5rem solid var(--rojo);
+        border-top: .1rem solid var(--rojo);
+        border-right: .1rem solid var(--rojo);
+        border-bottom: .1rem solid var(--rojo);
+        color: var(--rojo);
+    }
+    &__exito {
+        background-color: transparent;
+        border-left: 1.5rem solid var(--verde);
+        border-top: .1rem solid var(--verde);
+        border-right: .1rem solid var(--verde);
+        border-bottom: .1rem solid var(--verde);
+        color: var(--verde);
+    }
+}
