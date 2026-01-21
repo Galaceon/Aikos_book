@@ -5,7 +5,8 @@
 
         <?php require_once __DIR__ . '/../templates/alerts.php' ;?>
 
-        <form class="formulario" form class="auth-formulario" method="POST" action="/restore">
+        <?php if($token_valido) { ?>
+        <form class="formulario" class="auth-formulario" method="POST">
             <div class="formulario__input">
                 <label for="password">CONTRASEÑA</label>
                 <div class="formulario__input-group">
@@ -23,5 +24,7 @@
                 <a class="acciones__enlace" href="/register">Crear Cuenta</a>
             </div>
         </form>
+        <?php } ?>
+
     </div>
 </div>

@@ -12,7 +12,7 @@
                     <span class="material-symbols-outlined formulario__icon">
                         alternate_email
                     </span>
-                    <input type="email" id="email" placeholder="Tu email..." name="email" value=""/>
+                    <input type="email" id="email" placeholder="Tu email..." name="email" value="<?php echo $user->name; ?>"/>
                 </div>
             </div>
 

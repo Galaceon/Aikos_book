@@ -24,11 +24,12 @@ class AuthController {
                     User::setAlerta('error', 'El usuario no existe o no esta confirmado');
                 } else {
                     if(password_verify($_POST['password'], $user->password)) {
-                        session_start();
+                        session_destroy(); // Destruir datos residuales de sesión anterior
+                        session_start(); // Crear nueva sesión
 
                         $_SESSION['id'] = $user->id;
-                        $_SESSION['nombre'] = $user->nombre;
-                        $_SESSION['apellido'] = $user->apellido;
+                        $_SESSION['name'] = $user->name;
+                        $_SESSION['surname'] = $user->surname;
                         $_SESSION['email'] = $user->email;
                         $_SESSION['admin'] = $user->admin;
 
@@ -48,7 +49,8 @@ class AuthController {
 
         $router->render('auth/login', [
             'titulo' => 'Iniciar Sesión',
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'user' => $user
         ]);
     }
 
@@ -168,10 +170,44 @@ class AuthController {
 
     public static function restore(Router $router) {
         $token = $_GET['token'];
+        $token_valido = true;
 
+        if(!$token) header('Location: /');
+
+        $user = User::where('token', $token);
+
+        if(empty($user)) {
+            User::setAlerta('error', 'Token no valido, intenta de nuevo');
+            $token_valido = false;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user->sincronizar($_POST);
+            $DBuser = User::where('token', $user->token);
+
+            $alertas = $user->validarPassword();
+
+            if(empty($alertas)) {
+                if(password_verify($user->password , $DBuser->password)) {
+                    User::setAlerta('error', 'Contraseña repetida, escribe una nueva Contraseña');
+                } else {
+                    $user->hashPassword();
+
+                    $user->token = '';
+
+                    $resultado = $user->guardar();
+
+                    if($resultado) header('Location: /login');
+                }
+            }
+        }
+
+        $alertas = User::getAlertas();
 
         $router->render('auth/restore', [
-            'titulo' => 'Recuperar Cuenta'
+            'titulo' => 'Recuperar Cuenta',
+            'alertas' => $alertas,
+            'token_valido' => $token_valido
         ]);
     }
 

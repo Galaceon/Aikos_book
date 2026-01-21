@@ -1,5 +1,5 @@
 <div class="auth">
-    <form class="auth-formulario" form class="auth-formulario" method="POST" action="/forget">
+    <form class="auth-formulario" class="auth-formulario" method="POST" action="/forget">
         <div class="auth-formulario__contenedor">
             <h2 class="auth__heading">AIKO'S BOOK</h2>
             <p class="auth__descripcion">Escribe tu email para recuperar tu Cuenta</p>
