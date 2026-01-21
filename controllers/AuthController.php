@@ -10,10 +10,45 @@ class AuthController {
 
 
     public static function login(Router $router) {
+        $alertas = [];
 
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new User($_POST);
+
+            $alertas = $user->validarLogin();
+
+            if(empty($alertas)) {
+                $user = User::where('email', $user->email);
+
+                if(!$user || !$user->confirmed) {
+                    User::setAlerta('error', 'El usuario no existe o no esta confirmado');
+                } else {
+                    if(password_verify($_POST['password'], $user->password)) {
+                        session_start();
+
+                        $_SESSION['id'] = $user->id;
+                        $_SESSION['nombre'] = $user->nombre;
+                        $_SESSION['apellido'] = $user->apellido;
+                        $_SESSION['email'] = $user->email;
+                        $_SESSION['admin'] = $user->admin;
+
+                        if($user->admin) {
+                            header('Location: /admin/dashboard');
+                        } else {
+                            header('Location: /');
+                        }
+                    } else {
+                        User::setAlerta('error', 'La contraseña es Incorrecta');
+                    }
+                }
+            }
+        }
+
+        $alertas = User::getAlertas();
 
         $router->render('auth/login', [
-            'titulo' => 'Iniciar Sesión'
+            'titulo' => 'Iniciar Sesión',
+            'alertas' => $alertas
         ]);
     }
 
@@ -78,7 +113,7 @@ class AuthController {
     public static function confirm(Router $router) {
         $token = s($_GET['token']);
 
-        if(!$token) header('Location: /login');
+        if(!$token) header('Location: /');
 
         $user = User::where('token', $token);
 

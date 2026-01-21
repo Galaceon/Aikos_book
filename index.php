@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/app.php';
 
 use Controllers\AuthController;
+use Controllers\PagesController;
 use MVC\Router;
 
 $router =  new Router();
@@ -23,6 +24,9 @@ $router->post('/restore', [AuthController::class, 'restore']);
 
 $router->get('/message', [AuthController::class, 'message']);
 
+
+// PAGES
+$router->get('/', [PagesController::class, 'index']);
 
 
 $router->comprobarRutas();

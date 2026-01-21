@@ -1,5 +1,5 @@
 <div class="auth">
-    <form class="auth-formulario">
+    <form class="auth-formulario" method="POST" action="/login">
         <div class="auth-formulario__contenedor">
             <h2 class="auth__heading">AIKO'S BOOK</h2>
             <p class="auth__descripcion">Iniciar Sesión en Aiko's Book</p>
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="Crear Cuenta" class="formulario__submit" />
+            <input type="submit" value="Iniciar Sesión" class="formulario__submit" />
 
             <div class="acciones">
                 <a class="acciones__enlace" href="/register">Crear Cuenta</a>

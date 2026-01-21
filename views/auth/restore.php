@@ -5,7 +5,7 @@
 
         <?php require_once __DIR__ . '/../templates/alerts.php' ;?>
 
-        <form class="formulario" onsubmit="return false" autocomplete="off">
+        <form class="formulario" form class="auth-formulario" method="POST" action="/restore">
             <div class="formulario__input">
                 <label for="password">CONTRASEÑA</label>
                 <div class="formulario__input-group">
