@@ -142,7 +142,43 @@
         font-weight: v.$delgada;
         color: var(--color-text-muted) !important;
     }
+
+    &__form {
+        all: unset;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: var(--color-text-muted);
+        transition: all .2s ease-in-out;
+
+        cursor: pointer;
+    }
+
+    &__label {
+        all: unset;
+    }
+
+    &__submit {
+        all: unset;
+        background-color: transparent;
+        color: var(--color-text-muted);
+        border: none;
+        font-size: 1.4rem;
+        font-weight: v.$regular;
+    }
     
+    &__login {
+        margin-left: auto;
+        margin-right: 3rem;
+
+        @include m.tablet {
+
+        }
+    }
+    &__nav-text--login {
+        @extend .barra__nav-text;
+        display: flex;
+    }
 
     // DARKMODE BUTTON
     &__darkmode {
@@ -287,7 +323,9 @@
         margin-top: 5rem;
         flex-direction: column;
 
-
+        a {
+            padding: 0;
+        }
 
         @include m.desktop {
             display: none;
@@ -296,9 +334,14 @@
     &__nav-enlaces--mobile {
         @extend .barra__nav-enlaces;
         border-left: 3px solid var(--color-primary);
+        padding: 1rem 0;
     }
     &__search-img--mobile {
         margin-left: 1rem;
+    }
+    &__submit--mobile {
+        @extend .barra__nav-text-mobile;
+        font-weight: v.$regular;
     }
 
     &__darkmode--mobile {

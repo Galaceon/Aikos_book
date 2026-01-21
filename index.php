@@ -11,6 +11,8 @@ $router =  new Router();
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
 
+$router->post('/logout', [AuthController::class, 'logout']);
+
 $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register', [AuthController::class, 'register']);
 

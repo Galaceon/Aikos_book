@@ -26,24 +26,38 @@
 
         <!-- NAVEGACION -->
         <nav class="barra__nav">
-            <a href="/">
+            <?php if(is_auth()) { ?>
+                <a href="/">
+                    <div class="barra__nav-enlaces">
+                        <span class="barra__search-img material-symbols-outlined">frame_person</span>
+                        <p class="barra__nav-text">PERFIL</p>
+                    </div>
+                </a>
+
+                <a href="/">
+                    <div class="barra__nav-enlaces">
+                        <span class="barra__search-img material-symbols-outlined">bookmarks</span>
+                        <p class="barra__nav-text">GUARDADOS</p>
+                    </div>
+                </a>
+
                 <div class="barra__nav-enlaces">
-                    <span class="barra__search-img material-symbols-outlined">frame_person</span>
-                    <p class="barra__nav-text">PERFIL</p>
+                    <form method="POST" action="/logout" class="barra__form">
+                        <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined">login</span></label>
+                        <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit">
+                    </form>
                 </div>
-            </a>
-            <a href="/">
-                <div class="barra__nav-enlaces">
-                    <span class="barra__search-img material-symbols-outlined">bookmarks</span>
-                    <p class="barra__nav-text">GUARDADOS</p>
-                </div>
-            </a>
-            <a href="/">
-                <div class="barra__nav-enlaces">
-                    <span class="barra__search-img material-symbols-outlined">login</span>
-                    <p class="barra__nav-text">LOGIN</p>
-                </div>
-            </a>
+            <?php } else { ?>
+
+                <a href="/login" class="barra__login">
+                    <div class="barra__nav-enlaces">
+                        <span class="barra__search-img material-symbols-outlined">login</span>
+                        <p class="barra__nav-text barra__nav-text--login">LOGIN</p>
+                    </div>
+                </a>
+
+            <?php } ?>
+
         </nav>
 
         <!-- DARKMODE BUTTON -->
@@ -84,24 +98,39 @@
 
             <!-- NAVEGACION -->
             <nav class="barra__nav--mobile">
-                <a href="/">
+                <?php if(is_auth()) { ?>
+
+                    <a href="/">
+                        <div class="barra__nav-enlaces--mobile">
+                            <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
+                            <p class="barra__nav-text-mobile">PERFIL</p>
+                        </div>
+                    </a>
+
+                    <a href="/">
+                        <div class="barra__nav-enlaces--mobile">
+                            <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
+                            <p class="barra__nav-text-mobile">GUARDADOS</p>
+                        </div>
+                    </a>
+
                     <div class="barra__nav-enlaces--mobile">
-                        <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
-                        <p class="barra__nav-text-mobile">PERFIL</p>
+                        <form method="POST" action="/logout" class="barra__form">
+                            <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
+                            <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
+                        </form>
                     </div>
-                </a>
-                <a href="/">
-                    <div class="barra__nav-enlaces--mobile">
-                        <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
-                        <p class="barra__nav-text-mobile">GUARDADOS</p>
-                    </div>
-                </a>
-                <a href="/">
-                    <div class="barra__nav-enlaces--mobile">
-                        <span class="barra__search-img--mobile material-symbols-outlined">login</span>
-                        <p class="barra__nav-text-mobile">LOGIN</p>
-                    </div>
-                </a>
+
+                <?php } else { ?>
+
+                    <a href="/login">
+                        <div class="barra__nav-enlaces--mobile">
+                            <span class="barra__search-img--mobile material-symbols-outlined">login</span>
+                            <p class="barra__nav-text-mobile">LOGIN</p>
+                        </div>
+                    </a>
+
+                <?php } ?>
             </nav>
 
 
@@ -115,6 +144,7 @@
         <!-- MOBILE MENU -->
     </div>
 </div>
+
 
 <!-- HEADER IMAGE -->
 <header class="header">
