@@ -19,7 +19,7 @@
         <p class="dashboard__sidebar-text">AUTORES</p>
     </a>
 
-    <a href="/admin/registered" class="dashboard__enlace <?php echo pagina_actual('/registered') ? 'dashboard__enlace-actual' : ''; ?>">
+    <a href="/admin/users" class="dashboard__enlace <?php echo pagina_actual('/users') ? 'dashboard__enlace-actual' : ''; ?>">
         <span class="dashboard__sidebar-icon material-symbols-outlined">groups</span>
         <p class="dashboard__sidebar-text">REGISTRADOS</p>
     </a>
@@ -46,7 +46,7 @@
         <p class="dashboard__sidebar-text">AUTORES</p>
     </a>
 
-    <a href="/admin/registered" class="dashboard__enlace <?php echo pagina_actual('/registered') ? 'dashboard__enlace-actual' : ''; ?>">
+    <a href="/admin/users" class="dashboard__enlace <?php echo pagina_actual('/users') ? 'dashboard__enlace-actual' : ''; ?>">
         <span class="dashboard__sidebar-icon material-symbols-outlined">groups</span>
         <p class="dashboard__sidebar-text">REGISTRADOS</p>
     </a>

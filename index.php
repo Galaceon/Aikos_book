@@ -2,8 +2,12 @@
 require_once __DIR__ . '/includes/app.php';
 
 use Controllers\AuthController;
+use Controllers\AuthorsController;
 use Controllers\DashboardController;
 use Controllers\PagesController;
+use Controllers\ReviewsController;
+use Controllers\TagsController;
+use Controllers\UsersController;
 use MVC\Router;
 
 $router =  new Router();
@@ -36,7 +40,29 @@ $router->get('/', [PagesController::class, 'index']);
 // ADMIN
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
-$router->get('/admin/reviews', [DashboardController::class, 'index']);
+$router->get('/admin/reviews', [ReviewsController::class, 'index']);
+$router->get('/admin/reviews/create', [ReviewsController::class, 'create']);
+$router->post('/admin/reviews/create', [ReviewsController::class, 'create']);
+$router->get('/admin/reviews/edit', [ReviewsController::class, 'edit']);
+$router->post('/admin/reviews/edit', [ReviewsController::class, 'edit']);
+$router->post('/admin/reviews/delete', [ReviewsController::class, 'delete']);
+
+$router->get('/admin/tags', [TagsController::class, 'index']);
+$router->get('/admin/tags/create', [TagsController::class, 'create']);
+$router->post('/admin/tags/create', [TagsController::class, 'create']);
+$router->get('/admin/tags/edit', [TagsController::class, 'edit']);
+$router->post('/admin/tags/edit', [TagsController::class, 'edit']);
+$router->post('/admin/tags/delete', [TagsController::class, 'delete']);
+
+$router->get('/admin/authors', [AuthorsController::class, 'index']);
+$router->get('/admin/authors/create', [AuthorsController::class, 'create']);
+$router->post('/admin/authors/create', [AuthorsController::class, 'create']);
+$router->get('/admin/authors/edit', [AuthorsController::class, 'edit']);
+$router->post('/admin/authors/edit', [AuthorsController::class, 'edit']);
+$router->post('/admin/authors/delete', [AuthorsController::class, 'delete']);
+
+$router->get('/admin/users', [UsersController::class, 'index']);
+$router->post('/admin/users/delete', [UsersController::class, 'delete']);
 
 
 $router->comprobarRutas();

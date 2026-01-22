@@ -4,14 +4,14 @@ namespace Controllers;
 
 use MVC\Router;
 
-class PagesController {
+class AuthorsController {
 
 
     public static function index(Router $router) {
 
 
-        $router->render('pages/index', [
-            'titulo' => "Aiko's Book"
+        $router->render('admin/authors/index', [
+            'titulo' => 'Autores'
         ]);
     }
 }
