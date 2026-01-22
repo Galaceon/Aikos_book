@@ -43,7 +43,7 @@
 
                 <div class="barra__nav-enlaces">
                     <form method="POST" action="/logout" class="barra__form">
-                        <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined">login</span></label>
+                        <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined">logout</span></label>
                         <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit">
                     </form>
                 </div>

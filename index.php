@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/app.php';
 
 use Controllers\AuthController;
+use Controllers\DashboardController;
 use Controllers\PagesController;
 use MVC\Router;
 
@@ -29,6 +30,13 @@ $router->get('/message', [AuthController::class, 'message']);
 
 // PAGES
 $router->get('/', [PagesController::class, 'index']);
+
+
+
+// ADMIN
+$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+
+$router->get('/admin/reviews', [DashboardController::class, 'index']);
 
 
 $router->comprobarRutas();

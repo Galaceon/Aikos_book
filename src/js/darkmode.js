@@ -14,8 +14,11 @@
     }
 
     // Añadir evento al botón para alternar el modo oscuro
-    if (darkBtn || darkBtnMobile) {
+    if (darkBtn) {
         darkBtn.addEventListener('click', darkmodeActivator);
+    }
+
+    if(darkBtnMobile) {
         darkBtnMobile.addEventListener('click', darkmodeActivator);
     }
 
@@ -27,5 +30,4 @@
             isDark ? 'dark' : 'light'
         );
     }
-    
 })();

@@ -22,7 +22,7 @@
         include_once __DIR__ .'/templates/footer.php'; 
     ?>
 
-    <script src="/build/js/app.min.js"></script>
+    <script src="/build/js/bundle.min.js"></script>
     <script>window.CSRF_TOKEN = "<?php echo csrf_token(); ?>";</script>
 </body>
 </html>
