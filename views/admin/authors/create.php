@@ -8,7 +8,7 @@
 
         <div class="dashboard__encabezado">
             <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
-            <p class="dashboard__text">Añade un nuevo autor para tu reseñas.</p>
+            <p class="dashboard__text">Añade un nuevo autor para tus reseñas.</p>
         </div>
     </div>
 
