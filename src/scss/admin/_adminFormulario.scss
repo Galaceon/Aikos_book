@@ -1,0 +1,47 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.admin-formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    @include m.tablet {
+        align-items: normal;
+    }
+
+    &__campo {
+        display: flex;
+        flex-direction: column;
+    }
+    &__label {
+        line-height: 2.5rem;
+        color: var(--color-text-muted);
+        font-size: 1.3rem;
+
+        @include m.tablet {
+            font-size: 1.5rem;
+        }
+    }
+    &__input {
+        all: unset;
+        padding: 1rem 2rem;
+        border-radius: 5rem;
+        color: var(--color-text-muted);
+        background-color: var(--color-bg);
+        width: calc(100% - 40px);
+    }
+    &__submit {
+        align-self: center;
+        width: 100%;
+        margin: 2rem 0 1rem 0;
+
+        @include m.tablet {
+            align-self: flex-end;
+            width: auto;
+            margin: 3rem 0 1rem 0;
+        }
+    }
+}

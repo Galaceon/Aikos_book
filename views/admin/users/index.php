@@ -27,7 +27,7 @@
                         <td class="table__td"><?php echo $user->confirmed["0"] ? 'Confirmado' : 'No Confirmado'; ?></td>
                         <td class="table__td"><?php echo $user->created_at ?></td>
                         <td class="table__td--acciones">
-                            <form action="/admin/users/delete" method="POST" class="table__formulario">
+                            <form action="/admin/users/delete" method="POST" class="table__delete-form">
                                 <input type="hidden" name="id" value="<?php echo $user->id; ?>">
                                 <button class="table__accion table__accion--aliminar" type="submit">
                                     <span class="material-symbols-outlined accion__eliminar">delete</span>

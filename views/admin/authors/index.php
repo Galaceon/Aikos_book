@@ -31,8 +31,8 @@
                             <a href="/admin/authors/edit" class="">
                                 <span class="material-symbols-outlined accion__editar">edit</span>
                             </a>
-                            <form action="/admin/authors/delete" method="POST" class="table__formulario">
-                                <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+                            <form action="/admin/authors/delete" method="POST" class="table__delete-form">
+                                <input type="hidden" name="id" value="<?php echo $author->id; ?>">
                                 <button class="table__accion table__accion--aliminar" type="submit">
                                     <span class="material-symbols-outlined accion__eliminar">delete</span>
                                 </button>

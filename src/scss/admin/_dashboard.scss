@@ -200,9 +200,11 @@
 
     // CONTENIDO PRINCIPAL
     &__contenido {
-        padding: 0 1.6rem;
+        padding: 0 1rem;
         width: 100%;
-        overflow: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
+
 
         @include m.desktop {
             padding: 3rem 5rem 2rem 5rem;
@@ -217,6 +219,10 @@
         @include m.desktop {
             margin: 4rem 0 5rem 0;
         }
+    }
+    &__contenedor-header--form {
+        justify-content: flex-start;
+        gap: 3rem;
     }
     &__encabezado {
         display: flex;
@@ -250,10 +256,10 @@
         &:hover {
             box-shadow: 0px 0px 7px 3px var(--color-primary-active);
         }
-
-        @include m.tablet {
-
-        }
+    }
+    &__button--round {
+        border-radius: 50%;
+        padding: 1rem;
     }
     &__add-button {
         color: var(--blanco);
@@ -267,6 +273,22 @@
 
     &__contenedor {
         width: 100%;
+    }
+
+    &__formulario {
+        background-color: var(--color-surface);
+        padding: 2rem .7rem;
+        border-radius: 2rem;
+        display: flex;
+
+        @include m.tablet {
+            padding: 3rem 2.5rem;
+            border-radius: 3rem;
+        }
+    }
+
+    &__formularios-contenido {
+        @include m.contenedor-md;
     }
 }
 
