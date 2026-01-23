@@ -23,4 +23,13 @@ class Tag extends ActiveRecord {
             self::$alertas['error'][] = 'El Nombre es Obligatorio';
         }
     }
+    public function crearSlug() {
+        $slug = strtolower($this->name);
+        $slug = trim($slug);
+        $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
+        $slug = preg_replace('/[^a-z0-9\s-]/', '', $slug);
+        $slug = preg_replace('/[\s-]+/', '-', $slug);
+
+        $this->slug = $slug;
+    }
 }
