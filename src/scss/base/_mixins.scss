@@ -70,7 +70,7 @@
         opacity: 0;
         transition: all 0.3s ease-in-out;
         border: 1px solid $bgColor;
-        transform: scale(1.5, 1.5);
+        transform: scale(0.2, 0.2);
     }
     &:hover::after {
         opacity: 1;
@@ -83,6 +83,12 @@
         span {
             color: $bgColor;
             animation: big-to-normal .3s linear;
+        }
+        a {
+            color: $bgColor;
+        }
+        p {
+            color: $bgColor;
         }
     }
 }

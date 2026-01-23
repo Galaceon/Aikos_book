@@ -1,0 +1,90 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.table {
+    width: 100%;
+    border-radius: 3rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    background-color: var(--color-surface);
+
+    &__thead {
+        background-color: var(--color-thead);
+        color: var(--color-text-muted);
+    }
+    &__th {
+        text-align: left;
+        padding: 2rem;
+        font-size: 1.5rem;
+
+        &:last-of-type {
+            text-align: right;
+        }
+    }
+    &__td {
+        padding: 2rem;
+        color: var(--color-text-muted);
+        font-size: 1.6rem;
+    }
+    &__tr {
+        border-bottom: 1px solid var(--color-text-muted);
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+    &__td--first {
+        font-weight: v.$bold;
+        color: var(--color-text);
+    }
+}
+
+.table__td--acciones {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+
+    padding: 1.4rem 2rem;
+}
+
+.table__accion {
+    all: unset;
+    display: flex;
+    border-radius: 50%;
+    
+    &__eliminar {
+        
+        span {
+            color: var(--rojo);
+        }
+    }
+}
+.accion__eliminar {
+    color: var(--rojo);
+    padding: .5rem;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--color-surface-alt);
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--color-primary);
+        color: var(--blanco);
+    }
+}
+
+.accion__editar {
+    color: var(--verde);
+    padding: .5rem;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--color-surface-alt);
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--color-primary);
+        color: var(--blanco);
+    }
+}
