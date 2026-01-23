@@ -36,17 +36,66 @@ class AuthorsController {
 
     public static function create(Router $router) {
 
+        $alertas = [];
+        $author = new Author;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $author->sincronizar($_POST);
+            
+
+            $alertas = $author->validar();
+            
+
+            if(empty($alertas)) {
+                $author->crearSlug();
+
+                $resultado = $author->guardar();
+
+                if($resultado) {
+                    header('Location: /admin/authors');
+                }
+            }
+        }
+
+        
 
         $router->render('admin/authors/create', [
-            'titulo' => 'Añadir Autor'
+            'titulo' => 'Añadir Autor',
+            'alertas' => $alertas,
+            'author' => $author
         ]);
     }
 
     public static function edit(Router $router) {
+        $alertas = [];
 
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        if(!$id) header('Location: /admin/authors');
+
+        $author = Author::find($id);
+        if(!$author) header('Location: /admin/authors');
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $author->sincronizar($_POST);
+
+            $alertas = $author->validar();
+
+            if(empty($alertas)) {
+                $author->crearSlug();
+
+                $resultado = $author->guardar();
+
+                if($resultado) {
+                    header('Location: /admin/authors');
+                }
+            }
+        }
 
         $router->render('admin/authors/edit', [
-            'titulo' => 'Añadir Autor'
+            'titulo' => 'Editar Autor',
+            'author' => $author,
+            'alertas' => $alertas
         ]);
     }
 

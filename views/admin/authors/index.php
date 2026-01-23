@@ -28,7 +28,7 @@
                     <tr class="table__tr">
                         <td class="table__td table__td--first"><?php echo $author->name; ?></td>
                         <td class="table__td--acciones">
-                            <a href="/admin/authors/edit" class="">
+                            <a href="/admin/authors/edit?id=<?php echo $author->id; ?>" class="">
                                 <span class="material-symbols-outlined accion__editar">edit</span>
                             </a>
                             <form action="/admin/authors/delete" method="POST" class="table__delete-form">

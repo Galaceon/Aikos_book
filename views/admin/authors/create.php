@@ -8,15 +8,17 @@
 
         <div class="dashboard__encabezado">
             <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
-            <p class="dashboard__text">Administra y edita los autores creados.</p>
+            <p class="dashboard__text">Añade un nuevo autor para tu reseñas.</p>
         </div>
     </div>
 
+    <?php require_once __DIR__ . '/../../templates/alerts.php' ;?>
+
     <div class="dashboard__formulario">
-        <form action="admin/authors/create" class="admin-formulario">
+        <form action="/admin/authors/create" class="admin-formulario" method="POST">
             <div class="admin-formulario__campo">
                 <label for="nombre" class="admin-formulario__label">Nombre del Autor</label>
-                <input class="admin-formulario__input" type="text" id="nombre" name="name" placeholder="Nombre Autor..." value=""/>
+                <input class="admin-formulario__input" type="text" id="nombre" name="name" placeholder="Nombre Autor..." value="<?php echo $author->name; ?>"/>
             </div>
 
             <input type="submit" value="Añadir Autor" class="formulario__submit admin-formulario__submit" />
