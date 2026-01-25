@@ -23,6 +23,7 @@ class Author extends ActiveRecord {
             self::$alertas['error'][] = 'El Nombre es Obligatorio';
         }
     }
+    
     public function crearSlug() {
         $slug = strtolower($this->name);
         $slug = trim($slug);

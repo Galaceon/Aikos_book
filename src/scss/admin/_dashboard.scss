@@ -196,6 +196,7 @@
     }
     &__sidebar--mobile.mostrar {
         transform: translateX(0%);
+        z-index: 1000;
     }
 
     // CONTENIDO PRINCIPAL
@@ -278,8 +279,9 @@
     &__formulario {
         background-color: var(--color-surface);
         padding: 2rem 1rem;
-        border-radius: 2rem;
+        border-radius: 1.5rem;
         display: flex;
+        flex-direction: column;
 
         @include m.tablet {
             padding: 3rem 2.5rem;

@@ -19,7 +19,7 @@
 
             <!-- FILTROS -->
             <div class="barra__filtros">
-                Tags
+                Filtros
                 <span class="barra__symbol material-symbols-outlined">keyboard_arrow_down</span>
             </div>
         </div>
@@ -90,7 +90,7 @@
 
                 <!-- FILTROS -->
                 <div class="barra__filtros--mobile">
-                    Tags
+                    Filtros
                     <span class="barra__symbol material-symbols-outlined">keyboard_arrow_down</span>
                 </div>
             </div>

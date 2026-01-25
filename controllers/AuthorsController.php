@@ -42,8 +42,12 @@ class AuthorsController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $author->sincronizar($_POST);
             
+            $authorDB = Author::where('name', $author->name);
+
+            if(!empty($authorDB)) Author::setAlerta('error', 'Ese Autor ya fue creado');
 
             $alertas = $author->validar();
+            $alertas = Author::getAlertas();
             
 
             if(empty($alertas)) {

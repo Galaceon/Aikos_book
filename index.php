@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/app.php';
 
+use Controllers\APITags;
 use Controllers\AuthController;
 use Controllers\AuthorsController;
 use Controllers\DashboardController;
@@ -37,6 +38,7 @@ $router->get('/', [PagesController::class, 'index']);
 
 
 
+// ADMIN & APIs
 // ADMIN
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
@@ -63,6 +65,9 @@ $router->post('/admin/authors/delete', [AuthorsController::class, 'delete']);
 
 $router->get('/admin/users', [UsersController::class, 'index']);
 $router->post('/admin/users/delete', [UsersController::class, 'delete']);
+
+// APIs
+$router->get('/api/tags', [APITags::class, 'index']);
 
 
 $router->comprobarRutas();

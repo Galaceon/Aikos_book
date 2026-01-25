@@ -6,15 +6,23 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 5rem;
 
     @include m.tablet {
         align-items: normal;
+        gap: 3rem;
     }
 
     &__campo {
         display: flex;
         flex-direction: column;
+        margin: 0;
+        max-width: 100%;
+
+        @include m.tablet {
+            max-width: 355px;
+        }
+        position: relative;
     }
     &__label {
         line-height: 3rem;
@@ -38,10 +46,77 @@
             font-size: 1.9rem;
         }
     }
+
+    &__filtros {
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 4rem;
+        }
+    }
+    &__filtro {
+        display: flex;
+    }
+    &__search-field {
+        all: unset;
+        padding: 1rem 2rem;
+        border-radius: 5rem 0 0 5rem;
+        color: var(--color-text-muted);
+        background-color: var(--color-bg);
+        font-size: 1.6rem;
+        width: 100%;
+
+        @include m.tablet {
+            font-size: 1.9rem;
+        }
+    }
+    &__add-form {
+        all: unset;
+    }
+    &__add-button {
+        all: unset;
+        background-color: var(--color-primary);
+        color: var(--blanco);
+        border-radius: 0 5rem 5rem 0;
+        padding: 1.2rem;
+        font-size: 1.7rem;
+        font-weight: v.$black;
+        box-shadow: 0px 2px 7px 0px var(--color-primary-active);
+        transition: all .2s ease-out;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0px 0px 7px 3px var(--color-primary-active);
+        }
+    }
+
+    &__contenedor-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 1rem !important;
+        @include m.reset-lista;
+    }
+    &__tag-DOM {
+        border-radius: 2rem;
+        padding: .5rem 1rem;
+        background-color: var(--color-surface-lightness-alt);
+        color: var(--color-primary);
+        font-size: 1.2rem;
+        font-weight: v.$bold;
+        text-transform: uppercase;
+        border: 2px solid var(--color-primary);
+    }
+
+
     &__submit {
         align-self: center;
         width: 100%;
-        margin: 2rem 0 1rem 0;
+        margin: 8rem 0 1rem 0;
 
         @include m.tablet {
             align-self: flex-end;
@@ -49,4 +124,48 @@
             margin: 3rem 0 1rem 0;
         }
     }
+}
+
+.listado-tags {
+    @include m.reset-lista;
+    position: absolute;
+    top: 115%;
+    left: 0;
+    z-index: 100;
+
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 0 0 2rem 2rem;
+    border: 2px solid var(--color-primary);
+    border-top: none;
+    width: 100%;
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(0) translateY(-12rem);
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+
+    &__tag {
+        line-height: 3rem;
+        cursor: pointer;
+        border-bottom: 2px solid var(--color-primary);
+        padding: .5rem 2rem;
+
+        &:last-of-type {
+            border-bottom: none;
+            border-radius: 0 0 2rem 2rem;
+        }
+
+        &:hover {
+            background-color: var(--color-surface-lightness-alt);
+        }
+    }
+    &__tag--error {
+        @extend .listado-tags__tag;
+        color: var(--rojo);
+    }
+}
+.listado-tags.mostrar {
+    opacity: 1;
+    transform: scale(1) translateY(0);
 }
