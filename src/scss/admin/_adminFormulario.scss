@@ -19,10 +19,14 @@
         margin: 0;
         max-width: 100%;
 
+        position: relative;
+    }
+    &__campo--filtros {
+        @extend .admin-formulario__campo;
+        
         @include m.tablet {
             max-width: 355px;
         }
-        position: relative;
     }
     &__label {
         line-height: 3rem;

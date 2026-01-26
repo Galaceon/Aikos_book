@@ -23,6 +23,7 @@ class ReviewsController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $review->sincronizar($_POST);
 
+
             $review->created_at = date('Y-m-d H:i:s');
             $review->crearSlug();
             $review->admin_id = $_SESSION['admin'];

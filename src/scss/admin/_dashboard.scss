@@ -271,6 +271,12 @@
             margin: 0 0 0 1rem;
         }
     }
+    &__add-button--span {
+        display: none;
+        @include m.tablet {
+            display: inline;
+        }
+    }
 
     &__contenedor {
         width: 100%;

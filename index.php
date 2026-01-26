@@ -68,6 +68,7 @@ $router->post('/admin/users/delete', [UsersController::class, 'delete']);
 
 // APIs
 $router->get('/api/tags', [APITags::class, 'index']);
+$router->post('/api/tags/create', [APITags::class, 'create']);
 
 
 $router->comprobarRutas();

@@ -150,6 +150,6 @@
 <header class="header">
     <div class="header__contenido">
         <h1 class="header__titulo">AIKO'S BOOK</h1>
-        <h3 class="header__descripcion">Reseñas literatias de Laura Ruiz</h3>
+        <h3 class="header__descripcion">Reseñas literarias de Laura Ruiz</h3>
     </div>
 </header>

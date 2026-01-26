@@ -8,6 +8,8 @@
         const listadoTags = document.querySelector('#listado-tags');
         const contenedorTags = document.querySelector('#admin-formulario__contenedor-tags');
         const inputHidden = document.querySelector('#tags-hidden');
+        const addTagButton = document.querySelector('#btn-crear-tag');
+        addTagButton.addEventListener('click', crearTag);
 
         let tagsSeleccionados = [];
 
@@ -73,11 +75,10 @@
                     listadoTags.appendChild(tagHTML);
                 })
             } else {
-                console.log('golaaa')
                 listadoTags.classList.add('mostrar');
                 const noTags = document.createElement('LI');
                 noTags.classList.add('listado-tags__tag--error');
-                noTags.textContent = 'Aun no existe, Crealo';
+                noTags.textContent = 'Aun no existe, crealo: +';
 
                 listadoTags.appendChild(noTags);
             }
@@ -144,7 +145,42 @@
 
             mostrarTagsSeleccionados();
         }
-    }
 
+        async function crearTag() {
+            const name = tagsInput.value.trim();
+            if(name === '') return;
+
+            const datos = new FormData();
+            datos.append('name', name);
+
+            try {
+                const url = '/api/tags/create';
+                const respuesta = await fetch(url, {
+                    method: 'POST',
+                    body: datos
+                });
+
+                const nuevoTag = await respuesta.json();
+                
+                console.log(tags);
+                console.log(tagsSeleccionados);
+
+                // Añadir al sistema actual
+                tags = [...tags, nuevoTag];
+                tagsSeleccionados = [...tagsSeleccionados, nuevoTag];
+
+                console.log(tags);
+                console.log(tagsSeleccionados);
+
+                sincronizarTags();
+                mostrarTagsSeleccionados();
+
+                listadoTags.classList.remove('mostrar')
+                tagsInput.value = '';
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 
 })();

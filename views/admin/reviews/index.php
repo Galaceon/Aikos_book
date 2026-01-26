@@ -7,7 +7,7 @@
     <a href="/admin/reviews/create">
         <div class="dashboard__button">
             <span class="material-symbols-outlined">add</span>
-            <p class="dashboard__add-button">Añadir Reseña</p>
+            <p class="dashboard__add-button">Añadir <span class="dashboard__add-button--span">Reseña<span></p>
         </div>
     </a>
 </div>
