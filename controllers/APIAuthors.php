@@ -2,14 +2,15 @@
 
 namespace Controllers;
 
-use Model\Tag;
+use Model\Author;
 
-class APITags {
+class APIAuthors {
 
     public static function index() {
-        $tags = Tag::all();
+        $authors = Author::all();
 
-        echo json_encode($tags);
+
+        echo json_encode($authors);
     }
 
     public static function create() {
@@ -21,28 +22,28 @@ class APITags {
                 return;
             }
 
-            $tagDB = Tag::where('name', $name);
+            $authorDB = Author::where('name', $name);
 
-            if(empty($tagDB)) {
-                $tag = new Tag;
+            if(empty($authorDB)) {
+                $author = new Author;
 
-                $tag->name = $name;
-                $tag->crearSlug();
+                $author->name = $name;
+                $author->crearSlug();
 
-                $tag->guardar();
+                $author->guardar();
 
-                $tag = Tag::where('slug', $tag->slug);
+                $author = Author::where('slug', $author->slug);
 
                 $respuesta = [
-                    'id' => $tag->id,
-                    'name' => $tag->name
+                    'id' => $author->id,
+                    'name' => $author->name
                 ];
 
                 echo json_encode($respuesta);
             } else {
                 $respuesta = [
                     'tipo' => 'error',
-                    'mensaje' => 'Ese tag ya esta registrado'
+                    'mensaje' => 'Ese autor ya esta registrado'
                 ];
 
                 echo json_encode($respuesta);

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/app.php';
 
+use Controllers\APIAuthors;
 use Controllers\APITags;
 use Controllers\AuthController;
 use Controllers\AuthorsController;
@@ -69,6 +70,8 @@ $router->post('/admin/users/delete', [UsersController::class, 'delete']);
 // APIs
 $router->get('/api/tags', [APITags::class, 'index']);
 $router->post('/api/tags/create', [APITags::class, 'create']);
+$router->get('/api/authors', [APIAuthors::class, 'index']);
+$router->post('/api/authors/create', [APIAuthors::class, 'create']);
 
 
 $router->comprobarRutas();

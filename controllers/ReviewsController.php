@@ -2,31 +2,51 @@
 
 namespace Controllers;
 
+use Model\Author;
 use Model\Review;
 use Model\ReviewTag;
+use Model\Tag;
 use MVC\Router;
 
 class ReviewsController {
 
 
     public static function index(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
+        $review = new Review;
 
 
         $router->render('admin/reviews/index', [
-            'titulo' => 'Gestión de Reseñas'
+            'titulo' => 'Gestión de Reseñas',
+            'review' => $review
         ]);
     }
 
     public static function create(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
         $review = new Review;
+        $tag = new Tag;
+        $author = new Author;
+        $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $review->sincronizar($_POST);
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+            
 
+            $review->sincronizar($_POST);
 
             $review->created_at = date('Y-m-d H:i:s');
             $review->crearSlug();
-            $review->admin_id = $_SESSION['admin'];
             $review->admin_id = $_SESSION['admin'];
 
             $resultado = $review->guardar();
@@ -52,7 +72,11 @@ class ReviewsController {
         }
 
         $router->render('admin/reviews/create', [
-            'titulo' => 'Crea una nueva reseña.'
+            'titulo' => 'Crea una nueva reseña.',
+            'alertas' => $alertas,
+            'review' => $review,
+            'tag' => $tag,
+            'author' => $author
         ]);
     }
 }
