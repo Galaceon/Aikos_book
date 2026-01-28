@@ -296,7 +296,11 @@
     }
 
     &__formularios-contenido {
-        @include m.contenedor-md;
+        width: 100%;
+
+        @include m.tablet {
+            @include m.contenedor-md;
+        }
     }
 }
 

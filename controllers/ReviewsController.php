@@ -42,48 +42,57 @@ class ReviewsController {
                 header('Location: /');
                 exit;
             }
-            
 
             $review->sincronizar($_POST);
 
-            $review->created_at = date('Y-m-d H:i:s');
-            $review->crearSlug();
-            $review->admin_id = $_SESSION['admin'];
+            $alertas = $review->validar();
+            $alertas = Review::getAlertas();
 
-            $resultado = $review->guardar();
+            if(empty($alertas)) {
 
-            $review = Review::where('slug', $review->slug);
+                $review->created_at = date('Y-m-d H:i:s');
+                $review->crearSlug();
+                $review->admin_id = $_SESSION['admin'];
 
-            if(!empty($_POST['tags'])) {
-                
-                $tags = json_decode($_POST['tags'], true);
+                $resultado = $review->guardar();
 
-                foreach($tags as $tag_id) {
-                    $reviewTag = new ReviewTag([
-                        'review_id' => $review->id,
-                        'tag_id' => $tag_id
-                    ]);
+                $review = Review::where('slug', $review->slug);
 
-                    $reviewTag->guardar();
+                if(!empty($_POST['tags'])) {
+                    
+                    $tags = json_decode($_POST['tags'], true);
+
+                    foreach($tags as $tag_id) {
+                        $reviewTag = new ReviewTag([
+                            'review_id' => $review->id,
+                            'tag_id' => $tag_id
+                        ]);
+
+                        $reviewTag->guardar();
+                    }
                 }
-            }
-            if(!empty($_POST['authors'])) {
-                
-                $authors = json_decode($_POST['authors'], true);
+                if(!empty($_POST['authors'])) {
+                    
+                    $authors = json_decode($_POST['authors'], true);
 
-                foreach($authors as $author_id) {
-                    $reviewAuthor = new ReviewAuthor([
-                        'review_id' => $review->id,
-                        'author_id' => $author_id
-                    ]);
+                    foreach($authors as $author_id) {
+                        $reviewAuthor = new ReviewAuthor([
+                            'review_id' => $review->id,
+                            'author_id' => $author_id
+                        ]);
 
-                    $reviewAuthor->guardar();
+                        $reviewAuthor->guardar();
+                    }
                 }
-            }
 
-            if($resultado) {
-                header('Location: /admin/reviews');
+                if($resultado) {
+                    header('Location: /admin/reviews');
+                }
+            } else {
+
             }
+            
+
         }
 
         $router->render('admin/reviews/create', [

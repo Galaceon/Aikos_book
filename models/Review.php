@@ -20,7 +20,7 @@ class Review extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->title = $args['title'] ?? '';
         $this->content = $args['content'] ?? 'abcde';
-        $this->rating = $args['rating'] ?? 4;
+        $this->rating = $args['rating'] ?? 0;
         $this->image = $args['image'] ?? 'gjwrjrjnwer';
         $this->created_at = $args['created_at'] ?? '';
         $this->admin_id = $args['admin_id'] ?? 0;
@@ -29,18 +29,29 @@ class Review extends ActiveRecord {
 
     
     public function validar() {
-        if(!$this->title) {
-            self::$alertas['error'][] = 'El Titulo es Obligatorio';
+        if (!$this->title) {
+            self::$alertas['error'][] = 'El Título es obligatorio';
         }
-        if(!$this->content) {
-            self::$alertas['error'][] = 'La Reseña es Obligatoria';
+        if ($this->rating === '' || $this->rating === null) {
+            self::$alertas['error'][] = 'La puntuación es obligatoria';
+            return self::$alertas;
         }
-        if(!$this->rating) {
-            self::$alertas['error'][] = 'La Puntuación es Obligatoria';
+        if (!is_numeric($this->rating)) {
+            self::$alertas['error'][] = 'La puntuación debe ser un número';
+            return self::$alertas;
         }
-        if(!$this->image) {
-            self::$alertas['error'][] = 'La Imagen es Obligatoria';
+        $rating = floatval($this->rating);
+        if ($rating < 0 || $rating > 10) {
+            self::$alertas['error'][] = 'La valoración debe estar entre 0 y 10';
         }
+
+
+        // if(!$this->image) {
+        //     self::$alertas['error'][] = 'La Imagen es Obligatoria';
+        // }
+        // if(!$this->content) {
+        //     self::$alertas['error'][] = 'La Reseña es Obligatoria';
+        // }
     }
 
     public function crearSlug() {

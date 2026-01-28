@@ -53,6 +53,49 @@
 
             </div>
 
+            <div class="admin-formulario__slider">
+                <label for="rating" class="admin-formulario__slider__text">Valoración</label>
+                <div class="admin-formulario__slider__content">
+                    <input
+                        type="range"
+                        id="rating"
+                        name="rating"
+                        min="0"
+                        max="10"
+                        step="0.1"
+                        value="5"
+                        class="admin-formulario__slider__range"
+                    >
+                    <div class="admin-formulario__slider__rating">
+                        <span id="rating-valor" class="admin-formulario__slider__rate">5.0</span>
+                        <span class="material-symbols-outlined">star_rate</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <div class="admin-formulario__upload">
+
+                <label class="upload-zone" for="imagen">
+                    <p class="upload-zone__text">
+                        Arrastra una imagen aquí o <span>haz clic</span>
+                    </p>
+                    <p class="upload-zone__info">PNG / JPG / WEBP · máx 2MB</p>
+                </label>
+
+                <input
+                    type="file"
+                    id="imagen"
+                    name="imagen"
+                    accept="image/*"
+                    hidden
+                >
+
+                <div id="preview-imagen" class="upload-preview"></div>
+
+            </div>
+
             <input type="submit" value="Crear Reseña" class="formulario__submit admin-formulario__submit" />
             <input type="hidden" name="tags" id="tags-hidden">
             <input type="hidden" name="authors" id="authors-hidden">
