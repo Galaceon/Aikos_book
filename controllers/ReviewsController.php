@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Author;
 use Model\Review;
+use Model\ReviewAuthor;
 use Model\ReviewTag;
 use Model\Tag;
 use MVC\Router;
@@ -51,10 +52,11 @@ class ReviewsController {
 
             $resultado = $review->guardar();
 
+            $review = Review::where('slug', $review->slug);
+
             if(!empty($_POST['tags'])) {
                 
                 $tags = json_decode($_POST['tags'], true);
-                $review = Review::where('slug', $review->slug);
 
                 foreach($tags as $tag_id) {
                     $reviewTag = new ReviewTag([
@@ -63,6 +65,19 @@ class ReviewsController {
                     ]);
 
                     $reviewTag->guardar();
+                }
+            }
+            if(!empty($_POST['authors'])) {
+                
+                $authors = json_decode($_POST['authors'], true);
+
+                foreach($authors as $author_id) {
+                    $reviewAuthor = new ReviewAuthor([
+                        'review_id' => $review->id,
+                        'author_id' => $author_id
+                    ]);
+
+                    $reviewAuthor->guardar();
                 }
             }
 
