@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Intervention\Image\ImageManagerStatic as Image;
 use Model\Author;
 use Model\Review;
 use Model\ReviewAuthor;
@@ -42,6 +43,23 @@ class ReviewsController {
                 header('Location: /');
                 exit;
             }
+
+            if(!empty($_FILES['imagen']['tmp_name'])) {
+                $carpeta_imagenes = PUBLIC_PATH . '/img/reviews';
+
+                if(!is_dir($carpeta_imagenes)) {
+                    mkdir($carpeta_imagenes, 0755, true);
+                }
+
+                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('png', 80);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp', 80);
+
+                $nombre_imagen = md5(uniqid(rand(), true));
+
+                $_POST['imagen'] = $nombre_imagen;
+            }
+            
+            
 
             $review->sincronizar($_POST);
 
@@ -88,11 +106,7 @@ class ReviewsController {
                 if($resultado) {
                     header('Location: /admin/reviews');
                 }
-            } else {
-
             }
-            
-
         }
 
         $router->render('admin/reviews/create', [

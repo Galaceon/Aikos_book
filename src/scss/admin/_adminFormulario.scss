@@ -128,6 +128,17 @@
             margin: 3rem 0 1rem 0;
         }
     }
+
+    &__imagen-head {
+        line-height: 1.5rem;
+        color: var(--color-text-muted);
+        font-size: 1.3rem;
+        font-weight: v.$black;
+
+        @include m.tablet {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 .listado-filtros {
@@ -243,3 +254,35 @@
     }
 }
 
+.upload-zone {
+    width: 100%;
+    border: 2px dashed var(--color-text-muted);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+
+    &:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-text);
+        color: var(--blanco);
+    }
+
+    span {
+        color: var(--color-primary-mode);
+    }
+
+}
+.upload-zone.dragover {
+    border-color: var(--verde);
+    background-color: var(--color-surface-lightness-alt);
+    color: var(--verde);
+}
+.upload-preview img {
+    margin-top: 1rem;
+    max-width: 200px;
+    border-radius: 12px;
+}

@@ -76,6 +76,7 @@
 
 
             <div class="admin-formulario__upload">
+                <p class="admin-formulario__imagen-head">IMAGEN</p>
 
                 <label class="upload-zone" for="imagen">
                     <p class="upload-zone__text">
