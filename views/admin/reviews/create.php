@@ -94,7 +94,11 @@
                 >
 
                 <div id="preview-imagen" class="upload-preview"></div>
+            </div>
 
+            <div>
+                <label for="nombre" class="admin-formulario__label">CONTENIDO</label>
+                <textarea id="content" name="content">Hello, World!</textarea>
             </div>
 
             <input type="submit" value="Crear Reseña" class="formulario__submit admin-formulario__submit" />

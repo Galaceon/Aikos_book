@@ -12,7 +12,7 @@
 
 
     <link rel="stylesheet" href="/build/css/app.css">
-
+    <script src="https://cdn.tiny.cloud/1/5fux9rd5el77lviz0vlo5v0h3lg2fxe8moqve2ktz8mq8t68/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8445ceb779.js" crossorigin="anonymous"></script>
 </head>
 <body class="dashboard">
