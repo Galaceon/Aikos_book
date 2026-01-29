@@ -21,7 +21,7 @@ class Review extends ActiveRecord {
         $this->title = $args['title'] ?? '';
         $this->content = $args['content'] ?? 'abcde';
         $this->rating = $args['rating'] ?? 0;
-        $this->image = $args['image'] ?? 'gjwrjrjnwer';
+        $this->image = $args['image'] ?? '';
         $this->created_at = $args['created_at'] ?? '';
         $this->admin_id = $args['admin_id'] ?? 0;
         $this->slug = $args['slug'] ?? '';
@@ -44,11 +44,9 @@ class Review extends ActiveRecord {
         if ($rating < 0 || $rating > 10) {
             self::$alertas['error'][] = 'La valoración debe estar entre 0 y 10';
         }
-
-
-        // if(!$this->image) {
-        //     self::$alertas['error'][] = 'La Imagen es Obligatoria';
-        // }
+        if(!$this->image) {
+            self::$alertas['error'][] = 'La Imagen es Obligatoria';
+        }
         // if(!$this->content) {
         //     self::$alertas['error'][] = 'La Reseña es Obligatoria';
         // }

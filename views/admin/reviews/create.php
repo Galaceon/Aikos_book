@@ -15,7 +15,7 @@
     <?php require_once __DIR__ . '/../../templates/alerts.php' ;?>
 
     <div class="dashboard__formulario">
-        <form action="/admin/reviews/create" class="admin-formulario" method="POST">
+        <form action="/admin/reviews/create" class="admin-formulario" method="POST" enctype="multipart/form-data">
             <div class="admin-formulario__campo">
                 <label for="nombre" class="admin-formulario__label">Titulo de la Publicación</label>
                 <input class="admin-formulario__input" type="text" id="nombre" name="title" placeholder="Nombre Reseña..." value="<?php echo $review->title; ?>"/>

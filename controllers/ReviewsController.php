@@ -47,6 +47,10 @@ class ReviewsController {
             if(!empty($_FILES['imagen']['tmp_name'])) {
                 $carpeta_imagenes = PUBLIC_PATH . '/img/reviews';
 
+                if($_FILES['imagen']['size'] > 5 * 1024 * 1024) {
+                    Review::setAlerta('error', 'La imagen no puede superar los 5MB');
+                }
+
                 if(!is_dir($carpeta_imagenes)) {
                     mkdir($carpeta_imagenes, 0755, true);
                 }
@@ -56,9 +60,8 @@ class ReviewsController {
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 
-                $_POST['imagen'] = $nombre_imagen;
+                $_POST['image'] = $nombre_imagen;
             }
-            
             
 
             $review->sincronizar($_POST);
@@ -67,6 +70,11 @@ class ReviewsController {
             $alertas = Review::getAlertas();
 
             if(empty($alertas)) {
+
+                if(isset($nombre_imagen)) {
+                    $imagen_png->save($carpeta_imagenes . '/' . $nombre_imagen . '.png');
+                    $imagen_webp->save($carpeta_imagenes . '/' . $nombre_imagen . '.webp');
+                }
 
                 $review->created_at = date('Y-m-d H:i:s');
                 $review->crearSlug();
