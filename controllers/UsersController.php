@@ -28,6 +28,7 @@ class UsersController {
 
         $users = Users::paginar($registros_por_pagina, $paginacion->offset());
 
+
         $router->render('admin/users/index', [
             'titulo' => 'Usuarios Registrados',
             'users' => $users,
