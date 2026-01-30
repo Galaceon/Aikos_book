@@ -145,4 +145,22 @@ class ReviewsController {
             'author' => $author
         ]);
     }
+
+    public static function delete() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+
+            $reviews = Review::find($id);
+
+            if(!isset($reviews)) {
+                header('Location: /admin/reviewss');
+            }
+
+            $resultado  = $reviews->eliminar();
+
+            if($resultado) {
+                header('Location: /admin/reviews');
+            }
+        }
+    }
 }

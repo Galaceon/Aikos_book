@@ -33,7 +33,7 @@
                             </a>
                             <form action="/admin/tags/delete" method="POST" class="table__delete-form">
                                 <input type="hidden" name="id" value="<?php echo $tag->id; ?>">
-                                <button class="table__accion table__accion--aliminar" type="submit">
+                                <button class="table__accion table__accion--eliminar" type="submit">
                                     <span class="material-symbols-outlined accion__eliminar">delete</span>
                                 </button>
                             </form>
