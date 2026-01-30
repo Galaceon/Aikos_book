@@ -6,7 +6,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
 
     @include m.tablet {
         align-items: normal;
@@ -56,6 +55,7 @@
         gap: 2rem;
         width: 100%;
         flex-direction: column;
+        margin: 5rem 0;
 
         @include m.tablet {
             flex-direction: row;
@@ -139,6 +139,10 @@
             font-size: 1.5rem;
         }
     }
+
+    &__upload {
+        margin: 3rem 0;
+    }
 }
 
 .listado-filtros {
@@ -191,7 +195,7 @@
     &__text {
         color: var(--color-text-muted);
         font-size: 1.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     &__content {
@@ -263,7 +267,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color-bg);
-    color: var(--color-text);
+    color: var(--color-text-muted);
 
     &:hover {
         background-color: var(--color-primary);
@@ -274,7 +278,6 @@
     span {
         color: var(--color-primary-mode);
     }
-
 }
 .upload-zone.dragover {
     border-color: var(--verde);

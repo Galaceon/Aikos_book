@@ -82,7 +82,7 @@
                     <p class="upload-zone__text">
                         Arrastra una imagen aquí o <span>haz clic</span>
                     </p>
-                    <p class="upload-zone__info">PNG / JPG / WEBP · máx 2MB</p>
+                    <p class="upload-zone__info">PNG / JPG / WEBP · máx 6MB</p>
                 </label>
 
                 <input
@@ -98,7 +98,7 @@
 
             <div>
                 <label for="nombre" class="admin-formulario__label">CONTENIDO</label>
-                <textarea id="content" name="content">Hello, World!</textarea>
+                <textarea id="content" name="content"><?php echo $review->content; ?></textarea>
             </div>
 
             <input type="submit" value="Crear Reseña" class="formulario__submit admin-formulario__submit" />

@@ -27,7 +27,7 @@ class Review extends ActiveRecord {
         $this->slug = $args['slug'] ?? '';
     }
 
-    
+
     public function validar() {
         if (!$this->title) {
             self::$alertas['error'][] = 'El Título es obligatorio';
@@ -47,9 +47,9 @@ class Review extends ActiveRecord {
         if(!$this->image) {
             self::$alertas['error'][] = 'La Imagen es Obligatoria';
         }
-        // if(!$this->content) {
-        //     self::$alertas['error'][] = 'La Reseña es Obligatoria';
-        // }
+        if(!$this->content) {
+            self::$alertas['error'][] = 'La Reseña es Obligatoria';
+        }
     }
 
     public function crearSlug() {

@@ -33,6 +33,7 @@ class ReviewsController {
             header('Location: /');
             exit;
         }
+
         $review = new Review;
         $tag = new Tag;
         $author = new Author;
@@ -63,8 +64,12 @@ class ReviewsController {
                 $_POST['image'] = $nombre_imagen;
             }
             
-
             $review->sincronizar($_POST);
+
+            $reviewDB = Review::where('title' ,$review->title);
+            if(!empty($reviewDB)) {
+                $alertas = Review::setAlerta('error', 'No puedes repetir el título, escribe uno diferente');
+            }
 
             $alertas = $review->validar();
             $alertas = Review::getAlertas();
