@@ -193,6 +193,24 @@
         @include m.tablet {
             display: none;
         }
+
+        &__darkmode {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 9rem 0;
+        }
+        &__label {
+            span {
+                font-size: 3.5rem;
+                font-weight: v.$bold;
+            }
+        }
+        &__submit {
+            all: unset;
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            font-weight: v.$bold;
+        }
     }
     &__sidebar--mobile.mostrar {
         transform: translateX(0%);
