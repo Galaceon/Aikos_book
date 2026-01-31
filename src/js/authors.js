@@ -14,6 +14,16 @@
 
         let authorsSeleccionados = [];
 
+        if (window.authorsReview && window.authorsReview.length > 0) {
+            authorsSeleccionados = window.authorsReview.map(author => ({
+                id: author.id,
+                name: author.name
+            }));
+
+            sincronizarAuthors();
+            mostrarAuthorsSeleccionados();
+        }
+
         obtenerAuthors();
 
         // OBTENER authors

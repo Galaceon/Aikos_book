@@ -13,6 +13,16 @@
 
         let tagsSeleccionados = [];
 
+        if (window.tagsReview && window.tagsReview.length > 0) {
+            tagsSeleccionados = window.tagsReview.map(tag => ({
+                id: tag.id,
+                name: tag.name
+            }));
+
+            sincronizarTags();
+            mostrarTagsSeleccionados();
+        }
+
         obtenerTags();
 
         // OBTENER TAGS

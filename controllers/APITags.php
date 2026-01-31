@@ -47,10 +47,6 @@ class APITags {
 
                 echo json_encode($respuesta);
             }
-
-
-
-
         }
     }
 

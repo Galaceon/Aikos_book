@@ -288,4 +288,24 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
+
+    public static function relacionados(string $tablaIntermedia, string $fkRelacion, string $fkPrincipal, int $valorPrincipal) {
+        $tablaPrincipal = static::$tabla;
+
+        $tablaIntermedia = self::$db->escape_string($tablaIntermedia);
+        $fkRelacion = self::$db->escape_string($fkRelacion);
+        $fkPrincipal = self::$db->escape_string($fkPrincipal);
+
+        $valorPrincipal = self::$db->escape_string($valorPrincipal);
+
+        $query = "
+            SELECT {$tablaPrincipal}.*
+            FROM {$tablaPrincipal}
+            INNER JOIN {$tablaIntermedia}
+                ON {$tablaIntermedia}.{$fkRelacion} = {$tablaPrincipal}.id
+            WHERE {$tablaIntermedia}.{$fkPrincipal} = '{$valorPrincipal}'
+        ";
+
+        return static::consultarSQL($query);
+    }
 }

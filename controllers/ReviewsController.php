@@ -50,8 +50,8 @@ class ReviewsController {
         }
 
         $review = new Review;
-        $tag = new Tag;
-        $author = new Author;
+        $tags = new Tag;
+        $authors = new Author;
         $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -109,25 +109,14 @@ class ReviewsController {
                     $tags = json_decode($_POST['tags'], true);
 
                     foreach($tags as $tag_id) {
-                        $reviewTag = new ReviewTag([
-                            'review_id' => $review->id,
-                            'tag_id' => $tag_id
-                        ]);
-
-                        $reviewTag->guardar();
+                        ReviewTag::crearTagReview($review->id, $tag_id);
                     }
                 }
                 if(!empty($_POST['authors'])) {
-                    
                     $authors = json_decode($_POST['authors'], true);
 
                     foreach($authors as $author_id) {
-                        $reviewAuthor = new ReviewAuthor([
-                            'review_id' => $review->id,
-                            'author_id' => $author_id
-                        ]);
-
-                        $reviewAuthor->guardar();
+                        ReviewAuthor::crearAuthorReview($review->id, $author_id);
                     }
                 }
 
@@ -141,8 +130,48 @@ class ReviewsController {
             'titulo' => 'Crea una nueva reseña.',
             'alertas' => $alertas,
             'review' => $review,
-            'tag' => $tag,
-            'author' => $author
+            'tags' => $tags,
+            'authors' => $authors
+        ]);
+    }
+
+    public static function edit(Router $router) {
+        $alertas = [];
+
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        if(!$id) header('Location: /admin/reviews');
+
+        $review = Review::find($id);
+        $review->imagen_actual = $review->image;
+        if(!$review) header('Location: /admin/reviws');
+
+
+        $reviewTags = Tag::relacionados('review_tag', 'tag_id', 'review_id', $review ->id);
+        $reviewAuthors = Author::relacionados('review_author', 'author_id', 'review_id', $review ->id);
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $review->sincronizar($_POST);
+
+            $alertas = $review->validar();
+
+            if(empty($alertas)) {
+                $review->crearSlug();
+
+                $resultado = $review->guardar();
+
+                if($resultado) {
+                    header('Location: /admin/authors');
+                }
+            }
+        }
+
+        $router->render('admin/reviews/edit', [
+            'titulo' => 'Editar Publicación',
+            'review' => $review,
+            'alertas' => $alertas,
+            'reviewTags' => $reviewTags,
+            'reviewAuthors' => $reviewAuthors
         ]);
     }
 
