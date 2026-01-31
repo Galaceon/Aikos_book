@@ -32,15 +32,4 @@ class Tag extends ActiveRecord {
 
         $this->slug = $slug;
     }
-
-    public static function tagsPorReview($reviewId) {
-        $query = "
-            SELECT t.id, t.name
-            FROM tags t
-            INNER JOIN review_tag rt ON rt.tag_id = t.id
-            WHERE rt.review_id = {$reviewId}
-        ";
-
-        return self::consultarSQL($query);
-    }
 }
