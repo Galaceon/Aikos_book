@@ -10,7 +10,7 @@
     padding: 1.5rem;
     background-color: var(--color-surface);
     border-radius: 2rem;
-    gap: 2rem;
+    gap: 1.2rem;
     border: 1px solid var(--color-primary);
 
     @include m.tablet {
@@ -59,7 +59,7 @@
     &__rating {
         display: flex;
         align-items: center;
-        gap: .5rem;
+        gap: .3rem;
 
         span {
             font-size: 2rem;
