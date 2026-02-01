@@ -44,4 +44,26 @@
     <?php } ?>
 </div>
 
+<div class="dashboard__contenedor--mobile">
+    <?php if(!empty($users)) { ?>
+        <?php foreach($users as $user) { ?>
+            <div class="mobile-list">
+                <div class="mobile-list__head">
+                    <div class="mobile-list__title"><?php echo $user->name; ?></div>
+                    <div class="mobile-list__acciones">
+                        <form action="/admin/users/delete" method="POST" class="table__delete-form">
+                            <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+                            <button class="table__accion table__accion--eliminar" type="submit">
+                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php } else { ?>
+        <p class="text-center">Aun no hay Reseñas</p>
+    <?php } ?> 
+</div>
+
 <?php echo $paginacion; ?>

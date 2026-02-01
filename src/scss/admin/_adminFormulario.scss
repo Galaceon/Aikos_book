@@ -30,7 +30,7 @@
     &__label {
         line-height: 3rem;
         color: var(--color-text-muted);
-        font-size: 1.3rem;
+        font-size: 1.5rem;
 
         @include m.tablet {
             font-size: 1.5rem;
@@ -55,11 +55,12 @@
         gap: 2rem;
         width: 100%;
         flex-direction: column;
-        margin: 5rem 0;
+        margin: 7rem 0;
 
         @include m.tablet {
             flex-direction: row;
             gap: 4rem;
+            margin: 3rem 0;
         }
     }
     &__filtro {
@@ -132,7 +133,7 @@
     &__imagen-head {
         line-height: 1.5rem;
         color: var(--color-text-muted);
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: v.$black;
 
         @include m.tablet {
@@ -141,7 +142,11 @@
     }
 
     &__upload {
-        margin: 3rem 0;
+        margin: 7rem 0;
+
+        @include m.tablet {
+            margin: 3rem 0;
+        }
     }
 }
 

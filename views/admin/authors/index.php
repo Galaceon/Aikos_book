@@ -48,4 +48,29 @@
     <?php } ?>
 </div>
 
+<div class="dashboard__contenedor--mobile">
+    <?php if(!empty($authors)) { ?>
+        <?php foreach($authors as $author) { ?>
+            <div class="mobile-list">
+                <div class="mobile-list__head">
+                    <div class="mobile-list__title"><?php echo $author->name; ?></div>
+                    <div class="mobile-list__acciones">
+                        <a href="/admin/authors/edit?id=<?php echo $author->id; ?>" class="">
+                            <span class="material-symbols-outlined accion__editar">edit</span>
+                        </a>
+                        <form action="/admin/authors/delete" method="POST" class="table__delete-form">
+                            <input type="hidden" name="id" value="<?php echo $author->id; ?>">
+                            <button class="table__accion table__accion--eliminar" type="submit">
+                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php } else { ?>
+        <p class="text-center">Aun no hay Reseñas</p>
+    <?php } ?> 
+</div>
+
 <?php echo $paginacion; ?>
