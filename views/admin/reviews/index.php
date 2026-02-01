@@ -54,33 +54,33 @@
 
 <div class="dashboard__contenedor--mobile">
     <?php if(!empty($reviews)) { ?>
-    <?php foreach($reviews as $review) { ?>
-        <div class="mobile-list">
-            <div class="mobile-list__head">
-                <div class="mobile-list__title"><?php echo $review->title; ?></div>
-                <div class="mobile-list__acciones">
-                    <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>" class="">
-                        <span class="material-symbols-outlined accion__editar">edit</span>
-                    </a>
-                    <form action="/admin/reviews/delete" method="POST" class="table__delete-form">
-                        <input type="hidden" name="id" value="<?php echo $review->id; ?>">
-                        <button class="table__accion table__accion--eliminar" type="submit">
-                            <span class="material-symbols-outlined accion__eliminar">delete</span>
-                        </button>
-                    </form>
+        <?php foreach($reviews as $review) { ?>
+            <div class="mobile-list">
+                <div class="mobile-list__head">
+                    <div class="mobile-list__title"><?php echo $review->title; ?></div>
+                    <div class="mobile-list__acciones">
+                        <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>" class="">
+                            <span class="material-symbols-outlined accion__editar">edit</span>
+                        </a>
+                        <form action="/admin/reviews/delete" method="POST" class="table__delete-form">
+                            <input type="hidden" name="id" value="<?php echo $review->id; ?>">
+                            <button class="table__accion table__accion--eliminar" type="submit">
+                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="mobile-list__foot">
+                    <div class="mobile-list__date">
+                        <span class="material-symbols-outlined">calendar_today</span>
+                        <?php echo date('d-m-Y', strtotime($review->created_at)); ?>
+                    </div>
+                    <div class="mobile-list__rating">
+                        <?php echo $review->rating; ?>
+                        <span class="material-symbols-outlined">star_rate</span>
+                    </div>
                 </div>
             </div>
-            <div class="mobile-list__foot">
-                <div class="mobile-list__date">
-                    <span class="material-symbols-outlined">calendar_today</span>
-                    <?php echo date('d-m-Y', strtotime($review->created_at)); ?>
-                </div>
-                <div class="mobile-list__rating">
-                    <?php echo $review->rating; ?>
-                    <span class="material-symbols-outlined">star_rate</span>
-                </div>
-            </div>
-        </div>
         <?php } ?>
     <?php } else { ?>
         <p class="text-center">Aun no hay Reseñas</p>

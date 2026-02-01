@@ -48,4 +48,30 @@
     <?php } ?>
 </div>
 
+
+<div class="dashboard__contenedor--mobile">
+    <?php if(!empty($tags)) { ?>
+        <?php foreach($tags as $tag) { ?>
+            <div class="mobile-list">
+                <div class="mobile-list__head">
+                    <div class="mobile-list__title"><?php echo $tag->name; ?></div>
+                    <div class="mobile-list__acciones">
+                        <a href="/admin/tags/edit?id=<?php echo $tag->id; ?>" class="">
+                            <span class="material-symbols-outlined accion__editar">edit</span>
+                        </a>
+                        <form action="/admin/tags/delete" method="POST" class="table__delete-form">
+                            <input type="hidden" name="id" value="<?php echo $tag->id; ?>">
+                            <button class="table__accion table__accion--eliminar" type="submit">
+                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    <?php } else { ?>
+        <p class="text-center">Aun no hay Reseñas</p>
+    <?php } ?> 
+</div>
+
 <?php echo $paginacion; ?>
