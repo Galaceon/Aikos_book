@@ -8,6 +8,11 @@
     border-collapse: collapse;
     overflow: hidden;
     background-color: var(--color-surface);
+    display: none;
+
+    @include m.tablet {
+        display: table;
+    }
 
     &__thead {
         background-color: var(--color-thead);
