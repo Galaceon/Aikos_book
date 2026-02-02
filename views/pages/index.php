@@ -5,18 +5,20 @@
             
             <?php foreach($reviews as $review) { ?>
                 <article class="review">
-                    <picture>
-                        <source srcset="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.webp" type="image/webp">
-                        <source srcset="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.png" type="image/png">
-                        <img
-                            class="review__image" 
-                            loading="lazy" 
-                            width="200" 
-                            height="300" 
-                            src="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.png" 
-                            alt="Imagen Review"
-                        >
-                    </picture>
+                    <div class="review__image-contenedor">
+                        <picture>
+                            <source srcset="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.webp" type="image/webp">
+                            <source srcset="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.png" type="image/png">
+                            <img
+                                class="review__image" 
+                                loading="lazy" 
+                                width="200" 
+                                height="300" 
+                                src="<?php echo BASE_URL; ?>/img/reviews/<?php echo $review->image; ?>.png" 
+                                alt="Imagen Review"
+                            >
+                        </picture>
+                    </div>
 
                     <div class="review__information">
                         <div class="review__main-info">
@@ -30,8 +32,9 @@
                                 
                             </div>
                             
-
-                            <p class="review__content">tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal.</p>
+                            <div class="review__content">
+                                <p class="review__text">tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal.</p>
+                            </div>
                         </div>
                     
 
@@ -57,4 +60,7 @@
             <p class="reviews__no-article">Aun no hay reseñas</p>
         <?php } ?>
     </div>
+
+    <?php echo $paginacion; ?>
 </main>
+

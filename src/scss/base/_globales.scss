@@ -12,7 +12,10 @@ html {
 body {
     font-family: v.$fuente_principal;
     font-size: 1.8rem;
-    background-color: var(--color-bg);
+    background: var(--color-bg);
+    min-height: 100vh;
+    background: linear-gradient(149deg, var(--color-surface-alt) 0%, var(--color-bg) 100%);
+    background-attachment: fixed;
 }
 body.menu-abierto {
     overflow: hidden;
