@@ -12,6 +12,8 @@ class TagsController {
             header('Location: /');
             exit;
         }
+        $tags = [];
+        $paginacionHTML = '';
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -21,18 +23,24 @@ class TagsController {
         }
         $registros_por_pagina = 9;
         $total = Tag::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+        
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/tags?page=1');
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /admin/tags?page=1');
+                exit;
+            }
+
+            $tags = Tag::paginar($registros_por_pagina, $paginacion->offset());
+
+            $paginacionHTML = $paginacion->paginacion();
         }
-
-        $tags = Tag::paginar($registros_por_pagina, $paginacion->offset());
 
         $router->render('admin/tags/index', [
             'titulo' => 'Tags',
             'tags' => $tags,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacionHTML
         ]);
     }
 

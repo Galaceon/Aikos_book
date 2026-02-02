@@ -11,6 +11,9 @@ class PagesController {
 
     public static function index(Router $router) {
 
+        $reviews = [];
+        $paginacionHTML = '';
+
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
         
@@ -19,19 +22,23 @@ class PagesController {
         }
         $registros_por_pagina = 12;
         $total = Review::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/ponentes?page=1');
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /admin/ponentes?page=1');
+            }
+
+            $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
+
+            $paginacionHTML = $paginacion->paginacion();
         }
-
-        $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
-
 
         $router->render('pages/index', [
             'titulo' => "Aiko's Book",
             'reviews' => $reviews,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacionHTML
         ]);
     }
 }

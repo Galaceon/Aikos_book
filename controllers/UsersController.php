@@ -32,7 +32,7 @@ class UsersController {
             $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
             if($paginacion->total_paginas() < $pagina_actual) {
-                header('Location: /admin/ponentes?page=1');
+                header('Location: /admin/reviews?page=1');
                 exit;
             }
 

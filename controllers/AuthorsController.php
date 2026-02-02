@@ -9,6 +9,13 @@ use MVC\Router;
 class AuthorsController {
 
     public static function index(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
+        $authors = [];
+        $paginacionHTML = '';
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -18,18 +25,25 @@ class AuthorsController {
         }
         $registros_por_pagina = 9;
         $total = Author::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/authors?page=1');
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /admin/authors?page=1');
+            }
+
+            $authors = Author::paginar($registros_por_pagina, $paginacion->offset());
+
+            $paginacionHTML = $paginacion->paginacion();
         }
 
-        $authors = Author::paginar($registros_por_pagina, $paginacion->offset());
+
 
         $router->render('admin/authors/index', [
             'titulo' => 'Autores',
             'authors' => $authors,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacionHTML
         ]);
     }
 
