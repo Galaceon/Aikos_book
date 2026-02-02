@@ -8,7 +8,6 @@ use MVC\Router;
 
 class AuthorsController {
 
-
     public static function index(Router $router) {
 
         $pagina_actual = $_GET['page'];
@@ -35,11 +34,20 @@ class AuthorsController {
     }
 
     public static function create(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
 
         $alertas = [];
         $author = new Author;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $author->sincronizar($_POST);
             
             $authorDB = Author::where('name', $author->name);
@@ -71,6 +79,11 @@ class AuthorsController {
     }
 
     public static function edit(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
         $alertas = [];
 
         $id = $_GET['id'];
@@ -81,6 +94,11 @@ class AuthorsController {
         if(!$author) header('Location: /admin/authors');
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $author->sincronizar($_POST);
 
             $alertas = $author->validar();
@@ -105,6 +123,11 @@ class AuthorsController {
 
     public static function delete() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $id = $_POST['id'];
 
             $author = Author::find($id);

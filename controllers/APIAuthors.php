@@ -7,14 +7,22 @@ use Model\Author;
 class APIAuthors {
 
     public static function index() {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
         $authors = Author::all();
-
-
         echo json_encode($authors);
     }
 
     public static function create() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $name = trim($_POST['name']);
 
             if(!$name) {
@@ -48,12 +56,6 @@ class APIAuthors {
 
                 echo json_encode($respuesta);
             }
-
-
-
-
         }
     }
-
-
 }

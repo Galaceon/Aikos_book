@@ -7,13 +7,22 @@ use Model\Tag;
 class APITags {
 
     public static function index() {
-        $tags = Tag::all();
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
 
+        $tags = Tag::all();
         echo json_encode($tags);
     }
 
     public static function create() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $name = trim($_POST['name']);
 
             if(!$name) {
@@ -49,6 +58,4 @@ class APITags {
             }
         }
     }
-
-
 }

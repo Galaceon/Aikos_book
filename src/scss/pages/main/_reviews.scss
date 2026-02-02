@@ -104,6 +104,11 @@
     }
     &__text {
         line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 10;
+        line-clamp: inherit;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     &__foot {
         display: flex;

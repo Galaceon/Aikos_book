@@ -11,6 +11,13 @@ class UsersController {
 
 
     public static function index(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
+        $users = [];
+        $paginacionHTML = '';
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -20,24 +27,34 @@ class UsersController {
         }
         $registros_por_pagina = 9;
         $total = Users::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/ponentes?page=1');
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /admin/ponentes?page=1');
+                exit;
+            }
+
+            $users = Users::paginar($registros_por_pagina, $paginacion->offset());
+
+            $paginacionHTML = $paginacion->paginacion();
         }
-
-        $users = Users::paginar($registros_por_pagina, $paginacion->offset());
-
 
         $router->render('admin/users/index', [
             'titulo' => 'Usuarios Registrados',
             'users' => $users,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacionHTML
         ]);
     }
 
     public static function delete() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $id = $_POST['id'];
 
             $user = User::find($id);

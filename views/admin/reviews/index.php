@@ -82,9 +82,7 @@
                 </div>
             </div>
         <?php } ?>
-    <?php } else { ?>
-        <p class="text-center">Aun no hay Reseñas</p>
-    <?php } ?> 
+    <?php } ?>
 </div>
 
 <?php echo $paginacion; ?>

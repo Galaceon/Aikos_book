@@ -14,7 +14,7 @@ body {
     font-size: 1.8rem;
     background: var(--color-bg);
     min-height: 100vh;
-    background: linear-gradient(149deg, var(--color-surface-alt) 0%, var(--color-bg) 100%);
+    background: linear-gradient(149deg, var(--color-surface-alt) 0%, var(--color-bg) 50%);
     background-attachment: fixed;
 }
 body.menu-abierto {

@@ -7,9 +7,11 @@ use Model\Tag;
 use MVC\Router;
 
 class TagsController {
-
-
     public static function index(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -35,6 +37,10 @@ class TagsController {
     }
 
     public static function create(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
 
         $alertas = [];
         $tag = new Tag;
@@ -69,6 +75,11 @@ class TagsController {
     }
 
     public static function edit(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
         $alertas = [];
 
         $id = $_GET['id'];
@@ -103,6 +114,11 @@ class TagsController {
 
     public static function delete() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $id = $_POST['id'];
 
             $tag = Tag::find($id);

@@ -20,26 +20,37 @@ class ReviewsController {
             exit;
         }
 
-        $pagina_actual = $_GET['page'];
+        $reviews = [];
+        $paginacionHTML = '';
+
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-        
+
         if(!$pagina_actual || $pagina_actual < 1) {
             header('Location: /admin/reviews?page=1');
+            exit;
         }
+
         $registros_por_pagina = 9;
         $total = Review::total();
-        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
-        if($paginacion->total_paginas() < $pagina_actual) {
-            header('Location: /admin/ponentes?page=1');
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /admin/reviews?page=1');
+                exit;
+            }
+
+            $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
+
+            $paginacionHTML = $paginacion->paginacion();
         }
 
-        $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
-
         $router->render('admin/reviews/index', [
-            'titulo' => 'Usuarios Registrados',
+            'titulo' => 'Reseñas',
             'reviews' => $reviews,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacionHTML
         ]);
     }
 
@@ -136,6 +147,11 @@ class ReviewsController {
     }
 
     public static function edit(Router $router) {
+        if(!is_admin()) {
+            header('Location: /');
+            exit;
+        }
+
         $alertas = [];
 
         $id = $_GET['id'];
@@ -229,6 +245,11 @@ class ReviewsController {
 
     public static function delete() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!is_admin()) {
+                header('Location: /');
+                exit;
+            }
+
             $id = $_POST['id'];
 
             $reviews = Review::find($id);
