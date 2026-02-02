@@ -95,6 +95,6 @@
     <textarea id="content" name="content"><?php echo $review->content; ?></textarea>
 </div>
 
-<input type="submit" value="Crear Reseña" class="formulario__submit admin-formulario__submit" />
+<input type="submit" value="<?php echo pagina_actual('/edit') ? 'Editar Publicación' : 'Crear Publicación'; ?>" class="formulario__submit admin-formulario__submit" />
 <input type="hidden" name="tags" id="tags-hidden">
 <input type="hidden" name="authors" id="authors-hidden">

@@ -33,7 +33,7 @@
                             </div>
                             
                             <div class="review__content">
-                                <p class="review__text">tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal. Nose que mas poner lokte illu. tal y tal y tal.</p>
+                                <p class="review__text"><?php echo strip_tags($review->content); ?></p>
                             </div>
                         </div>
                     

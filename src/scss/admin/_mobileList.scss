@@ -6,12 +6,19 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 3rem 0;
+    margin: 1.5rem 0;
     padding: 1.5rem;
     background-color: var(--color-surface);
     border-radius: 2rem;
     gap: 1.2rem;
     border: 1px solid var(--color-primary);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: all .1s ease-in;
+
+    &:hover {
+        transform: translate(2px, 2px);
+        box-shadow: rgba(85, 85, 134, 0.25) 0px 2px 5px -1px, rgba(182, 182, 182, 0.3) 0px 1px 3px -1px;
+    }
 
     @include m.tablet {
         display: none;

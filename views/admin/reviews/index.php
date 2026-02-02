@@ -29,8 +29,8 @@
                 <?php foreach($reviews as $review) { ?>
                     <tr class="table__tr">
                         <td class="table__td table__td--first"><?php echo $review->title; ?></td>
-                        <td class="table__td table__td--first"><?php echo date('d-m-Y', strtotime($review->created_at)); ?></td>
-                        <td class="table__td table__td--first"><?php echo $review->rating; ?></td>
+                        <td class="table__td"><?php echo date('d-m-Y', strtotime($review->created_at)); ?></td>
+                        <td class="table__td"><?php echo $review->rating; ?></td>
                         <td class="table__td--acciones">
                             <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>" class="">
                                 <span class="material-symbols-outlined accion__editar">edit</span>

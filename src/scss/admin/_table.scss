@@ -34,8 +34,13 @@
     }
     &__tr {
         border-bottom: 1px solid var(--color-text-muted);
+        transition: all .2s ease-in;
+
         &:last-of-type {
             border-bottom: none;
+        }
+        &:hover {
+            background-color: var(--color-surface-lightness-alt);
         }
     }
     &__td--first {

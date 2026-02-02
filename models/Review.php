@@ -45,7 +45,7 @@ class Review extends ActiveRecord {
             self::$alertas['error'][] = 'La valoración debe estar entre 0 y 10';
         }
         if(!$this->image) {
-            self::$alertas['error'][] = 'La Imagen es Obligatoria';
+            self::$alertas['error'][] = 'La Imagen es Obligatoria no es Válida, busca otra';
         }
         if(!$this->content) {
             self::$alertas['error'][] = 'La Reseña es Obligatoria';
