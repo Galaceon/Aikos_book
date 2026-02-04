@@ -12,9 +12,7 @@
             <button type="button" class="admin-formulario__add-button" id="btn-crear-tag">+</button>
         </div>
 
-        <ul id="listado-tags" class="listado-filtros">
-            <?php  ?>
-        </ul>
+        <ul id="listado-tags" class="listado-filtros"><!-- LISTADO TAGS --></ul>
 
         <div class="admin-formulario__contenedor-filtros" id="admin-formulario__contenedor-tags">
             

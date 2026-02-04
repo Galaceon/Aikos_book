@@ -105,6 +105,10 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
+@mixin contenedor-l {
+    width: min(95%, 120rem);
+    margin: 0 auto;
+}
 @mixin contenedor-md {
     width: min(95%, 80rem);
     margin: 0 auto;
@@ -131,7 +135,7 @@
     margin: 1rem 0 4rem 0;
 }
 @mixin texto-fluido($min, $max) {
-    font-size: clamp($min, 2.5vw + 1rem, $max);
+    font-size: clamp($min, 3.5vw + 1rem, $max);
 }
 @mixin texto-degradado($inicio, $final) {
     background: linear-gradient(to right, $inicio, $final);

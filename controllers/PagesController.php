@@ -50,11 +50,19 @@ class PagesController {
         if(!$slug) header('Location: /');
 
         $review = Review::findBySlug($slug);
+        $review->imagen_actual = $review->image;
+        if(!$review) header('Location: /admin/reviws');
 
 
+        $reviewTags = Tag::relacionados('review_tag', 'tag_id', 'review_id', $review ->id);
+        $reviewAuthors = Author::relacionados('review_author', 'author_id', 'review_id', $review ->id);
+
+        
         $router->render('pages/review', [
             'titulo' => "Aiko's Book",
-            'review' => $review
+            'review' => $review,
+            'reviewTags' => $reviewTags,
+            'reviewAuthors' => $reviewAuthors
         ]);
     }
 }
