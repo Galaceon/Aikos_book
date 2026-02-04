@@ -3,12 +3,12 @@
 
     <div class="article__grid">
         <section class="article__section">
-            <div class="article__date">
+            <div class="article__date grid-top-left article__every-section">
                 <div class="article__day"><?php echo date('d', strtotime($review->created_at)); ?></div>
                 <div class="article__year"><?php echo date('M-Y', strtotime($review->created_at)); ?></div>
             </div>
 
-            <div>
+            <div class="grid-bottom-left article__every-section">
                 <h5 class="article__section-titles">TAGS</h5>
                 <div class="article__section-contenedor">
                     <?php foreach($reviewTags as $tag) { ?>
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="grid-bottom-right article__every-section">
                 <h5 class="article__section-titles">AUTORES</h5>
                 <div class="article__section-contenedor">
                     <?php foreach($reviewAuthors as $author) { ?>
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="grid-top-right article__every-section">
                 <h5 class="article__section-titles">VALORACIÓN</h5>
                 <div class="article__section-rating"><?php echo $review->rating; ?></div>
             </div>
