@@ -129,6 +129,13 @@
             color: var(--color-text-muted);
         }
     }
+    &__nav-enlaces-admin {
+        color: var(--color-primary);
+
+        span {
+            color: var(--color-primary);
+        }
+    }
     &__nav-text {
         display: none;
         font-size: 1.4rem;

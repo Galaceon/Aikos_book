@@ -9,7 +9,11 @@
             </div>
 
             <div class="grid-bottom-left article__every-section">
-                <h5 class="article__section-titles">TAGS</h5>
+                <div class="article__section-title-contenedor">
+                    <span class="dashboard__sidebar-icon material-symbols-outlined">sell</span>
+                    <h5 class="article__section-titles">TAGS</h5>
+                </div>
+
                 <div class="article__section-contenedor">
                     <?php foreach($reviewTags as $tag) { ?>
                         <li class="admin-formulario__filtro-DOM"><?php echo $tag->name; ?></li>
@@ -18,7 +22,11 @@
             </div>
 
             <div class="grid-bottom-right article__every-section">
-                <h5 class="article__section-titles">AUTORES</h5>
+                <div class="article__section-title-contenedor">
+                    <span class="dashboard__sidebar-icon material-symbols-outlined">article_person</span>
+                    <h5 class="article__section-titles">AUTORES</h5>
+                </div>
+                
                 <div class="article__section-contenedor">
                     <?php foreach($reviewAuthors as $author) { ?>
                         <li class="admin-formulario__filtro-DOM"><?php echo $author->name; ?></li>
@@ -27,7 +35,10 @@
             </div>
 
             <div class="grid-top-right article__every-section">
-                <h5 class="article__section-titles">VALORACIÓN</h5>
+                <div class="article__section-title-contenedor">
+                    <span class="dashboard__sidebar-icon material-symbols-outlined">star_rate</span>
+                    <h5 class="article__section-titles">VALORACIÓN</h5>
+                </div>
                 <div class="article__section-rating"><?php echo $review->rating; ?></div>
             </div>
         </section>

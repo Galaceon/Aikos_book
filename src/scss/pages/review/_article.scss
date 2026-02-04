@@ -24,6 +24,7 @@
         @include m.tablet {
             display: grid;
             grid-template-columns: minmax(200px, 15%) 1fr;
+            gap: 2rem;
         }
     }
     &__section {
@@ -33,10 +34,11 @@
             "top-left top-right"
             "bottom-left bottom-right"
         ;
-        margin-bottom: 2rem;
+        margin-bottom: 7rem;
 
         @include m.tablet {
             display: block;
+            margin-bottom: 0;
         }
     }
     &__every-section {
@@ -50,6 +52,20 @@
                 background-color: transparent;
             }
             padding: 0;
+        }
+    }
+    &__section-title-contenedor {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        
+        span {
+            font-size: 2.3rem;
+            font-weight: v.$regular;
+        }
+
+        @include m.tablet {
+            margin: 4rem 0 0 0;
         }
     }
     &__date {
@@ -82,10 +98,6 @@
     &__section-titles {
         color: var(--color-text-muted);
         margin: 0;
-
-        @include m.tablet {
-            margin: 4rem 0 0 0;
-        }
     }
     &__section-contenedor {
         display: flex;
@@ -103,16 +115,13 @@
         font-weight: v.$bold;
         margin: 1rem 0;
     }
-    &__content {
-
-    }
     &__image-contenedor {
-        width: 80%;
+        width: 60%;
         min-width: 300px;
         margin: 0 auto;
         border-radius: 3rem;
         overflow: hidden;
-        box-shadow: rgba(0, 0, 0, 0.75) 0px 25px 20px -20px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
         img {
             width: 100%;

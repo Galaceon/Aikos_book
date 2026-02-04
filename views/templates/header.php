@@ -33,13 +33,21 @@
                         <p class="barra__nav-text">PERFIL</p>
                     </div>
                 </a>
-
-                <a href="/">
-                    <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">bookmarks</span>
-                        <p class="barra__nav-text">GUARDADOS</p>
-                    </div>
-                </a>
+                <?php  if(is_admin()) { ?>
+                    <a href="/admin/dashboard">
+                        <div class="barra__nav-enlaces barra__nav-enlaces-admin">
+                            <span class="material-symbols-outlined">view_list</span>
+                            <p class="barra__nav-text">ADMINISTRAR</p>
+                        </div>
+                    </a>
+                <?php } else { ?>
+                    <a href="/">
+                        <div class="barra__nav-enlaces">
+                            <span class="barra__search-img material-symbols-outlined">bookmarks</span>
+                            <p class="barra__nav-text">GUARDADOS</p>
+                        </div>
+                    </a>
+                <?php } ?>
 
                 <div class="barra__nav-enlaces">
                     <form method="POST" action="/logout" class="barra__form">
@@ -99,28 +107,49 @@
             <!-- NAVEGACION -->
             <nav class="barra__nav--mobile">
                 <?php if(is_auth()) { ?>
+                    <?php if(is_admin()) { ?>
+                        <a href="/">
+                            <div class="barra__nav-enlaces--mobile">
+                                <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
+                                <p class="barra__nav-text-mobile">PERFIL</p>
+                            </div>
+                        </a>
 
-                    <a href="/">
+                        <a href="/admin/dashboard">
+                            <div class="barra__nav-enlaces--mobile">
+                                <span class="barra__search-img--mobile material-symbols-outlined">view_list</span>
+                                <p class="barra__nav-text-mobile">ADMINISTRAR</p>
+                            </div>
+                        </a>
+
                         <div class="barra__nav-enlaces--mobile">
-                            <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
-                            <p class="barra__nav-text-mobile">PERFIL</p>
+                            <form method="POST" action="/logout" class="barra__form">
+                                <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
+                                <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
+                            </form>
                         </div>
-                    </a>
+                    <?php } else { ?>
+                        <a href="/">
+                            <div class="barra__nav-enlaces--mobile">
+                                <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
+                                <p class="barra__nav-text-mobile">PERFIL</p>
+                            </div>
+                        </a>
 
-                    <a href="/">
+                        <a href="/">
+                            <div class="barra__nav-enlaces--mobile">
+                                <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
+                                <p class="barra__nav-text-mobile">GUARDADOS</p>
+                            </div>
+                        </a>
+
                         <div class="barra__nav-enlaces--mobile">
-                            <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
-                            <p class="barra__nav-text-mobile">GUARDADOS</p>
+                            <form method="POST" action="/logout" class="barra__form">
+                                <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
+                                <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
+                            </form>
                         </div>
-                    </a>
-
-                    <div class="barra__nav-enlaces--mobile">
-                        <form method="POST" action="/logout" class="barra__form">
-                            <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
-                            <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
-                        </form>
-                    </div>
-
+                    <?php } ?>
                 <?php } else { ?>
 
                     <a href="/login">

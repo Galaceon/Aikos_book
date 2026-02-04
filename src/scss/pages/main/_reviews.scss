@@ -20,7 +20,7 @@
 
     &__grid {
         display: grid;
-        @include m.grid(1, 3rem);
+        @include m.grid(1, 7rem);
         
     
         @include m.telefono {
