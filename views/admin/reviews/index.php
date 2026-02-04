@@ -32,7 +32,7 @@
                         <td class="table__td"><?php echo date('d-m-Y', strtotime($review->created_at)); ?></td>
                         <td class="table__td"><?php echo $review->rating; ?></td>
                         <td class="table__td--acciones">
-                            <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>" class="">
+                            <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>">
                                 <span class="material-symbols-outlined accion__editar">edit</span>
                             </a>
                             <form action="/admin/reviews/delete" method="POST" class="table__delete-form">

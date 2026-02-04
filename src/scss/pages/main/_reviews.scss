@@ -27,25 +27,24 @@
             @include m.grid(2, 3rem);
         }
         @include m.tablet {
-            @include m.grid(3, 3rem);
+            @include m.grid(3, 3.5rem);
         }
     }
 }
 
 
 .review {
-    border-radius: 2rem;
-    background-color: var(--color-surface);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     overflow: hidden;
     transition: all .3s ease-in;
+    position: relative;
+    border-left: solid 1px var(--color-text-muted);
+    border-bottom: solid 1px var(--color-text-muted);
     img {
         transition: all .3s ease-out;
         transform: scale(1);
     }
 
     &:hover {
-        box-shadow: var(--color-primary) 0px 0px 5px -1px, var(--color-primary) 0px 1px 3px -1px;
         cursor: pointer;
 
         img {
@@ -54,7 +53,7 @@
     }
 
     &__image-contenedor {
-        max-height: 400px;
+        max-height: 500px;
         overflow: hidden;
     }
 
@@ -150,5 +149,22 @@
         color: var(--color-primary);
         font-size: 1.7rem;
         font-weight: v.$regular;
+    }
+}
+
+.fold-corner {
+    background: var(--color-surface);
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-style: solid;
+        border-width: .5rem;
+        border-color: var(--color-bg) var(--color-bg) silver silver;
+        transition: all .4s;
+    }
+    &:hover::after {
+        border-width: 3rem;
     }
 }

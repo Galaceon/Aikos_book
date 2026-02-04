@@ -3,7 +3,9 @@
 namespace Controllers;
 
 use Classes\Paginacion;
+use Model\Author;
 use Model\Review;
+use Model\Tag;
 use MVC\Router;
 
 class PagesController {
@@ -39,6 +41,20 @@ class PagesController {
             'titulo' => "Aiko's Book",
             'reviews' => $reviews,
             'paginacion' => $paginacionHTML
+        ]);
+    }
+
+    public static function review(Router $router) {
+
+        $slug = $_GET['slug'];
+        if(!$slug) header('Location: /');
+
+        $review = Review::findBySlug($slug);
+
+
+        $router->render('pages/review', [
+            'titulo' => "Aiko's Book",
+            'review' => $review
         ]);
     }
 }

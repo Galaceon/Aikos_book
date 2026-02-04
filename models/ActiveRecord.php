@@ -123,6 +123,15 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    public static function findBySlug(string $slug) {
+        $slug = self::$db->escape_string($slug);
+
+        $query = "SELECT * FROM " . static::$tabla . " WHERE slug = '{$slug}' LIMIT 1";
+        $resultado = self::consultarSQL($query);
+
+        return array_shift($resultado);
+    }
+
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
         $limite = filter_var($limite, FILTER_VALIDATE_INT);
