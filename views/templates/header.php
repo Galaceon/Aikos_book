@@ -27,7 +27,7 @@
         <!-- NAVEGACION -->
         <nav class="barra__nav">
             <?php if(is_auth()) { ?>
-                <a href="/">
+                <a href="/profile">
                     <div class="barra__nav-enlaces">
                         <span class="barra__search-img material-symbols-outlined">frame_person</span>
                         <p class="barra__nav-text">PERFIL</p>

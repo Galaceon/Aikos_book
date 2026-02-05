@@ -65,4 +65,12 @@ class PagesController {
             'reviewAuthors' => $reviewAuthors
         ]);
     }
+
+    public static function profile(Router $router) {
+
+        
+        $router->render('pages/profile', [
+
+        ]);
+    }
 }
