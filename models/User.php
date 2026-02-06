@@ -4,7 +4,7 @@ namespace Model;
 
 class User extends ActiveRecord {
     protected static $tabla = 'users';
-    protected static $columnasDB = ['id', 'name', 'surname', 'email', 'password', 'confirmed', 'token', 'admin', 'created_at', 'image'];
+    protected static $columnasDB = ['id', 'name', 'surname', 'email', 'password', 'confirmed', 'token', 'admin', 'created_at', 'image', 'description'];
 
     public $id;
     public $name;
@@ -17,6 +17,7 @@ class User extends ActiveRecord {
     public $admin;
     public $created_at;
     public $image;
+    public $description;
 
     public $password_current;
     public $password_new;
@@ -34,6 +35,7 @@ class User extends ActiveRecord {
         $this->admin = $args['admin'] ?? 0;
         $this->created_at = $args['created_at'] ?? null;
         $this->image = $args['image'] ?? '';
+        $this->description = $args['$description'] ?? '';
     }
 
     // Validar el Login de Usuarios

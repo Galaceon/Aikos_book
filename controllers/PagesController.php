@@ -6,6 +6,7 @@ use Classes\Paginacion;
 use Model\Author;
 use Model\Review;
 use Model\Tag;
+use Model\Users;
 use MVC\Router;
 
 class PagesController {
@@ -72,9 +73,16 @@ class PagesController {
             exit;
         }
 
+        $user = Users::find($_SESSION['id']);
+        if(empty($user)) {
+            header('Location: /');
+            exit;
+        }
+
         
         $router->render('pages/profile', [
-
+            'titulo' => "Perfil de Usuario",
+            'user' => $user
         ]);
     }
 }

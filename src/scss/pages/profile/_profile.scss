@@ -1,0 +1,146 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.profile {
+    @include m.contenedor-md;
+
+    &__grid {
+        background-color: var(--color-surface);
+        padding: 7rem 4rem;
+        margin: 7rem 0;
+        border-radius: 5rem;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__titles {
+        color: var(--color-text-muted);
+        font-weight: v.$bold;
+        font-size: 1.75rem;
+    }
+
+
+    &__avatar {
+        max-width: 18rem;
+        margin: 0 auto 4rem auto;
+    }
+    &__name {
+        font-size: 4.5rem;
+        text-align: center;
+        color: var(--color-text);
+    }
+    &__description {
+        background-color: var(--color-surface-lightness-alt);
+        padding: 2rem;
+        border-radius: 3rem;
+        margin: 5rem;
+    }
+    &__desp-separator {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    &__desp-edit {
+
+    }
+    &__desp-contenedor {
+        color: var(--color-text);
+    }
+    &__info-separator {
+        display: flex;
+        gap: 10rem;
+    }
+    &__email {
+
+    }
+    &__creation {
+        
+    }
+    &__info {
+        color: var(--color-text);
+        margin-top: .5rem;
+        font-size: 1.7rem
+    }
+
+    &__save {
+        @include m.boton(var(--color-primary), var(--blanco));
+        display: flex;
+        align-items: center;
+        margin: 5rem auto 0 auto;
+        padding: 2rem 4rem;
+        gap: .5rem;
+        font-size: 2rem;
+
+        span {
+            font-size: 2.8rem;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile-avatar {
+    width: 160px;
+    height: 160px;
+}
+
+.profile-avatar__label {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid var(--color-primary);
+}
+
+.profile-avatar__label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,.55);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.profile-avatar__label:hover .profile-avatar__overlay {
+    opacity: 1;
+}
