@@ -67,6 +67,10 @@ class PagesController {
     }
 
     public static function profile(Router $router) {
+        if(!is_auth()) {
+            header('Location: /');
+            exit;
+        }
 
         
         $router->render('pages/profile', [
