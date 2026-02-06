@@ -20,12 +20,11 @@
         </div>
         <div class="profile__name"><?php echo $user->name . " " . $user->surname; ?></div>
         <div class="profile__description">
-            <div class="profile__desp-separator">
+            <div class="profile__desp-head">
                 <div class="profile__titles">DESCRIPCIÓN</div>
-                <div class="profile__desp-edit">EDITAR</div>
+                <label class="profile__desp-label" for="edit-desp-button"><span class="material-symbols-outlined">edit_note</span>EDITAR</label>
             </div>
-
-            <div class="profile__desp-contenedor"><?php echo $user->description; ?></div>
+            <textarea id="edit-desp-button" class="profile__desp-contenedor" maxlength="120" placeholder="Escribe tu descripción..."><?php echo $user->description; ?></textarea>
         </div>
         <div class="profile__info-separator">
             <div class="profile__email">

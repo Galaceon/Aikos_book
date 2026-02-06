@@ -107,14 +107,14 @@
             <!-- NAVEGACION -->
             <nav class="barra__nav--mobile">
                 <?php if(is_auth()) { ?>
+                    <a href="/profile">
+                        <div class="barra__nav-enlaces--mobile">
+                            <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
+                            <p class="barra__nav-text-mobile">PERFIL</p>
+                        </div>
+                    </a>
+                    
                     <?php if(is_admin()) { ?>
-                        <a href="/">
-                            <div class="barra__nav-enlaces--mobile">
-                                <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
-                                <p class="barra__nav-text-mobile">PERFIL</p>
-                            </div>
-                        </a>
-
                         <a href="/admin/dashboard">
                             <div class="barra__nav-enlaces--mobile">
                                 <span class="barra__search-img--mobile material-symbols-outlined">view_list</span>
@@ -122,19 +122,7 @@
                             </div>
                         </a>
 
-                        <div class="barra__nav-enlaces--mobile">
-                            <form method="POST" action="/logout" class="barra__form">
-                                <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
-                                <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
-                            </form>
-                        </div>
                     <?php } else { ?>
-                        <a href="/">
-                            <div class="barra__nav-enlaces--mobile">
-                                <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
-                                <p class="barra__nav-text-mobile">PERFIL</p>
-                            </div>
-                        </a>
 
                         <a href="/">
                             <div class="barra__nav-enlaces--mobile">
@@ -143,13 +131,15 @@
                             </div>
                         </a>
 
-                        <div class="barra__nav-enlaces--mobile">
-                            <form method="POST" action="/logout" class="barra__form">
-                                <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">login</span></label>
-                                <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
-                            </form>
-                        </div>
                     <?php } ?>
+
+                    <div class="barra__nav-enlaces--mobile">
+                        <form method="POST" action="/logout" class="barra__form">
+                            <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">logout</span></label>
+                            <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
+                        </form>
+                    </div>
+                    
                 <?php } else { ?>
 
                     <a href="/login">

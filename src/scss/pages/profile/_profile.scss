@@ -7,13 +7,17 @@
 
     &__grid {
         background-color: var(--color-surface);
-        padding: 7rem 4rem;
+        padding: 3rem 1.5rem;
         margin: 7rem 0;
         border-radius: 5rem;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
         display: flex;
         flex-direction: column;
+
+        @include m.tablet {
+            padding: 7rem 4rem;
+        }
     }
 
     &__titles {
@@ -28,34 +32,78 @@
         margin: 0 auto 4rem auto;
     }
     &__name {
-        font-size: 4.5rem;
+        font-size: 3rem;
         text-align: center;
         color: var(--color-text);
+
+        @include m.tablet {
+            font-size: 4.5rem;
+        }
     }
     &__description {
         background-color: var(--color-surface-lightness-alt);
         padding: 2rem;
         border-radius: 3rem;
-        margin: 5rem;
+        margin: 5rem 0 2rem 0;
+
+        @include m.tablet {
+            margin: 5rem;
+        }
     }
-    &__desp-separator {
+
+    &__desp-head {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 2rem;
     }
+    &__desp-label {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        cursor: pointer;
+        font-size: 1.4rem;
 
-    &__desp-edit {
-
+        span {
+            color: var(--color-primary);
+        }
     }
     &__desp-contenedor {
+        all: unset;
+        height: 20rem;
+        width: 100%;
         color: var(--color-text);
+        margin-top: 2rem;
+        height: auto;
+        transition: all .2s ease-in;
+        border-radius: .5rem;
+        overflow: hidden;
+
+        &:hover {
+            background-color: var(--color-surface-lightness);
+        }
+
+        &:focus {
+            border-radius: 2rem;
+            width: calc(100% - 4rem);
+            padding: 2rem;
+            background-color: var(--color-bg);
+            border: solid 1px var(--color-primary);
+        }
     }
     &__info-separator {
         display: flex;
-        gap: 10rem;
+        flex-direction: column;
+        gap: 3rem;
+        margin: 5rem 0 3rem 0;
+        text-align: center;
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 10rem;
+            margin: 0;
+        }
     }
     &__email {
-
+        
     }
     &__creation {
         
