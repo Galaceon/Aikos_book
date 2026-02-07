@@ -38,6 +38,7 @@ $router->get('/message', [AuthController::class, 'message']);
 $router->get('/', [PagesController::class, 'index']);
 $router->get('/review', [PagesController::class, 'review']);
 $router->get('/profile', [PagesController::class, 'profile']);
+$router->post('/profile', [PagesController::class, 'profile']);
 
 
 

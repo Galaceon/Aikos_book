@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Classes\Paginacion;
+use Intervention\Image\ImageManagerStatic as Image;
 use Model\Author;
 use Model\Review;
 use Model\Tag;
@@ -16,6 +17,10 @@ class PagesController {
 
         $reviews = [];
         $paginacionHTML = '';
+        $user = Users::find($_SESSION['id']);
+        if(empty($user)) {
+            $user = '';
+        }
 
         $pagina_actual = $_GET['page'];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -41,7 +46,8 @@ class PagesController {
         $router->render('pages/index', [
             'titulo' => "Aiko's Book",
             'reviews' => $reviews,
-            'paginacion' => $paginacionHTML
+            'paginacion' => $paginacionHTML,
+            'user' => $user
         ]);
     }
 
@@ -72,6 +78,7 @@ class PagesController {
             header('Location: /');
             exit;
         }
+        $alertas = [];
 
         $user = Users::find($_SESSION['id']);
         if(empty($user)) {
@@ -79,10 +86,53 @@ class PagesController {
             exit;
         }
 
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(!empty($_FILES['avatar']['tmp_name'])) {
+                $carpeta_imagenes = PUBLIC_PATH . '/img/users';
+
+                if($_FILES['avatar']['size'] > 6 * 1024 * 1024) {
+                    Users::setAlerta('error', 'La imagen no puede superar los 6MB');
+                }
+
+                if(!is_dir($carpeta_imagenes)) {
+                    mkdir($carpeta_imagenes, 0755, true);
+                }
+
+                $imagen_webp = Image::make($_FILES['avatar']['tmp_name'])
+                    ->fit(400,400)
+                    ->encode('webp', 80);
+
+                $nombre_imagen = md5(uniqid(rand(), true));
+                $_POST['image'] = $nombre_imagen;
+            }
+
+            if($user->description === $_POST['description'] && !isset($_POST['image'])) {
+                Users::setAlerta('error', 'Debes cambiar algo en tu perfil para guarfar cambios');
+            }
+            
+            $user->sincronizar($_POST);
+            $alertas = $user->validarPerfil();
+            $alertas = Users::getAlertas();
+
+            if(empty($alertas)) {
+                
+                if(isset($nombre_imagen)) {
+                    $imagen_webp->save($carpeta_imagenes . '/' . $nombre_imagen . '.webp');
+                }
+
+                $resultado = $user->guardar();
+
+                if($resultado) {
+                    header('Location: /profile');
+                }
+            }
+        }
+
         
         $router->render('pages/profile', [
             'titulo' => "Perfil de Usuario",
-            'user' => $user
+            'user' => $user,
+            'alertas' => $alertas
         ]);
     }
 }

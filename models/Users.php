@@ -26,4 +26,15 @@ class Users extends ActiveRecord {
         $this->description = $args['$description'] ?? '';
         $this->image = $args['$image'] ?? '';
     }
+
+    public function validarPerfil() {
+        if(!$this->description || strlen($this->description) < 1) {
+            self::$alertas['error'][] = 'La descripción es Obligatoria';
+        }
+        if(strlen($this->description) >= 120) {
+            self::$alertas['error'][] = 'La descripción solo puede contener 120 caracteres';
+        }
+
+        return self::$alertas;
+    }
 }
