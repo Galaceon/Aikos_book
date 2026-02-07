@@ -1,0 +1,156 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.personal-info {
+    @include m.contenedor;
+    height: 550px;
+    padding: 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 2em auto;
+    background: var(--color-surface);
+    box-shadow: 4px 4px 0 0 var(--color-primary);
+
+    @include m.xl_desktop {
+        padding: 3rem 6rem;
+        flex-direction: row;
+        height: 225px;
+    }
+
+    background-image:
+        linear-gradient(
+        90deg,
+        var(--color-surface) 12px, 0,
+        var(--color-primary) 15px, 0,
+        var(--color-primary-active) 20px, 0,
+        var(--color-surface) 100%
+        ),
+        radial-gradient(
+        circle closest-side,
+        rgba(255,255,255,0) 88%,
+        var(--color-surface) 100%
+        ),
+        radial-gradient(
+        circle at 22px 8px,
+        var(--color-primary-active) 40%,
+        var(--color-primary) 40%,
+        var(--color-primary) 100%
+        );
+    background-size: 32px 8px, 32px 16px, 32px 16px;
+    background-repeat: space no-repeat;
+    background-position: center top, center 6px, center 6px;
+
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+
+        @include m.xl_desktop {
+            flex-direction: row;
+        }
+    }
+
+    &__image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    &__name {
+        font-size: 3rem;
+        margin: 0 0 1rem 0;
+        color: var(--color-text);
+        text-align: center;
+
+        @include m.xl_desktop {
+            text-align: left;
+        }
+    }
+    &__description {
+        margin: 0;
+        font-size: 1.7rem;
+        color: var(--color-text-muted);
+        width: 100%;
+        text-align: center;
+
+        @include m.xl_desktop {
+            width: 50rem;
+            text-align: left;
+        }
+    }
+
+    &__reviews {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        color: var(--color-text-muted);
+        gap: .5rem;
+        margin-bottom: .5rem;
+
+        span {
+            color: var(--color-text-muted);
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        @include m.reset-lista;
+    }
+
+    &__change {
+        margin-top: 3rem;
+        gap: 2.5rem;
+        display: flex;
+
+        @include m.xl_desktop {
+            gap: 10rem;
+        }
+    }
+
+    &__arrows {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .8rem;
+        align-items: center;
+        color: var(--color-primary);
+        font-weight: v.$bold;
+        transition: all .1s linear;
+        width: 100%;
+
+        span {
+            color: var(--color-primary);
+            font-weight: v.$bold;
+        }
+
+        &:hover {
+            color: var(--color-primary-active);
+
+            span {
+                color: var(--color-primary-active);
+                transform: scale(1.1);
+                animation: big-to-normal .3s linear;
+            }
+        }
+    }
+
+    &__quit {
+        margin: 0;
+        display: none;
+
+        @include m.tablet {
+            display: inline;
+        }
+    }
+}

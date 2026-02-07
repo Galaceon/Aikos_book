@@ -61,4 +61,32 @@ class Review extends ActiveRecord {
 
         $this->slug = $slug;
     }
+
+    public static function anterior($created_at) {
+        $created_at = self::$db->escape_string($created_at);
+
+        $query = "
+            SELECT * FROM reviews
+            WHERE created_at < '{$created_at}'
+            ORDER BY created_at DESC
+            LIMIT 1
+        ";
+
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
+    public static function siguiente($created_at) {
+        $created_at = self::$db->escape_string($created_at);
+
+        $query = "
+            SELECT * FROM reviews
+            WHERE created_at > '{$created_at}'
+            ORDER BY created_at ASC
+            LIMIT 1
+        ";
+
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
+    }
 }

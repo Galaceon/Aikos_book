@@ -52,7 +52,6 @@ class PagesController {
     }
 
     public static function review(Router $router) {
-
         $slug = $_GET['slug'];
         if(!$slug) header('Location: /');
 
@@ -60,16 +59,23 @@ class PagesController {
         $review->imagen_actual = $review->image;
         if(!$review) header('Location: /admin/reviws');
 
-
         $reviewTags = Tag::relacionados('review_tag', 'tag_id', 'review_id', $review ->id);
         $reviewAuthors = Author::relacionados('review_author', 'author_id', 'review_id', $review ->id);
 
+        $admin = Users::where('id', $review->admin_id);
+
+        $reviewAnterior = Review::anterior($review->created_at);
+        $reviewSiguiente = Review::siguiente($review->created_at);
         
         $router->render('pages/review', [
             'titulo' => "Aiko's Book",
             'review' => $review,
             'reviewTags' => $reviewTags,
-            'reviewAuthors' => $reviewAuthors
+            'reviewAuthors' => $reviewAuthors,
+            'admin' => $admin,
+            'reviewAnterior' => $reviewAnterior,
+            'reviewSiguiente' => $reviewSiguiente
+            
         ]);
     }
 
