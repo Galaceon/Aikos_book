@@ -33,8 +33,6 @@
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
 
-            console.log('yea');
-
             formatearAuthors(resultado);
         }
         function formatearAuthors(arrayAuthors = []) {

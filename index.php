@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/app.php';
 
 use Controllers\APIAuthors;
+use Controllers\APISaved;
 use Controllers\APITags;
 use Controllers\AuthController;
 use Controllers\AuthorsController;
@@ -39,8 +40,7 @@ $router->get('/', [PagesController::class, 'index']);
 $router->get('/review', [PagesController::class, 'review']);
 $router->get('/profile', [PagesController::class, 'profile']);
 $router->post('/profile', [PagesController::class, 'profile']);
-
-
+$router->get('/saved', [PagesController::class, 'saved']);
 
 
 // ADMIN & APIs
@@ -74,8 +74,12 @@ $router->post('/admin/users/delete', [UsersController::class, 'delete']);
 // APIs
 $router->get('/api/tags', [APITags::class, 'index']);
 $router->post('/api/tags/create', [APITags::class, 'create']);
+
 $router->get('/api/authors', [APIAuthors::class, 'index']);
 $router->post('/api/authors/create', [APIAuthors::class, 'create']);
+
+$router->post('/api/saved', [APISaved::class, 'toggle']);
+$router->get('/api/saved', [APISaved::class, 'index']);
 
 
 $router->comprobarRutas();

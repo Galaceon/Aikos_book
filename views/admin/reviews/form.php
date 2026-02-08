@@ -81,7 +81,7 @@
                 <picture>
                     <source srcset="<?php echo BASE_URL . '/img/reviews/' . $review->image; ?>.webp" type="image/webp">
                     <source srcset="<?php BASE_URL . '/img/reviews/' . $review->image; ?>.png" type="image/png">
-                    <img src="<?php BASE_URL . '/img/reviews/' . $review->image; ?>.png" alt="Imagen Ponente">
+                    <img src="<?php BASE_URL . '/img/reviews/' . $review->image; ?>.png" alt="Imagen de la Reseña">
                 </picture>
             </div>
         <?php } ?>
@@ -89,7 +89,7 @@
 </div>
 
 <div>
-    <label for="nombre" class="admin-formulario__label">CONTENIDO</label>
+    <label for="nombre" class="admin-formulario__label" id="admin-form-textarea">CONTENIDO</label>
     <textarea id="content" name="content"><?php echo $review->content; ?></textarea>
 </div>
 

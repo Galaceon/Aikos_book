@@ -74,4 +74,3 @@
 
     <?php echo $paginacion; ?>
 </main>
-

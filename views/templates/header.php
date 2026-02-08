@@ -41,7 +41,7 @@
                         </div>
                     </a>
                 <?php } else { ?>
-                    <a href="/">
+                    <a href="/saved">
                         <div class="barra__nav-enlaces">
                             <span class="barra__search-img material-symbols-outlined">bookmarks</span>
                             <p class="barra__nav-text">GUARDADOS</p>
@@ -124,7 +124,7 @@
 
                     <?php } else { ?>
 
-                        <a href="/">
+                        <a href="/saved">
                             <div class="barra__nav-enlaces--mobile">
                                 <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
                                 <p class="barra__nav-text-mobile">GUARDADOS</p>

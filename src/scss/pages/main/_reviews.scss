@@ -34,6 +34,7 @@
 
 
 .review {
+    position: relative;
     overflow: hidden;
     transition: all .3s ease-in;
     position: relative;
@@ -150,7 +151,46 @@
         font-size: 1.7rem;
         font-weight: v.$regular;
     }
+
+    &__save-button {
+        all: unset;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        
+        span {
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            background-color: rgba(rgb(27, 27, 27), .5);
+            border-radius: .5rem;
+            transition: all .1s ease-in;
+            padding: .2rem;
+        }
+        
+        &:hover {
+            
+            span {
+                color: var(--verde);
+                scale: 1.1;
+            }
+        }
+    }
+
+    .saved {
+        span {
+            color: var(--verde);
+        }
+
+        &:hover {
+            
+            span {
+                color: var(--rojo);
+            }
+        }
+    }
 }
+
 
 .fold-corner {
     background: var(--color-surface);

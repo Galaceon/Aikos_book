@@ -6,6 +6,7 @@ use Classes\Paginacion;
 use Intervention\Image\ImageManagerStatic as Image;
 use Model\Author;
 use Model\Review;
+use Model\ReviewSaved;
 use Model\Tag;
 use Model\Users;
 use MVC\Router;
@@ -17,6 +18,8 @@ class PagesController {
 
         $reviews = [];
         $paginacionHTML = '';
+        $saved = false;
+
         $user = Users::find($_SESSION['id']);
         if(empty($user)) {
             $user = '';
@@ -35,7 +38,7 @@ class PagesController {
             $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
 
             if($paginacion->total_paginas() < $pagina_actual) {
-                header('Location: /admin/ponentes?page=1');
+                header('Location: /?page=1');
             }
 
             $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
@@ -43,11 +46,21 @@ class PagesController {
             $paginacionHTML = $paginacion->paginacion();
         }
 
+        if(is_auth()) {
+            foreach($reviews as $review) {
+                $savedReviews[$review->id] = ReviewSaved::exists(
+                    $_SESSION['id'],
+                    $review->id
+                );
+            }
+        }
+
         $router->render('pages/index', [
-            'titulo' => "Aiko's Book",
+            'titulo' => "Últimas Reseñas",
             'reviews' => $reviews,
             'paginacion' => $paginacionHTML,
-            'user' => $user
+            'user' => $user,
+            'savedReviews' => $savedReviews
         ]);
     }
 
@@ -139,6 +152,53 @@ class PagesController {
             'titulo' => "Perfil de Usuario",
             'user' => $user,
             'alertas' => $alertas
+        ]);
+    }
+
+    public static function saved(Router $router) {
+        $reviews = [];
+        $paginacionHTML = '';
+        $saved = false;
+        $user = Users::find($_SESSION['id']);
+
+        if(empty($user)) {
+            $user = '';
+        }
+
+        $pagina_actual = $_GET['page'];
+        $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
+        
+        if(!$pagina_actual || $pagina_actual < 1) {
+            header('Location: /saved?page=1');
+        }
+        $registros_por_pagina = 12;
+        $total = ReviewSaved::total();
+
+        if($total > 0) {
+            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+            if($paginacion->total_paginas() < $pagina_actual) {
+                header('Location: /?page=1');
+            }
+
+            $reviews = ReviewSaved::savedByUser($_SESSION['id']);
+
+            $paginacionHTML = $paginacion->paginacion();
+        }
+
+        foreach($reviews as $review) {
+            $savedReviews[$review->id] = ReviewSaved::exists(
+                $_SESSION['id'],
+                $review->id
+            );
+        }
+
+        $router->render('pages/saved', [
+            'titulo' => "Reseñas Guardadas",
+            'reviews' => $reviews,
+            'paginacion' => $paginacionHTML,
+            'user' => $user,
+            'savedReviews' => $savedReviews
         ]);
     }
 }
