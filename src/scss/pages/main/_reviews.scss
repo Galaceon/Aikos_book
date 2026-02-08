@@ -30,6 +30,10 @@
             @include m.grid(3, 3.5rem);
         }
     }
+
+    &__no-article {
+        color: var(--color-text);
+    }
 }
 
 

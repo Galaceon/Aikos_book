@@ -64,6 +64,7 @@ class PagesController {
         ]);
     }
 
+    
     public static function review(Router $router) {
         $slug = $_GET['slug'];
         if(!$slug) header('Location: /');
@@ -91,6 +92,7 @@ class PagesController {
             
         ]);
     }
+
 
     public static function profile(Router $router) {
         if(!is_auth()) {
@@ -155,10 +157,10 @@ class PagesController {
         ]);
     }
 
+
     public static function saved(Router $router) {
         $reviews = [];
         $paginacionHTML = '';
-        $saved = false;
         $user = Users::find($_SESSION['id']);
 
         if(empty($user)) {
@@ -175,13 +177,24 @@ class PagesController {
         $total = ReviewSaved::total();
 
         if($total > 0) {
-            $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+            $totalSaved = ReviewSaved::totalByUser($_SESSION['id']);
+
+            $paginacion = new Paginacion(
+                $pagina_actual,
+                $registros_por_pagina,
+                $totalSaved
+            );
 
             if($paginacion->total_paginas() < $pagina_actual) {
-                header('Location: /?page=1');
+                header('Location: /saved?page=1');
+                exit;
             }
 
-            $reviews = ReviewSaved::savedByUser($_SESSION['id']);
+            $reviews = ReviewSaved::savedByUser(
+                $_SESSION['id'],
+                $registros_por_pagina,
+                $paginacion->offset()
+            );
 
             $paginacionHTML = $paginacion->paginacion();
         }

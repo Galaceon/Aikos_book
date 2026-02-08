@@ -68,7 +68,7 @@
                 </article>
             <?php } ?>
         <?php } else { ?>
-            <p class="reviews__no-article">Aun no hay reseñas</p>
+            <p class="reviews__no-article">Aun no hay reseñas guardadas</p>
         <?php } ?>
     </div>
 

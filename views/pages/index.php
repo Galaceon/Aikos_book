@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </a>
-                    <?php if(is_auth()) {
+                    <?php if(is_auth() && !is_admin()) {
                         $isSaved = is_auth() && !empty($savedReviews[$review->id]);
                     ?>
 

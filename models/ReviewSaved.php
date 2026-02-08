@@ -43,14 +43,26 @@ class ReviewSaved extends ActiveRecord {
         return $resultado->num_rows > 0;
     }
 
-    public static function savedByUser($user_id) {
+    public static function savedByUser($user_id, $limit, $offset) {
         $query = "
             SELECT r.*
             FROM reviews_saved rs
             JOIN reviews r ON rs.review_id = r.id
             WHERE rs.user_id = $user_id
             ORDER BY rs.created_at DESC
+            LIMIT $limit OFFSET $offset
         ";
         return Review::consultarSQL($query);
+    }
+
+    public static function totalByUser($user_id) {
+        $query = "
+            SELECT COUNT(*) as total
+            FROM reviews_saved
+            WHERE user_id = $user_id
+        ";
+        $resultado = self::$db->query($query);
+        $row = $resultado->fetch_assoc();
+        return (int) $row['total'];
     }
 }
