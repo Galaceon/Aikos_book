@@ -46,7 +46,7 @@
                             <div class="review__foot">
                                 <div class="review__social">
                                     <div class="review__likes">
-                                            <?php $isLiked = !empty($likedReviews[$review->id]); ?>
+                                        <?php $isLiked = !empty($likedReviews[$review->id]); ?>
                                         <button class="review__like-button <?php echo $isLiked ? 'liked' : ''; ?>" data-review-id="<?php echo $review->id; ?>">
                                             <span class="material-symbols-outlined">
                                                 <?php echo $isLiked ? 'favorite' : 'favorite_border'; ?>

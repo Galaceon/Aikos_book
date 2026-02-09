@@ -16,7 +16,7 @@ class Paginacion {
 
     // Obtiene el total de registros a mostrar (9 x (3-1) = 9 x 2 = 18, saltate 18 registros y empieza a mostrar desde el 19)
     public function offset() {
-        return $this->registros_por_pagina * ($this->pagina_actual -1);
+        return max(0, $this->registros_por_pagina * ($this->pagina_actual - 1));
     }
 
     // Calcula el total de paginas, ej: 40 / 10 = 4 paginas (40registros, 10 por pagina)

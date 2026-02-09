@@ -19,7 +19,6 @@ class PagesController {
 
         $reviews = [];
         $paginacionHTML = '';
-        $saved = false;
 
         $likedReviews = [];
         $likesCount = [];
@@ -149,7 +148,7 @@ class PagesController {
             }
 
             if($user->description === $_POST['description'] && !isset($_POST['image'])) {
-                Users::setAlerta('error', 'Debes cambiar algo en tu perfil para guarfar cambios');
+                Users::setAlerta('error', 'Debes cambiar algo en tu perfil para guardar cambios');
             }
             
             $user->sincronizar($_POST);
@@ -170,7 +169,6 @@ class PagesController {
             }
         }
 
-        
         $router->render('pages/profile', [
             'titulo' => "Perfil de Usuario",
             'user' => $user,
@@ -182,18 +180,26 @@ class PagesController {
     public static function saved(Router $router) {
         $reviews = [];
         $paginacionHTML = '';
+
+        $likedReviews = [];
+        $likesCount = [];
+        $savedReviews = [];
+
+
         $user = Users::find($_SESSION['id']);
 
         if(empty($user)) {
             $user = '';
         }
 
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-        
+
         if(!$pagina_actual || $pagina_actual < 1) {
             header('Location: /saved?page=1');
+            exit;
         }
+
         $registros_por_pagina = 12;
         $total = ReviewSaved::total();
 
@@ -227,11 +233,26 @@ class PagesController {
             );
         }
 
+        foreach($reviews as $review) {
+            $likesCount[$review->id] = ReviewLike::countByReview($review->id);
+
+            if(is_auth()) {
+                $likedReviews[$review->id] = ReviewLike::exists(
+                    $_SESSION['id'],
+                    $review->id
+                );
+            } else {
+                $likedReviews[$review->id] = false;
+            }
+        }
+
         $router->render('pages/saved', [
             'titulo' => "Reseñas Guardadas",
             'reviews' => $reviews,
             'paginacion' => $paginacionHTML,
             'user' => $user,
+            'likesCount' => $likesCount,
+            'likedReviews' => $likedReviews,
             'savedReviews' => $savedReviews
         ]);
     }
