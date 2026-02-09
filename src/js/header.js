@@ -6,6 +6,7 @@
     const menuAdmin = document.querySelector('.dashboard__sidebar--mobile');
 
     if (abrirMenu) {
+        if(!abrirMenu) return;
         abrirMenu.addEventListener('click', () => {
             const menuState = menu.classList.contains('mostrar');
             if (menuState) {
@@ -29,6 +30,7 @@
     }
 
     if(abrirMenuAdmin) {
+        if(!abrirMenuAdmin) return;
         abrirMenuAdmin.addEventListener('click', () => {
         
         const menuState = menuAdmin.classList.contains('mostrar');

@@ -6,7 +6,7 @@
             <?php foreach($reviews as $review) { ?>
                 <?php $isLiked = !empty($likedReviews[$review->id]); ?>
 
-                <article class="review fold-corner">
+                <article class="review fold-corner" data-review-id="<?php echo $review->id; ?>">
                     <a href="review?slug=<?php echo $review->slug; ?>">
                         <div class="review__image-contenedor">
                             <picture>
@@ -27,7 +27,7 @@
                             <div class="review__main-info">
                                 <div class="review__head">
                                     <a href="review?slug=<?php echo $review->slug; ?>">
-                                        <h4 class="review__title"><?php echo $review->title; ?></h4>
+                                        <h4 class="review__title" data-review-id="<?php echo $review->id; ?>"><?php echo $review->title; ?></h4>
                                     </a>
                                     
                                     <div class="review__rating">

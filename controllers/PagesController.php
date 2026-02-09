@@ -72,7 +72,6 @@ class PagesController {
                 );
             }
         }
-
         $router->render('pages/index', [
             'titulo' => "Últimas Reseñas",
             'reviews' => $reviews,

@@ -7,8 +7,16 @@ use Model\ReviewLike;
 class APILikes {
 
     public static function toggle() {
+        $review_id = filter_var($_POST['review_id'], FILTER_VALIDATE_INT);
+
         if(!is_auth()) {
-            echo json_encode(['error' => 'No autenticado']);
+            $respuesta = [
+                'id' => $review_id,
+                'tipo' => 'error',
+                'mensaje' => 'Necesitas estar autentificado para usar esa función'
+            ];
+
+            echo json_encode($respuesta);
             return;
         }
 
@@ -17,7 +25,7 @@ class APILikes {
             return;
         }
 
-        $review_id = filter_var($_POST['review_id'], FILTER_VALIDATE_INT);
+        
         $user_id = $_SESSION['id'];
 
         if(!$review_id) {
