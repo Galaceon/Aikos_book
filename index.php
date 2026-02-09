@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/app.php';
 
 use Controllers\APIAuthors;
+use Controllers\APILikes;
 use Controllers\APISaved;
 use Controllers\APITags;
 use Controllers\AuthController;
@@ -80,6 +81,8 @@ $router->post('/api/authors/create', [APIAuthors::class, 'create']);
 
 $router->post('/api/saved', [APISaved::class, 'toggle']);
 $router->get('/api/saved', [APISaved::class, 'index']);
+
+$router->post('/api/likes', [APILikes::class, 'toggle']);
 
 
 $router->comprobarRutas();

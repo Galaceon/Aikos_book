@@ -4,6 +4,8 @@
     const preview = document.querySelector('#preview-imagen');
 
     if(dropZone) {
+        if(!dropZone) return;
+
         ['dragenter', 'dragover'].forEach(event => {
             dropZone.addEventListener(event, e => {
                 e.preventDefault();

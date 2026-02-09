@@ -50,7 +50,6 @@
     }
 
     &:hover {
-        cursor: pointer;
 
         img {
             transform: scale(1.05);
@@ -122,6 +121,23 @@
         align-items: center;
         gap: 1.5rem;
     }
+    .review__like-button {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        gap: .4rem;
+        align-items: center;
+        transition: all .1s ease-in;
+
+        &:hover {
+            scale: 1.2;
+            color: var(--rojo);
+
+            span {
+                color: var(--rojo);
+            }
+        }
+    }
     &__likes {
         display: flex;
         gap: .4rem;
@@ -139,7 +155,7 @@
         display: flex;
         gap: .4rem;
         align-items: center;
-        font-weight: v.$regular;
+        font-weight: v.$bold;
         color: var(--color-text-muted);
         font-size: 1.6rem;
         span {
@@ -185,12 +201,17 @@
         span {
             color: var(--verde);
         }
-
         &:hover {
-            
             span {
                 color: var(--rojo);
             }
+        }
+    }
+
+    .liked {
+        color: var(--color-primary);
+        span {
+            color: var(--color-primary);
         }
     }
 }

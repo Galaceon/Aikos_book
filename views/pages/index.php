@@ -4,6 +4,8 @@
         <?php if(!empty($reviews)) { ?>
             
             <?php foreach($reviews as $review) { ?>
+                <?php $isLiked = !empty($likedReviews[$review->id]); ?>
+
                 <article class="review fold-corner">
                     <a href="review?slug=<?php echo $review->slug; ?>">
                         <div class="review__image-contenedor">
@@ -20,11 +22,13 @@
                                 >
                             </picture>
                         </div>
-
+                    </a>
                         <div class="review__information">
                             <div class="review__main-info">
                                 <div class="review__head">
-                                    <h4 class="review__title"><?php echo $review->title; ?></h4>
+                                    <a href="review?slug=<?php echo $review->slug; ?>">
+                                        <h4 class="review__title"><?php echo $review->title; ?></h4>
+                                    </a>
                                     
                                     <div class="review__rating">
                                         <?php echo $review->rating; ?>
@@ -42,8 +46,15 @@
                             <div class="review__foot">
                                 <div class="review__social">
                                     <div class="review__likes">
-                                        <span class="material-symbols-outlined">favorite</span>
-                                        12
+                                            <?php $isLiked = !empty($likedReviews[$review->id]); ?>
+                                        <button class="review__like-button <?php echo $isLiked ? 'liked' : ''; ?>" data-review-id="<?php echo $review->id; ?>">
+                                            <span class="material-symbols-outlined">
+                                                <?php echo $isLiked ? 'favorite' : 'favorite_border'; ?>
+                                            </span>
+                                            <span class="review__like-count">
+                                                <?php echo $likesCount[$review->id]; ?>
+                                            </span>
+                                        </button>
                                     </div>
                                     <div class="review__comments">
                                         <span class="material-symbols-outlined">comment</span>
@@ -54,7 +65,7 @@
                                 <div class="review__date"><?php echo date('d-m-Y', strtotime($review->created_at)); ?></div>
                             </div>
                         </div>
-                    </a>
+                    
                     <?php if(is_auth() && !is_admin()) {
                         $isSaved = is_auth() && !empty($savedReviews[$review->id]);
                     ?>

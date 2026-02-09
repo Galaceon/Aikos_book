@@ -2,6 +2,7 @@
     const authorsInput = document.querySelector('#authors');
 
     if(authorsInput) {
+        if(!authorsInput) return;
         
         let authors = [] // Almacena authors que vienen de la API
         let authorsFiltrados = [] // Almacena los authors filtrados por la busqueda

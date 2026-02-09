@@ -6,6 +6,7 @@ use Classes\Paginacion;
 use Intervention\Image\ImageManagerStatic as Image;
 use Model\Author;
 use Model\Review;
+use Model\ReviewLike;
 use Model\ReviewSaved;
 use Model\Tag;
 use Model\Users;
@@ -20,12 +21,17 @@ class PagesController {
         $paginacionHTML = '';
         $saved = false;
 
-        $user = Users::find($_SESSION['id']);
-        if(empty($user)) {
-            $user = '';
+        $likedReviews = [];
+        $likesCount = [];
+        $savedReviews = [];
+
+        $user = null;
+
+        if(is_auth()) {
+            $user = Users::find($_SESSION['id']);
         }
 
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? 1;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
         
         if(!$pagina_actual || $pagina_actual < 1) {
@@ -46,6 +52,19 @@ class PagesController {
             $paginacionHTML = $paginacion->paginacion();
         }
 
+        foreach($reviews as $review) {
+            $likesCount[$review->id] = ReviewLike::countByReview($review->id);
+
+            if(is_auth()) {
+                $likedReviews[$review->id] = ReviewLike::exists(
+                    $_SESSION['id'],
+                    $review->id
+                );
+            } else {
+                $likedReviews[$review->id] = false;
+            }
+        }
+
         if(is_auth()) {
             foreach($reviews as $review) {
                 $savedReviews[$review->id] = ReviewSaved::exists(
@@ -60,6 +79,8 @@ class PagesController {
             'reviews' => $reviews,
             'paginacion' => $paginacionHTML,
             'user' => $user,
+            'likesCount' => $likesCount,
+            'likedReviews' => $likedReviews,
             'savedReviews' => $savedReviews
         ]);
     }

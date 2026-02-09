@@ -2,6 +2,8 @@
     const inputAvatar = document.querySelector('#avatar');
 
     if(inputAvatar) {
+        if(!inputAvatar) return;
+
         const avatarPreview = document.querySelector('#avatar-preview');
 
         inputAvatar.addEventListener('change', e => {

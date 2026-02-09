@@ -2,6 +2,8 @@
     const tagsInput = document.querySelector('#tags');
 
     if(tagsInput) {
+        if(!tagsInput) return;
+
         let tags = [] // Almacena tags que vienen de la API
         let tagsFiltrados = [] // Almacena los tags filtrados por la busqueda
         
