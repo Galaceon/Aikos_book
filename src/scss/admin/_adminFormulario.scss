@@ -190,6 +190,10 @@
         @extend .listado-filtros__filtro;
         color: var(--rojo);
     }
+
+    &--principal {
+        width: 150%;
+    }
 }
 .listado-filtros.mostrar {
     opacity: 1;

@@ -188,7 +188,8 @@ class PagesController {
         $user = Users::find($_SESSION['id']);
 
         if(empty($user)) {
-            $user = '';
+            header('Location: /');
+            exit;
         }
 
         $pagina_actual = $_GET['page'] ?? 1;

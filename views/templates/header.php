@@ -16,7 +16,7 @@
                 <span class="barra__search-img material-symbols-outlined">search</span>
                 <input class="barra__input" id="buscador" type="text" placeholder="Buscar reseña...">
 
-                <ul id="listado-reviews" class="listado-filtros"></ul>
+                <ul id="listado-reviews" class="listado-filtros listado-filtros--principal"></ul>
             </div>
 
             <!-- FILTROS -->
