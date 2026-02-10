@@ -25,49 +25,28 @@
             mostrarTagsSeleccionados();
         }
 
-        obtenerTags();
-
         // OBTENER TAGS
-        async function obtenerTags() {
-            const url = `/api/tags`;
+        tagsInput.addEventListener('input', buscarTags);
 
+        async function buscarTags(e) {
+            const busqueda = e.target.value.trim();
+
+            if (busqueda.length < 1) {
+                listadoTags.classList.remove('mostrar');
+                return;
+            }
+
+            const url = `/api/tags?search=${encodeURIComponent(busqueda)}`;
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
 
-            formatearTags(resultado);
+            tagsFiltrados = resultado.map(tag => ({
+                id: tag.id,
+                name: tag.name
+            }));
+
+            mostrarTags();
         }
-        function formatearTags(arrayTags = []) {
-            tags = arrayTags.map( tag => {
-                return {
-                    name: `${tag.name.trim()}`,
-                    id: `${tag.id}`
-                }
-            })
-        }
-
-
-        // FILTRAR TAGS POR BUSQUEDA
-        tagsInput.addEventListener('input', buscarTags);
-
-        function buscarTags(e) {
-            const busqueda = e.target.value;
-
-            if(busqueda.length >= 1) {
-                const expresion = new RegExp(busqueda, 'i');
-
-                tagsFiltrados = tags.filter( tag => {
-                    if(tag.name.toLowerCase().search(expresion) != -1) {
-                        return tag;
-                    }
-                })
-
-                mostrarTags();
-            } else {
-                tagsFiltrados = [];
-                listadoTags.classList.remove('mostrar')
-            }
-        }
-
 
         // MOSTRAR TAGS FILTRADOS
         function mostrarTags() {

@@ -6,13 +6,23 @@ use Model\Tag;
 
 class APITags {
 
+
     public static function index() {
         if(!is_admin()) {
             header('Location: /');
             exit;
         }
 
-        $tags = Tag::all();
+        $search = $_GET['search'] ?? '';
+        $search = trim($search);
+
+        if(strlen($search) < 1) {
+            echo json_encode([]);
+            return;
+        }
+
+        $tags = Tag::startsWith('name', $search, 6);
+
         echo json_encode($tags);
     }
 

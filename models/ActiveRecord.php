@@ -317,4 +317,22 @@ class ActiveRecord {
 
         return static::consultarSQL($query);
     }
+
+    public static function startsWith(string $columna, string $valor, int $limite = 6) {
+        if(!in_array($columna, static::$columnasDB, true)) return [];
+
+        $valor = self::$db->escape_string($valor);
+        $limite = filter_var($limite, FILTER_VALIDATE_INT);
+
+        if($limite < 1) return [];
+
+        $query = "
+            SELECT * FROM " . static::$tabla . "
+            WHERE $columna LIKE '{$valor}%'
+            ORDER BY $columna ASC
+            LIMIT $limite
+        ";
+
+        return static::consultarSQL($query);
+    }
 }
