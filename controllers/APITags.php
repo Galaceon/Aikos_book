@@ -6,7 +6,6 @@ use Model\Tag;
 
 class APITags {
 
-
     public static function index() {
         if(!is_admin()) {
             header('Location: /');

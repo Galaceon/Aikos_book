@@ -25,49 +25,28 @@
             mostrarAuthorsSeleccionados();
         }
 
-        obtenerAuthors();
-
         // OBTENER authors
-        async function obtenerAuthors() {
-            const url = `/api/authors`;
+        authorsInput.addEventListener('input', buscarAuthors);
 
+        async function buscarAuthors(e) {
+            const busqueda = e.target.value.trim();
+
+            if (busqueda.length < 1) {
+                listadoAuthors.classList.remove('mostrar');
+                return;
+            }
+
+            const url = `/api/authors?search=${encodeURIComponent(busqueda)}`;
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
 
-            formatearAuthors(resultado);
+            authorsFiltrados = resultado.map(author => ({
+                id: author.id,
+                name: author.name
+            }));
+
+            mostrarAuthors();
         }
-        function formatearAuthors(arrayAuthors = []) {
-            authors = arrayAuthors.map( author => {
-                return {
-                    name: `${author.name.trim()}`,
-                    id: `${author.id}`
-                }
-            })
-        }
-
-
-        // FILTRAR authorS POR BUSQUEDA
-        authorsInput.addEventListener('input', buscarAuthors);
-
-        function buscarAuthors(e) {
-            const busqueda = e.target.value;
-
-            if(busqueda.length >= 1) {
-                const expresion = new RegExp(busqueda, 'i');
-
-                authorsFiltrados = authors.filter( author => {
-                    if(author.name.toLowerCase().search(expresion) != -1) {
-                        return author;
-                    }
-                })
-
-                mostrarAuthors();
-            } else {
-                authorsFiltrados = [];
-                listadoAuthors.classList.remove('mostrar')
-            }
-        }
-
 
         // MOSTRAR AUTORES FILTRADOS
         function mostrarAuthors() {

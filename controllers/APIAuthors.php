@@ -12,7 +12,16 @@ class APIAuthors {
             exit;
         }
 
-        $authors = Author::all();
+        $search = $_GET['search'] ?? '';
+        $search = trim($search);
+
+        if(strlen($search) < 1) {
+            echo json_encode([]);
+            return;
+        }
+
+        $authors = Author::startsWith('name', $search, 6);
+
         echo json_encode($authors);
     }
 
