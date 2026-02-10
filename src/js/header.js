@@ -48,6 +48,8 @@
     }
 
     window.addEventListener('resize', () => {
+        if (!menuAdmin || !abrirMenuAdmin) return;
+
         if (window.innerWidth >= 768) {
             menuAdmin.classList.remove('mostrar');
             document.body.classList.remove('menu-abierto');

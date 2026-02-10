@@ -12,10 +12,12 @@
         <!-- BUSCADORES -->
         <div class="barra__buscadores">
             <!-- BUSCADOR -->
-            <div class="barra__buscador">
+            <div class="barra__buscador" id="barra-buscador">
                 <span class="barra__search-img material-symbols-outlined">search</span>
                 <input class="barra__input" id="buscador" type="text" placeholder="Buscar reseña...">
-            </div> 
+
+                <ul id="listado-reviews" class="listado-filtros"></ul>
+            </div>
 
             <!-- FILTROS -->
             <div class="barra__filtros">

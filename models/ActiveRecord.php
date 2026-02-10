@@ -335,4 +335,14 @@ class ActiveRecord {
 
         return static::consultarSQL($query);
     }
+
+    public static function searchLike(string $campo, string $valor, int $limit = 6) {
+        $valor = self::$db->escape_string($valor);
+
+        $query = "SELECT * FROM " . static::$tabla . " 
+                WHERE {$campo} LIKE '%{$valor}%'
+                LIMIT {$limit}";
+
+        return self::consultarSQL($query);
+    }
 }
