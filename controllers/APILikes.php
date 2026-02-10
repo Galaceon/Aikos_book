@@ -10,13 +10,10 @@ class APILikes {
         $review_id = filter_var($_POST['review_id'], FILTER_VALIDATE_INT);
 
         if(!is_auth()) {
-            $respuesta = [
-                'id' => $review_id,
-                'tipo' => 'error',
-                'mensaje' => 'Necesitas estar autentificado para usar esa función'
-            ];
-
-            echo json_encode($respuesta);
+            http_response_code(401);
+            echo json_encode([
+                'redirect' => '/login'
+            ]);
             return;
         }
 

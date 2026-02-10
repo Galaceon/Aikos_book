@@ -13,6 +13,12 @@
             body: formData
         });
 
+        if (response.status === 401) {
+            const data = await response.json();
+            window.location.href = data.redirect;
+            return;
+        }
+
         const data = await response.json();
         if(data['tipo'] === 'error') { 
             mostrarAlerta(data['mensaje'], data['tipo'], document.querySelector(`.review__title[data-review-id="${data.id}"]`))
