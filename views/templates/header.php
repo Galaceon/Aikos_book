@@ -14,7 +14,7 @@
             <!-- BUSCADOR -->
             <div class="barra__buscador" id="barra-buscador">
                 <span class="barra__search-img material-symbols-outlined">search</span>
-                <input class="barra__input" id="buscador" type="text" placeholder="Buscar reseña...">
+                <input class="barra__input js-buscador" id="buscador-desktop" type="text" placeholder="Buscar reseña...">
 
                 <ul id="listado-reviews" class="listado-filtros listado-filtros--principal"></ul>
             </div>
@@ -95,7 +95,9 @@
                 <!-- BUSCADOR -->
                 <div class="barra__buscador barra__buscador--mobile">
                     <span class="barra__search-img material-symbols-outlined">search</span>
-                    <input class="barra__input--mobile" id="buscador" type="text" placeholder="Buscar reseña...">
+                    <input class="barra__input--mobile js-buscador" id="buscador-mobile" type="text" placeholder="Buscar reseña...">
+
+                    <ul class="listado-filtros listado-filtros--mobile js-listado-reviews"></ul>
                 </div> 
 
                 <!-- FILTROS -->

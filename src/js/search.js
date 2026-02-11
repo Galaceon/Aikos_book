@@ -1,82 +1,77 @@
-(function() {
-    const buscadorInput = document.querySelector('#buscador');
+(function () {
+    const buscadores = document.querySelectorAll('.js-buscador');
 
-    if(buscadorInput) {
-        if(!buscadorInput) return;
+    if (!buscadores.length) return;
 
-        let reviews = []
-        let reviewsFiltradas = []
+    let timeout;
 
-        const listadoReviews = document.querySelector('#listado-reviews');
+    buscadores.forEach(input => {
+        input.addEventListener('input', e => buscarReviews(e, input));
+    });
 
-        document.addEventListener('click', e => {
-            if (!listadoReviews.contains(e.target) && e.target !== buscadorInput) {
-                listadoReviews.classList.remove('mostrar');
+    document.addEventListener('click', e => {
+        buscadores.forEach(input => {
+            const contenedor = input.closest('.barra__buscador');
+            const listado = contenedor.querySelector('.js-listado-reviews');
+
+            if (
+                listado &&
+                !contenedor.contains(e.target)
+            ) {
+                listado.classList.remove('mostrar');
             }
         });
+    });
 
-        // OBTENER REVIEWS
-        let timeout;
+    function buscarReviews(e, input) {
+        clearTimeout(timeout);
 
-        buscadorInput.addEventListener('input', buscarReviews);
+        const busqueda = e.target.value.trim();
+        const contenedor = input.closest('.barra__buscador');
+        const listado = contenedor.querySelector('.js-listado-reviews');
 
-        function buscarReviews(e) {
-            clearTimeout(timeout);
+        if (!listado) return;
 
-            const busqueda = e.target.value.trim();
-
-            if (busqueda.length < 1) {
-                listadoReviews.classList.remove('mostrar');
-                return;
-            }
-
-            timeout = setTimeout(async () => {
-                const url = `/api/search?search=${encodeURIComponent(busqueda)}`;
-                const respuesta = await fetch(url);
-                const resultado = await respuesta.json();
-
-                reviewsFiltradas = resultado.map(review => ({
-                    id: review.id,
-                    title: review.title,
-                    slug: review.slug
-                }));
-
-                mostrarReviews();
-            }, 300)
+        if (busqueda.length < 1) {
+            listado.classList.remove('mostrar');
+            listado.innerHTML = '';
+            return;
         }
 
-        // MOSTRAR REVIEWS FILTRADAS
-        function mostrarReviews() {
-            while(listadoReviews.firstChild) {
-                listadoReviews.removeChild(listadoReviews.firstChild);
-            }
+        timeout = setTimeout(async () => {
+            const url = `/api/search?search=${encodeURIComponent(busqueda)}`;
+            const respuesta = await fetch(url);
+            const resultado = await respuesta.json();
 
-            console.log(reviewsFiltradas);
+            mostrarReviews(resultado, listado);
+        }, 300);
+    }
 
-            if(reviewsFiltradas.length > 0) {
-                listadoReviews.classList.add('mostrar');
-                reviewsFiltradas.forEach( review => {
-                    const reviewHTML = document.createElement('LI');
-                    reviewHTML.classList.add('listado-filtros__filtro');
-                    reviewHTML.textContent = review.title;
-                    reviewHTML.dataset.reviewSlug = review.slug;
-                    reviewHTML.onclick = seleccionarReview;
-                    
-                    listadoReviews.appendChild(reviewHTML);
-                })
-            } else {
-                listadoReviews.classList.add('mostrar');
-                const noReviews = document.createElement('LI');
-                noReviews.classList.add('listado-filtros__filtro--error');
-                noReviews.textContent = 'Aún no he leido ese libro';
+    function mostrarReviews(reviews, listado) {
+        listado.innerHTML = '';
 
-                listadoReviews.appendChild(noReviews);
-            }
-        }
+        if (reviews.length > 0) {
+            listado.classList.add('mostrar');
 
-        function seleccionarReview(e) {
-            const slug = e.currentTarget.dataset.reviewSlug;
-            window.location.href = `/review?slug=${slug}`;
+            reviews.forEach(review => {
+                const li = document.createElement('LI');
+                li.classList.add('listado-filtros__filtro');
+                li.textContent = review.title;
+                li.dataset.reviewSlug = review.slug;
+                li.addEventListener('click', () => {
+                    window.location.href = `/review?slug=${review.slug}`;
+                });
+
+                listado.appendChild(li);
+            });
+        } else {
+            listado.classList.add('mostrar');
+
+            const li = document.createElement('LI');
+            li.classList.add('listado-filtros__filtro--error');
+            li.textContent = 'Aún no he leído ese libro';
+
+            listado.appendChild(li);
         }
     }
 })();

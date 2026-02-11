@@ -320,13 +320,18 @@
         gap: 2.5rem;
         flex-direction: column;
 
+        input {
+            width: 95%;
+
+        }
+
         @include m.desktop {
             display: none;
         }
     }
     &__input--mobile {
         @extend .barra__input;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
     &__filtros--mobile {
         @extend .barra__filtros;
