@@ -1,0 +1,80 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.filtros-contenedor {
+    all: unset;
+    position: absolute;
+    display: flex;
+    gap: 4rem;
+    top: 5rem;
+    right: 0;
+    cursor: auto;
+
+    @include m.xl_desktop {
+        right: unset;
+        left: 0;
+    }
+
+    background-color: var(--color-surface);
+    border: solid 1px var(--color-primary);
+    color: var(--color-text);
+    padding: 1.5rem 2rem;
+    font-size: 1.6rem;
+
+    opacity: 0;
+    transform: scale(0) translateY(-12rem);
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+}
+
+.filtro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 1px var(--color-primary);
+    padding: .5rem 1rem;
+    width: 15rem;
+    position: relative;
+    cursor: pointer;
+
+    span {
+        color: var(--color-text);
+        font-size: 2rem;
+    }
+
+    &__header {
+        all: unset;
+        font-size: 1.6rem;
+    }
+
+    &__listado {
+        position: absolute;
+    }
+}
+
+.filtros-contenedor.mostrar {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.filtros__aplicar {
+    all: unset;
+    background-color: var(--color-primary);
+    color: var(--blanco);
+    padding: 0 1rem;
+    cursor: pointer;
+    transition: all .1s ease-in;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    p {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        background-color: var(--color-primary-hover);
+    }
+}

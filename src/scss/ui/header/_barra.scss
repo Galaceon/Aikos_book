@@ -99,8 +99,33 @@
         width: 20rem;
     }
     //FILTROS
-    &__filtros {
-        @include m.boton(var(--color-primary), var(--blanco));
+    &__filtros-wrapper {
+        position: relative;
+    }
+    &__filtros-btn {
+        all: unset;
+        background-color: var(--color-primary);
+        border-radius: 5rem;
+        border: solid 1px var(--color-primary);
+        padding: .8rem 1.5rem;
+        color: var(--blanco);
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+
+        transition: all .15s ease;
+
+        &:hover {
+            background-color: transparent;
+            color: var(--color-text);
+        }
+
+        &.abierto {
+            background-color: transparent;
+            color: var(--color-text);
+        }
     }
 
     // NAVEGACIÓN
@@ -334,7 +359,7 @@
         font-size: 1.6rem;
     }
     &__filtros--mobile {
-        @extend .barra__filtros;
+        
         width: 10rem;
     }
 
@@ -379,4 +404,12 @@
         margin: 2rem auto;
         cursor: pointer;
     }
+}
+
+.barra__filtros-icon {
+    transition: transform .2s ease;
+}
+
+.barra__filtros-btn.abierto .barra__filtros-icon {
+    transform: rotate(180deg);
 }

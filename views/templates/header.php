@@ -16,13 +16,47 @@
                 <span class="barra__search-img material-symbols-outlined">search</span>
                 <input class="barra__input js-buscador" id="buscador-desktop" type="text" placeholder="Buscar reseña...">
 
-                <ul id="listado-reviews" class="listado-filtros listado-filtros--principal"></ul>
+                <ul id="listado-reviews" class="listado-filtros listado-filtros--principal js-listado-reviews"></ul>
             </div>
 
             <!-- FILTROS -->
-            <div class="barra__filtros">
-                Filtros
-                <span class="barra__symbol material-symbols-outlined">keyboard_arrow_down</span>
+            <div class="barra__filtros-wrapper">
+                <button class="barra__filtros-btn" id="filtros-button">
+                    <span>Filtros</span>
+                    <span class="barra__filtros-icon material-symbols-outlined">keyboard_arrow_down</span>
+                </button>
+
+                <div class="filtros-contenedor">
+                    <!-- TAGS -->
+                    <div class="filtro" data-filtro="tag">
+                        <button class="filtro__header">
+                            Tags
+                        </button>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+
+                        <ul class="filtro__listado js-filtro-tags">
+                            
+                        </ul>
+                    </div>
+
+                    <!-- AUTORES -->
+                    <div class="filtro" data-filtro="author">
+                        <button class="filtro__header">
+                            Autores
+                        </button>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        
+                        <ul class="filtro__listado js-filtro-authors">
+                            
+                        </ul>
+                    </div>
+
+                    <!-- BOTÓN FILTRAR-->
+                    <button class="filtros__aplicar">
+                        <span class="material-symbols-outlined">filter_alt</span>
+                        <p>Filtrar</p>
+                    </button>
+                </div>
             </div>
         </div>
 
