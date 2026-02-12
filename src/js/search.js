@@ -56,6 +56,7 @@
             reviews.forEach(review => {
                 const li = document.createElement('LI');
                 li.classList.add('listado-filtros__filtro');
+                li.classList.add('listado-filtros__mainpage');
                 li.textContent = review.title;
                 li.dataset.reviewSlug = review.slug;
                 li.addEventListener('click', () => {

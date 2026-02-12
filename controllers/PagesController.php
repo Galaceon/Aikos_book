@@ -37,7 +37,20 @@ class PagesController {
             header('Location: /?page=1');
         }
         $registros_por_pagina = 12;
-        $total = Review::total();
+
+        $tag = $_GET['tag'] ?? null;
+        $author = $_GET['author'] ?? null;
+
+        $filtros = [
+            'tag' => $tag,
+            'author' => $author
+        ];
+
+        if ($tag || $author) {
+            $total = Review::totalFiltrado($filtros);
+        } else {
+            $total = Review::total();
+        }
 
         if($total > 0) {
             $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
@@ -46,7 +59,18 @@ class PagesController {
                 header('Location: /?page=1');
             }
 
-            $reviews = Review::paginar($registros_por_pagina, $paginacion->offset());
+            if ($tag || $author) {
+                $reviews = Review::filtrarPaginado(
+                    $filtros,
+                    $registros_por_pagina,
+                    $paginacion->offset()
+                );
+            } else {
+                $reviews = Review::paginar(
+                    $registros_por_pagina,
+                    $paginacion->offset()
+                );
+            }
 
             $paginacionHTML = $paginacion->paginacion();
         }

@@ -69,7 +69,9 @@ class APIAuthors {
     }
 
     public static function all() {
-        $authors = Author::orderBy('name');
+        $authors = Author::ordenar('name', 'ASC');
+
+        header('Content-Type: application/json');
 
         echo json_encode(array_map(fn($author) => [
             'id' => $author->id,

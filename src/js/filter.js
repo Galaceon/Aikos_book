@@ -32,8 +32,8 @@
 
         async function cargarFiltros() {
             const [tagsRes, authorsRes] = await Promise.all([
-                fetch('/api/public/tags'),
-                fetch('/api/public/authors')
+                fetch('/api/tags/all'),
+                fetch('/api/authors/all')
             ]);
 
             const tags = await tagsRes.json();

@@ -89,4 +89,75 @@ class Review extends ActiveRecord {
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
+
+    public static function totalFiltrado($filtros = []) {
+        $tag = $filtros['tag'] ?? null;
+        $author = $filtros['author'] ?? null;
+
+        $joins = [];
+        $wheres = [];
+
+        if ($tag) {
+            $joins[] = "INNER JOIN review_tag rt ON rt.review_id = reviews.id";
+            $joins[] = "INNER JOIN tags t ON t.id = rt.tag_id";
+            $wheres[] = "t.slug = '" . self::$db->escape_string($tag) . "'";
+        }
+
+        if ($author) {
+            $joins[] = "INNER JOIN review_author ra ON ra.review_id = reviews.id";
+            $joins[] = "INNER JOIN authors a ON a.id = ra.author_id";
+            $wheres[] = "a.slug = '" . self::$db->escape_string($author) . "'";
+        }
+
+        $query = "SELECT COUNT(DISTINCT reviews.id) as total FROM reviews ";
+
+        if (!empty($joins)) {
+            $query .= implode(' ', $joins);
+        }
+
+        if (!empty($wheres)) {
+            $query .= " WHERE " . implode(' AND ', $wheres);
+        }
+
+        $resultado = self::$db->query($query);
+        $row = $resultado->fetch_assoc();
+
+        return $row['total'] ?? 0;
+    }
+
+    public static function filtrarPaginado($filtros = [], $limit, $offset) {
+        $tag = $filtros['tag'] ?? null;
+        $author = $filtros['author'] ?? null;
+
+        $joins = [];
+        $wheres = [];
+
+        if ($tag) {
+            $joins[] = "INNER JOIN review_tag rt ON rt.review_id = reviews.id";
+            $joins[] = "INNER JOIN tags t ON t.id = rt.tag_id";
+            $wheres[] = "t.slug = '" . self::$db->escape_string($tag) . "'";
+        }
+
+        if ($author) {
+            $joins[] = "INNER JOIN review_author ra ON ra.review_id = reviews.id";
+            $joins[] = "INNER JOIN authors a ON a.id = ra.author_id";
+            $wheres[] = "a.slug = '" . self::$db->escape_string($author) . "'";
+        }
+
+        $query = "SELECT DISTINCT reviews.* FROM reviews ";
+
+        if (!empty($joins)) {
+            $query .= implode(' ', $joins);
+        }
+
+        if (!empty($wheres)) {
+            $query .= " WHERE " . implode(' AND ', $wheres);
+        }
+
+        $query .= " ORDER BY reviews.created_at DESC";
+        $query .= " LIMIT " . intval($limit);
+        $query .= " OFFSET " . intval($offset);
+
+        return self::consultarSQL($query);
+    }
 }

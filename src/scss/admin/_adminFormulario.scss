@@ -186,6 +186,11 @@
             background-color: var(--color-surface-lightness-alt);
         }
     }
+
+    &__mainpage {
+        text-align: left
+    }
+
     &__filtro--error {
         @extend .listado-filtros__filtro;
         color: var(--rojo);

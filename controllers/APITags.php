@@ -69,8 +69,9 @@ class APITags {
     }
 
     public static function all() {
-        // API pública → sin is_admin
-        $tags = Tag::orderBy('name');
+        $tags = Tag::ordenar('name', 'ASC');
+
+        header('Content-Type: application/json');
 
         echo json_encode(array_map(fn($tag) => [
             'id' => $tag->id,
