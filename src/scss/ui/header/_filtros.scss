@@ -48,7 +48,23 @@
     }
 
     &__listado {
+        @include m.reset-lista;
         position: absolute;
+        top: -100px;
+        left: 0;
+        padding: 1rem;
+        background: var(--color-surface);
+        overflow: scroll;
+        max-height: 20rem;
+        border: solid 1px var(--color-primary);
+        opacity: 0;
+        transform: scale(0);
+        transition: all .2s ease-in;
+    }
+    &__item {
+        border-bottom: solid 1px var(--color-primary);
+        padding: .5rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -76,5 +92,16 @@
 
     &:hover {
         background-color: var(--color-primary-hover);
+    }
+}
+
+.filtro.abierto .filtro__listado {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    top: 35px;
+
+    span {
+        transform: rotate(180deg);
     }
 }

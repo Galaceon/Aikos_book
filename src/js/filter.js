@@ -10,10 +10,33 @@
     if(filtrosBtn) {
         if(!filtrosBtn) return;
 
+        const filtros = document.querySelectorAll('.filtro');
+
+        filtros.forEach(filtro => {
+
+            filtro.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const estaAbierto = filtro.classList.contains('abierto');
+
+                // Cerrar todos primero
+                filtros.forEach(f => f.classList.remove('abierto'));
+
+                // Si no estaba abierto, lo abrimos
+                if (!estaAbierto) {
+                    filtro.classList.add('abierto');
+                }
+            });
+        });
+
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.barra__filtros-wrapper')) {
                 filtrosBtn.classList.remove('abierto');
                 filtrosContenedor.classList.remove('mostrar');
+
+                document.querySelectorAll('.filtro').forEach(f => {
+                    f.classList.remove('abierto');
+                });
             }
         });
 
