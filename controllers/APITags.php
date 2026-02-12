@@ -67,4 +67,15 @@ class APITags {
             }
         }
     }
+
+    public static function all() {
+        // API pública → sin is_admin
+        $tags = Tag::orderBy('name');
+
+        echo json_encode(array_map(fn($tag) => [
+            'id' => $tag->id,
+            'name' => $tag->name,
+            'slug' => $tag->slug
+        ], $tags));
+    }
 }

@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="review__comments">
                                     <span class="material-symbols-outlined">comment</span>
-                                    8
+                                    0
                                 </div>
                             </div>
 

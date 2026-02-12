@@ -87,5 +87,7 @@ $router->post('/api/likes', [APILikes::class, 'toggle']);
 
 $router->get('/api/search', [APISearch::class, 'index']);
 
+$router->get('/api/public/tags', [APITags::class, 'all']);
+$router->get('/api/public/authors', [APIAuthors::class, 'all']);
 
 $router->comprobarRutas();

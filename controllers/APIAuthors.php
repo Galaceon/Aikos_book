@@ -67,4 +67,14 @@ class APIAuthors {
             }
         }
     }
+
+    public static function all() {
+        $authors = Author::orderBy('name');
+
+        echo json_encode(array_map(fn($author) => [
+            'id' => $author->id,
+            'name' => $author->name,
+            'slug' => $author->slug
+        ], $authors));
+    }
 }
