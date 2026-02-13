@@ -54,6 +54,8 @@
     span {
         color: var(--color-text);
         font-size: 2rem;
+
+        transition: all .1s ease-in-out;
     }
 
     &__header {
@@ -119,7 +121,9 @@
     transform: scale(1);
     pointer-events: auto;
     top: 35px;
-
+}
+.filtro.abierto {
+    background-color: var(--color-surface-lightness-alt);
     span {
         transform: rotate(180deg);
     }
