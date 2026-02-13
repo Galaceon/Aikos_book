@@ -1,46 +1,27 @@
 (function() {
+
     const filtrosEstado = {
         tag: null,
         author: null
     };
 
-    const filtrosBtn = document.querySelector('#filtros-button');
-    const filtrosContenedor = document.querySelector('.filtros-contenedor');
+    const wrappers = document.querySelectorAll('.barra__filtros-wrapper');
 
-    if(filtrosBtn) {
-        if(!filtrosBtn) return;
+    if (!wrappers.length) return;
 
-        const filtros = document.querySelectorAll('.filtro');
+    let filtrosCargados = false;
 
-        filtros.forEach(filtro => {
+    wrappers.forEach(wrapper => {
 
-            filtro.addEventListener('click', (e) => {
-                e.stopPropagation();
+        const filtrosBtn = wrapper.querySelector('.barra__filtros-btn');
+        const filtrosContenedor = wrapper.querySelector('.filtros-contenedor');
+        const filtros = wrapper.querySelectorAll('.filtro');
+        const aplicarBtn = wrapper.querySelector('.filtros__aplicar');
 
-                const estaAbierto = filtro.classList.contains('abierto');
+        // Toggle contenedor principal
+        filtrosBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
 
-                // Cerrar todos primero
-                filtros.forEach(f => f.classList.remove('abierto'));
-
-                // Si no estaba abierto, lo abrimos
-                if (!estaAbierto) {
-                    filtro.classList.add('abierto');
-                }
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.barra__filtros-wrapper')) {
-                filtrosBtn.classList.remove('abierto');
-                filtrosContenedor.classList.remove('mostrar');
-
-                document.querySelectorAll('.filtro').forEach(f => {
-                    f.classList.remove('abierto');
-                });
-            }
-        });
-
-        filtrosBtn.addEventListener('click', () => {
             filtrosBtn.classList.toggle('abierto');
             filtrosContenedor.classList.toggle('mostrar');
 
@@ -50,64 +31,22 @@
             }
         });
 
+        // Abrir filtros individuales
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', (e) => {
+                e.stopPropagation();
 
-        let filtrosCargados = false;
+                const estaAbierto = filtro.classList.contains('abierto');
 
-        async function cargarFiltros() {
-            const [tagsRes, authorsRes] = await Promise.all([
-                fetch('/api/tags/all'),
-                fetch('/api/authors/all')
-            ]);
+                filtros.forEach(f => f.classList.remove('abierto'));
 
-            const tags = await tagsRes.json();
-            const authors = await authorsRes.json();
-
-            renderListado(
-                document.querySelector('.js-filtro-tags'), tags, 'tag'
-            );
-
-            renderListado(
-                document.querySelector('.js-filtro-authors'), authors, 'author'
-            );
-        }
-
-        function renderListado(ul, items, tipo) {
-            ul.innerHTML = '';
-
-            items.forEach(item => {
-                const li = document.createElement('li');
-                li.classList.add('filtro__item');
-                li.textContent = item.name;
-                li.dataset.slug = item.slug;
-
-                li.addEventListener('click', () => {
-                    seleccionarFiltro(tipo, item, ul);
-                });
-
-                ul.appendChild(li);
+                if (!estaAbierto) {
+                    filtro.classList.add('abierto');
+                }
             });
-        }
+        });
 
-        function seleccionarFiltro(tipo, item, ul) {
-            // Guardar estado
-            filtrosEstado[tipo] = item.slug;
-
-            // UI: marcar activo
-            ul.querySelectorAll('.filtro__item').forEach(li => {
-                li.classList.remove('activo');
-            });
-
-            const liActivo = ul.querySelector(`[data-slug="${item.slug}"]`);
-            liActivo.classList.add('activo');
-
-            // Cambiar texto del botón
-            const filtro = ul.closest('.filtro');
-            const header = filtro.querySelector('.filtro__header');
-            header.textContent = item.name;
-        }
-
-        const aplicarBtn = document.querySelector('.filtros__aplicar');
-
+        // Botón aplicar
         aplicarBtn.addEventListener('click', () => {
             const params = new URLSearchParams();
 
@@ -122,5 +61,77 @@
             window.location.href = `/?${params.toString()}`;
         });
 
+    });
+
+    // Cerrar todo si se hace click fuera
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.barra__filtros-wrapper')) {
+            wrappers.forEach(wrapper => {
+                const btn = wrapper.querySelector('.barra__filtros-btn');
+                const cont = wrapper.querySelector('.filtros-contenedor');
+
+                if (btn) btn.classList.remove('abierto');
+                if (cont) cont.classList.remove('mostrar');
+                wrapper.querySelectorAll('.filtro').forEach(f => {
+                    f.classList.remove('abierto');
+                });
+            });
+        }
+    });
+
+    // Cargar datos
+    async function cargarFiltros() {
+        const [tagsRes, authorsRes] = await Promise.all([
+            fetch('/api/tags/all'),
+            fetch('/api/authors/all')
+        ]);
+
+        const tags = await tagsRes.json();
+        const authors = await authorsRes.json();
+
+        renderListado('.js-filtro-tags', tags, 'tag');
+        renderListado('.js-filtro-authors', authors, 'author');
     }
+
+    function renderListado(selector, items, tipo) {
+        const uls = document.querySelectorAll(selector);
+
+        uls.forEach(ul => {
+            ul.innerHTML = '';
+
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('filtro__item');
+                li.textContent = item.name;
+                li.dataset.slug = item.slug;
+
+                li.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    seleccionarFiltro(tipo, item);
+                });
+
+                ul.appendChild(li);
+            });
+        });
+    }
+
+    function seleccionarFiltro(tipo, item) {
+        filtrosEstado[tipo] = item.slug;
+
+        const uls = document.querySelectorAll(`.js-filtro-${tipo}s`);
+
+        uls.forEach(ul => {
+            ul.querySelectorAll('.filtro__item').forEach(li => {
+                li.classList.remove('activo');
+            });
+
+            const liActivo = ul.querySelector(`[data-slug="${item.slug}"]`);
+            if (liActivo) liActivo.classList.add('activo');
+
+            const filtro = ul.closest('.filtro');
+            const header = filtro.querySelector('.filtro__header');
+            header.textContent = item.name;
+        });
+    }
+
 })();
