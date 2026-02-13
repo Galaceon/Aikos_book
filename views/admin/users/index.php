@@ -1,7 +1,7 @@
 <div class="dashboard__contenedor-header">
     <div class="dashboard__encabezado">
         <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
-        <p class="dashboard__text">Administra o elimina los usuarios registrados.</p>
+        <p class="dashboard__text">Revisa o elimina los usuarios registrados.</p>
     </div>
 </div>
 

@@ -1,0 +1,40 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.bloques__grid {
+    display: grid;
+    @include m.grid(1, 3rem);
+    
+    @include m.tablet {
+        @include m.grid(2, 3rem);
+    }
+}
+
+.bloque {
+    background: #F49325;
+    background: linear-gradient(149deg, var(--color-primary) 0%, var(--color-primary-active) 50%);
+    color: var(--color-text);
+    padding: 0 3rem 4rem 3rem;
+    border-radius: 3rem;
+
+    &__title {
+        text-align: center;
+        font-size: 4rem;
+    }
+    &__numero {
+        font-size: 3.5rem;
+        font-weight: v.$bold;
+        text-align: center
+    }
+    &__lista {
+        @include m.reset-lista;
+        font-size: 2rem;
+        line-height: 1.7;
+        text-align: center;
+
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+}
