@@ -13,6 +13,7 @@
     width: 30rem;
     cursor: auto;
     padding: 2rem .5rem;
+    border-radius: 2rem;
 
     @include m.tablet {
         flex-wrap: nowrap;
@@ -20,6 +21,7 @@
         width: auto;
         right: 0;
         padding: 1.5rem 2rem;
+        border-radius: 5rem;
     }
 
     @include m.xl_desktop {
@@ -46,9 +48,11 @@
     width: 12rem;
     position: relative;
     cursor: pointer;
+    border-radius: 1rem;
 
     @include m.tablet {
         width: 15rem;
+        border-radius: 5rem;
     }
 
     span {
@@ -101,10 +105,15 @@
     padding: .5rem 1rem;
     cursor: pointer;
     transition: all .1s ease-in;
+    border-radius: 1rem;
 
     display: flex;
     align-items: center;
     gap: .5rem;
+
+    @include m.tablet {
+        border-radius: 5rem;
+    }
 
     p {
         margin: 0;
