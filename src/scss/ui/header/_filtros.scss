@@ -81,6 +81,7 @@
         transform: scale(0);
         transition: all .2s ease-in;
         min-width: 12.5rem;
+        border-radius: 2rem;
 
         @include m.tablet {
             min-width: auto;
@@ -90,6 +91,11 @@
         border-bottom: solid 1px var(--color-primary);
         padding: .5rem;
         margin-bottom: 1rem;
+        transition: all .1s ease-in-out;
+
+        &:hover {
+            background-color: var(--color-surface-alt);
+        }
     }
 }
 
