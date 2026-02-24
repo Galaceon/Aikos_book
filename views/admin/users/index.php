@@ -30,7 +30,7 @@
                             <form action="/admin/users/delete" method="POST" class="table__delete-form">
                                 <input type="hidden" name="id" value="<?php echo $user->id; ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
-                                    <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                    <span class="material-symbols-outlined accion__eliminar" translate="no">delete</span>
                                 </button>
                             </form>
                         </td>
@@ -54,7 +54,7 @@
                         <form action="/admin/users/delete" method="POST" class="table__delete-form">
                             <input type="hidden" name="id" value="<?php echo $user->id; ?>">
                             <button class="table__accion table__accion--eliminar" type="submit">
-                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                <span class="material-symbols-outlined accion__eliminar" translate="no">delete</span>
                             </button>
                         </form>
                     </div>

@@ -39,7 +39,7 @@ class Paginacion {
     public function enlace_anterior() {
         $html = '';
         if($this->pagina_anterior()) {
-            $html .= "<a class=\"paginacion__enalce paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; Anterior</a>";
+            $html .= "<a class=\"paginacion__enalce paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; Entradas Recientes</a>";
         }
         return $html;
     }
@@ -47,7 +47,7 @@ class Paginacion {
     public function enlace_siguiente() {
         $html = '';
         if($this->pagina_siguiente()) {
-            $html .= "<a class=\"paginacion__enalce paginacion__enlace--texto\" href=\"?page={$this->pagina_siguiente()}\">Siguiente &raquo;</a>";
+            $html .= "<a class=\"paginacion__enalce paginacion__enlace--texto\" href=\"?page={$this->pagina_siguiente()}\">Entradas Antiguas &raquo;</a>";
         }
         return $html;
     }

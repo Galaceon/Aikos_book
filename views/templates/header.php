@@ -4,7 +4,7 @@
         <!-- LOGOTIPO -->
         <a href="/" class="barra__enlace" data-value="AIKO'S BOOK">
             <div class="barra__logotipo">
-                <span class="barra__logo material-symbols-outlined">auto_stories</span>
+                <span class="barra__logo material-symbols-outlined" translate="no">auto_stories</span>
                 <h2 class="barra__titulo">AIKO'S BOOK</h2>
             </div>
         </a>
@@ -13,7 +13,7 @@
         <div class="barra__buscadores">
             <!-- BUSCADOR -->
             <div class="barra__buscador" id="barra-buscador">
-                <span class="barra__search-img material-symbols-outlined">search</span>
+                <span class="barra__search-img material-symbols-outlined" translate="no">search</span>
                 <input class="barra__input js-buscador" id="buscador-desktop" type="text" placeholder="Buscar reseña...">
 
                 <ul id="listado-reviews" class="listado-filtros listado-filtros--principal js-listado-reviews"></ul>
@@ -23,7 +23,7 @@
             <div class="barra__filtros-wrapper">
                 <button class="barra__filtros-btn" id="filtros-button">
                     <span>Filtros</span>
-                    <span class="barra__filtros-icon material-symbols-outlined">keyboard_arrow_down</span>
+                    <span class="barra__filtros-icon material-symbols-outlined" translate="no">keyboard_arrow_down</span>
                 </button>
 
                 <div class="filtros-contenedor">
@@ -32,7 +32,7 @@
                         <button class="filtro__header">
                             Tags
                         </button>
-                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        <span class="material-symbols-outlined" translate="no">keyboard_arrow_down</span>
 
                         <ul class="filtro__listado js-filtro-tags">
                             
@@ -44,7 +44,7 @@
                         <button class="filtro__header">
                             Autores
                         </button>
-                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        <span class="material-symbols-outlined" translate="no">keyboard_arrow_down</span>
                         
                         <ul class="filtro__listado js-filtro-authors">
                             
@@ -53,7 +53,7 @@
 
                     <!-- BOTÓN FILTRAR-->
                     <button class="filtros__aplicar">
-                        <span class="material-symbols-outlined">filter_alt</span>
+                        <span class="material-symbols-outlined" translate="no">filter_alt</span>
                         <p>Filtrar</p>
                     </button>
                 </div>
@@ -65,21 +65,21 @@
             <?php if(is_auth()) { ?>
                 <a href="/profile">
                     <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">frame_person</span>
+                        <span class="barra__search-img material-symbols-outlined" translate="no">frame_person</span>
                         <p class="barra__nav-text">PERFIL</p>
                     </div>
                 </a>
                 <?php  if(is_admin()) { ?>
                     <a href="/admin/dashboard">
                         <div class="barra__nav-enlaces barra__nav-enlaces-admin">
-                            <span class="material-symbols-outlined">view_list</span>
+                            <span class="material-symbols-outlined" translate="no">view_list</span>
                             <p class="barra__nav-text">ADMINISTRAR</p>
                         </div>
                     </a>
                 <?php } else { ?>
                     <a href="/saved">
                         <div class="barra__nav-enlaces">
-                            <span class="barra__search-img material-symbols-outlined">bookmarks</span>
+                            <span class="barra__search-img material-symbols-outlined" translate="no">bookmarks</span>
                             <p class="barra__nav-text">GUARDADOS</p>
                         </div>
                     </a>
@@ -87,7 +87,7 @@
 
                 <div class="barra__nav-enlaces">
                     <form method="POST" action="/logout" class="barra__form">
-                        <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined">logout</span></label>
+                        <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined" translate="no">logout</span></label>
                         <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit">
                     </form>
                 </div>
@@ -95,7 +95,7 @@
 
                 <a href="/login" class="barra__login">
                     <div class="barra__nav-enlaces">
-                        <span class="barra__search-img material-symbols-outlined">login</span>
+                        <span class="barra__search-img material-symbols-outlined" translate="no">login</span>
                         <p class="barra__nav-text barra__nav-text--login">LOGIN</p>
                     </div>
                 </a>
@@ -107,7 +107,7 @@
         <!-- DARKMODE BUTTON -->
         <div class="barra__darkmode">
             <div class="barra__darkmode-contenedor">
-                <span class="material-symbols-outlined">brightness_4</span>
+                <span class="material-symbols-outlined" translate="no">brightness_4</span>
             </div>
         </div>
 
@@ -128,7 +128,7 @@
             <div class="barra__buscadores--mobile">
                 <!-- BUSCADOR -->
                 <div class="barra__buscador barra__buscador--mobile">
-                    <span class="barra__search-img material-symbols-outlined">search</span>
+                    <span class="barra__search-img material-symbols-outlined" translate="no">search</span>
                     <input class="barra__input--mobile js-buscador" id="buscador-mobile" type="text" placeholder="Buscar reseña...">
 
                     <ul class="listado-filtros listado-filtros--mobile js-listado-reviews"></ul>
@@ -138,7 +138,7 @@
                 <div class="barra__filtros-wrapper">
                     <button class="barra__filtros-btn" id="filtros-button">
                         <span>Filtros</span>
-                        <span class="barra__filtros-icon material-symbols-outlined">keyboard_arrow_down</span>
+                        <span class="barra__filtros-icon material-symbols-outlined" translate="no">keyboard_arrow_down</span>
                     </button>
 
                     <div class="filtros-contenedor">
@@ -147,7 +147,7 @@
                             <button class="filtro__header">
                                 Tags
                             </button>
-                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                            <span class="material-symbols-outlined" translate="no">keyboard_arrow_down</span>
 
                             <ul class="filtro__listado js-filtro-tags">
                                 
@@ -159,7 +159,7 @@
                             <button class="filtro__header">
                                 Autores
                             </button>
-                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                            <span class="material-symbols-outlined" translate="no">keyboard_arrow_down</span>
                             
                             <ul class="filtro__listado js-filtro-authors">
                                 
@@ -168,7 +168,7 @@
 
                         <!-- BOTÓN FILTRAR-->
                         <button class="filtros__aplicar">
-                            <span class="material-symbols-outlined">filter_alt</span>
+                            <span class="material-symbols-outlined" translate="no">filter_alt</span>
                             <p>Filtrar</p>
                         </button>
                     </div>
@@ -181,7 +181,7 @@
                 <?php if(is_auth()) { ?>
                     <a href="/profile">
                         <div class="barra__nav-enlaces--mobile">
-                            <span class="barra__search-img--mobile material-symbols-outlined">frame_person</span>
+                            <span class="barra__search-img--mobile material-symbols-outlined" translate="no">frame_person</span>
                             <p class="barra__nav-text-mobile">PERFIL</p>
                         </div>
                     </a>
@@ -189,7 +189,7 @@
                     <?php if(is_admin()) { ?>
                         <a href="/admin/dashboard">
                             <div class="barra__nav-enlaces--mobile">
-                                <span class="barra__search-img--mobile material-symbols-outlined">view_list</span>
+                                <span class="barra__search-img--mobile material-symbols-outlined" translate="no">view_list</span>
                                 <p class="barra__nav-text-mobile">ADMINISTRAR</p>
                             </div>
                         </a>
@@ -198,7 +198,7 @@
 
                         <a href="/saved">
                             <div class="barra__nav-enlaces--mobile">
-                                <span class="barra__search-img--mobile material-symbols-outlined">bookmarks</span>
+                                <span class="barra__search-img--mobile material-symbols-outlined" translate="no">bookmarks</span>
                                 <p class="barra__nav-text-mobile">GUARDADOS</p>
                             </div>
                         </a>
@@ -207,7 +207,7 @@
 
                     <div class="barra__nav-enlaces--mobile">
                         <form method="POST" action="/logout" class="barra__form">
-                            <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined">logout</span></label>
+                            <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img--mobile material-symbols-outlined" translate="no">logout</span></label>
                             <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit--mobile">
                         </form>
                     </div>
@@ -216,7 +216,7 @@
 
                     <a href="/login">
                         <div class="barra__nav-enlaces--mobile">
-                            <span class="barra__search-img--mobile material-symbols-outlined">login</span>
+                            <span class="barra__search-img--mobile material-symbols-outlined" translate="no">login</span>
                             <p class="barra__nav-text-mobile">LOGIN</p>
                         </div>
                     </a>
@@ -228,7 +228,7 @@
             <!-- DARKMODE BUTTON -->
             <div class="barra__darkmode--mobile">
                 <div class="barra__darkmode-contenedor--mobile">
-                    <span class="material-symbols-outlined">brightness_4</span>
+                    <span class="material-symbols-outlined" translate="no">brightness_4</span>
                 </div>
             </div>
         </aside>
@@ -241,6 +241,6 @@
 <header class="header">
     <div class="header__contenido">
         <h1 class="header__titulo">AIKO'S BOOK</h1>
-        <h3 class="header__descripcion">Reseñas literarias de Laura Ruiz</h3>
+        <h3 class="header__descripcion">Recuerdos de tus libros favoritos</h3>
     </div>
 </header>

@@ -10,7 +10,7 @@
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `review_id=${reviewId}`
+            body: `review_id=${reviewId}&csrf_token=${window.CSRF_TOKEN}`
         })
         .then(res => res.json())
         .then(data => {

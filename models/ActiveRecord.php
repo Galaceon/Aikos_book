@@ -73,22 +73,41 @@ class ActiveRecord {
 
     // Sanitizar los datos antes de guardarlos en la BD
     public function sanitizarAtributos() {
+
         $atributos = $this->atributos();
         $sanitizado = [];
+
         foreach($atributos as $key => $value ) {
-            $sanitizado[$key] = self::$db->escape_string($value);
+
+            if(is_null($value)) {
+                $sanitizado[$key] = null;
+            } else {
+                $sanitizado[$key] = self::$db->escape_string($value);
+            }
+
         }
+
         return $sanitizado;
     }
 
     // Sincroniza BD con Objetos en memoria
-    public function sincronizar($args=[]) { 
+    public function sincronizar($args = []) {
+
+        if(!is_array($args)) return;
+
         foreach($args as $key => $value) {
-            if(property_exists($this, $key) && !is_null($value)) {
-                $this->$key = $value;
+
+            if(in_array($key, static::$columnasDB, true)) {
+
+                if($key === 'id') continue;
+
+                if(!is_null($value)) {
+                    $this->$key = $value;
+                }
             }
         }
     }
+
 
     // Registros - CRUD
     public function guardar() {
@@ -247,25 +266,29 @@ class ActiveRecord {
         return array_shift($total);
     }
 
-    // crea un nuevo registro
     public function crear() {
-        // Sanitizar los datos
+
         $atributos = $this->sanitizarAtributos();
 
-        // Insertar en la base de datos
-        $query = " INSERT INTO " . static::$tabla . " ( ";
-        $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES ('"; 
-        $query .= join("', '", array_values($atributos));
-        $query .= "') ";
+        $columnas = join(', ', array_keys($atributos));
 
-        // debuguear($query); // Descomentar si no te funciona algo
+        $valores = [];
 
-        // Resultado de la consulta
+        foreach($atributos as $valor) {
+            if(is_null($valor)) {
+                $valores[] = "NULL";
+            } else {
+                $valores[] = "'" . $valor . "'";
+            }
+        }
+
+        $query = "INSERT INTO " . static::$tabla . " ($columnas) VALUES (" . join(', ', $valores) . ")";
+
         $resultado = self::$db->query($query);
+
         return [
-           'resultado' =>  $resultado,
-           'id' => self::$db->insert_id
+        'resultado' =>  $resultado,
+        'id' => self::$db->insert_id
         ];
     }
 

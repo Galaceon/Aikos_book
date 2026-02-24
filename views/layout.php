@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="/build/img/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiko's Book - <?php echo $titulo; ?></title>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
-    <link rel="stylesheet" href="/build/css/app.css">
+    <link rel="stylesheet" href="/build/css/app.css?v=<?php echo filemtime('build/css/app.css'); ?>">
 
     <script src="https://kit.fontawesome.com/8445ceb779.js" crossorigin="anonymous"></script>
 </head>
@@ -19,10 +20,10 @@
     <?php 
         include_once __DIR__ .'/templates/header.php';
         echo $contenido;
-        include_once __DIR__ .'/templates/footer.php'; 
+        include_once __DIR__ .'/templates/footer.php';
     ?>
 
-    <script src="/build/js/bundle.min.js"></script>
+    <script src="/build/js/bundle.min.js?v=<?php echo filemtime('build/js/bundle.min.js'); ?>"></script>
     <script>window.CSRF_TOKEN = "<?php echo csrf_token(); ?>";</script>
 </body>
 </html>

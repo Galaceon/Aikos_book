@@ -5,6 +5,7 @@ namespace Controllers;
 use Classes\Paginacion;
 use Intervention\Image\ImageManagerStatic as Image;
 use Model\Author;
+use Model\Comment;
 use Model\Review;
 use Model\ReviewLike;
 use Model\ReviewSaved;
@@ -16,7 +17,6 @@ class PagesController {
 
 
     public static function index(Router $router) {
-
         $reviews = [];
         $paginacionHTML = '';
 
@@ -107,23 +107,40 @@ class PagesController {
         ]);
     }
 
-    
     public static function review(Router $router) {
         $slug = $_GET['slug'];
         if(!$slug) header('Location: /');
 
         $review = Review::findBySlug($slug);
-        $review->imagen_actual = $review->image;
-        if(!$review) header('Location: /admin/reviws');
+        if(!$review) header('Location: /');
 
-        $reviewTags = Tag::relacionados('review_tag', 'tag_id', 'review_id', $review ->id);
-        $reviewAuthors = Author::relacionados('review_author', 'author_id', 'review_id', $review ->id);
+        $review->imagen_actual = $review->image;
+
+        $reviewTags = Tag::relacionados('review_tag', 'tag_id', 'review_id', $review->id);
+        $reviewAuthors = Author::relacionados('review_author', 'author_id', 'review_id', $review->id);
 
         $admin = Users::where('id', $review->admin_id);
 
         $reviewAnterior = Review::anterior($review->created_at);
         $reviewSiguiente = Review::siguiente($review->created_at);
-        
+
+        // 🔹 Obtener comentarios principales
+        $comentarios = Comment::comentariosPrincipales($review->id);
+
+        foreach($comentarios as $comentario) {
+
+            // 🔹 Añadir usuario al comentario
+            $comentario->usuario = Users::find($comentario->user_id);
+
+            // 🔹 Obtener respuestas
+            $comentario->respuestas = Comment::respuestas($comentario->id);
+
+            // 🔹 Añadir usuario a cada respuesta
+            foreach($comentario->respuestas as $respuesta) {
+                $respuesta->usuario = Users::find($respuesta->user_id);
+            }
+        }
+
         $router->render('pages/review', [
             'titulo' => "Aiko's Book",
             'review' => $review,
@@ -131,10 +148,11 @@ class PagesController {
             'reviewAuthors' => $reviewAuthors,
             'admin' => $admin,
             'reviewAnterior' => $reviewAnterior,
-            'reviewSiguiente' => $reviewSiguiente
-            
+            'reviewSiguiente' => $reviewSiguiente,
+            'comentarios' => $comentarios
         ]);
     }
+
 
 
     public static function profile(Router $router) {

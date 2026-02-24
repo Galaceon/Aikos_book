@@ -6,7 +6,7 @@
     @include m.contenedor-l;
 
     &__title {
-        color: var(--color-text);
+        color: var(--color-text-titles);
         @include m.texto-fluido(3.5rem, 6rem);
         border-bottom: solid 1px var(--color-text);
         margin: 3rem 0 4rem 0;
@@ -23,23 +23,49 @@
 
         @include m.tablet {
             display: grid;
-            grid-template-columns: minmax(200px, 15%) 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
     }
+    &__top-section {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+    &__bottom-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: space-between;
+    }
     &__section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: 
-            "top-left top-right"
-            "bottom-left bottom-right"
-        ;
-        margin-bottom: 7rem;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
 
         @include m.tablet {
-            display: block;
-            margin-bottom: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
         }
+    }
+    &__top-left {
+        color: var(--color-text-titles);
+        font-size: 3.5rem;
+        font-weight: v.$bold;
+        margin: 0;
+
+        @include m.tablet {
+            margin: 0 0 3rem 0 !important;
+        }
+    }
+    &__section-single {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: .3rem 0;
     }
     &__every-section {
         padding: 2rem;
@@ -69,31 +95,10 @@
         }
     }
     &__date {
-
-        @include m.tablet {
-            border-bottom: solid 1px var(--color-primary);
-            padding: 0 0 2rem 0;
-            text-align: left;
-        }
-    }
-    &__day {
-        font-size: 4.5rem;
-        color: var(--color-primary);
-        font-weight: v.$black;
-
-        @include m.tablet {
-            font-size: 5.5rem;
-            color: var(--color-primary);
-            font-weight: v.$black;
-        }
-    }
-    &__year {
-        font-size: 1.5rem;
+        font-size: 3rem;
         color: var(--color-text-muted);
-
-        @include m.tablet {
-            font-size: 1.7rem;
-        }
+        font-weight: v.$bold;
+        text-align: left;
     }
     &__section-titles {
         color: var(--color-text-muted);

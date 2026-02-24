@@ -3,7 +3,7 @@
 
         <a href="/" class="dashboard__enlace-principal" data-value="AIKO'S BOOK">
             <div class="dashboard__logotipo">
-                <span class="dashboard__logo material-symbols-outlined">auto_stories</span>
+                <span class="dashboard__logo material-symbols-outlined" translate="no">auto_stories</span>
                 <h2 class="dashboard__titulo">AIKO'S BOOK</h2>
             </div>
         </a>
@@ -11,13 +11,13 @@
         <div class="dashboard__header-right">
             <div class="dashboard__darkmode">
                 <div class="barra__darkmode-contenedor">
-                    <span class="material-symbols-outlined">brightness_4</span>
+                    <span class="material-symbols-outlined" translate="no">brightness_4</span>
                 </div>
             </div>
 
             <nav class="dashboard__nav-enlaces">
                 <form method="POST" action="/logout" class="barra__form">
-                    <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined">login</span></label>
+                    <label for="cerrar_sesion" class="barra__label"><span class="barra__search-img material-symbols-outlined" translate="no">login</span></label>
                     <input id="cerrar_sesion" type="submit" value="LOGOUT" class="barra__submit">
                 </form>
             </nav>

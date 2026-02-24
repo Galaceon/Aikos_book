@@ -11,7 +11,7 @@
         margin: 0 0 5rem 0;
         border-bottom: solid 1px var(--color-text-muted);
         text-align: center;
-        color: var(--color-text);
+        color: var(--color-text-titles);
 
         @include m.tablet {
             text-align: left;
@@ -57,14 +57,14 @@
     }
 
     &__image-contenedor {
-        max-height: 500px;
+        aspect-ratio: 2 / 3;
         overflow: hidden;
     }
 
     &__image {
-        height: auto;
-        margin: 0 auto;
-        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     &__information {

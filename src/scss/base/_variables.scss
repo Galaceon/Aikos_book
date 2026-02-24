@@ -9,28 +9,29 @@ $desktop: 1024px;
 $xl_desktop: 1200px;
 
 :root {
-    --color-bg: #ebe9e6;
-    --color-surface: #F8F4F4;
-    --color-surface-lightness: #F8F4F4;
+    --color-bg: #EBE9D1;
+    --color-surface: #f0eedd;
+    --color-surface-lightness: #f1f0e1;
     --color-surface-lightness-alt: #e7e4df;
     --color-surface-alt: #e2ded5;
 
     --color-range-slider: #e2ded5;
-    --color-thead: #fefefe;
+    --color-thead: #f3f2ec;
 
     --color-surface-extra: #E6D7D7;
     --color-primary-mode: #8B5CF6;
 
-    --color-border: #F47B25;
+    --color-border: #D8AE48;
 
-    --color-text: #11130F;
+    --color-text: #5B5031;
     --color-text-muted: #8A7260;
     --color-text-muted-bold: #8A7260;
     --color-text-inverse: #F8F4F4;
+    --color-text-titles: #3E3424;
 
-    --color-primary: #f49325;
-    --color-primary-hover: #d4960e;
-    --color-primary-active: #ffad14;
+    --color-primary: #D8AE48;
+    --color-primary-hover: #d1a43a;
+    --color-primary-active: #e0b653;
 
     --color-secondary: #8A7260;
 

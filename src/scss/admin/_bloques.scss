@@ -12,29 +12,34 @@
 }
 
 .bloque {
-    background: #F49325;
-    background: linear-gradient(149deg, var(--color-primary) 0%, var(--color-primary-active) 50%);
+    background: var(--color-thead);
     color: var(--blanco);
-    padding: 0 3rem 4rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 
     &__title {
-        text-align: center;
-        font-size: 4rem;
-    }
-    &__numero {
-        font-size: 3.5rem;
-        font-weight: v.$bold;
-        text-align: center
-    }
-    &__lista {
-        @include m.reset-lista;
         font-size: 2rem;
-        line-height: 1.7;
-        text-align: center;
 
         @include m.tablet {
-            text-align: left;
+            font-size: 3rem;
         }
     }
+    &__numero {
+        font-weight: v.$bold;
+        font-size: 1.8rem;
+        background-color: var(--color-primary);
+        padding: 1.5rem 2.2rem;
+        border-radius: 1.5rem;
+        margin-right: 2rem;
+        letter-spacing: .2rem;
+
+        @include m.tablet {
+            font-size: 2.4rem;
+        }
+    }
+
 }

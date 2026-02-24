@@ -8,6 +8,7 @@ use Controllers\APISearch;
 use Controllers\APITags;
 use Controllers\AuthController;
 use Controllers\AuthorsController;
+use Controllers\CommentController;
 use Controllers\DashboardController;
 use Controllers\PagesController;
 use Controllers\ReviewsController;
@@ -43,6 +44,7 @@ $router->get('/review', [PagesController::class, 'review']);
 $router->get('/profile', [PagesController::class, 'profile']);
 $router->post('/profile', [PagesController::class, 'profile']);
 $router->get('/saved', [PagesController::class, 'saved']);
+$router->post('/comment/create', [CommentController::class, 'create']);
 
 
 // ADMIN & APIs

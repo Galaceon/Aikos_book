@@ -2,7 +2,7 @@
     <div class="dashboard__contenedor-header dashboard__contenedor-header--form">
         <a href="/admin/reviews">
             <div class="dashboard__button dashboard__button--round">
-                <span class="material-symbols-outlined">arrow_back</span>
+                <span class="material-symbols-outlined" translate="no">arrow_back</span>
             </div>
         </a>
 

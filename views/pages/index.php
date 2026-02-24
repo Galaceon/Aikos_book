@@ -32,7 +32,7 @@
                                     
                                     <div class="review__rating">
                                         <?php echo $review->rating; ?>
-                                        <span class="material-symbols-outlined">star_rate</span>
+                                        <span class="material-symbols-outlined" translate="no">star_rate</span>
                                     </div>
                                     
                                 </div>
@@ -48,7 +48,7 @@
                                     <div class="review__likes">
                                         <?php $isLiked = !empty($likedReviews[$review->id]); ?>
                                         <button class="review__like-button <?php echo $isLiked ? 'liked' : ''; ?>" data-review-id="<?php echo $review->id; ?>">
-                                            <span class="material-symbols-outlined">
+                                            <span class="material-symbols-outlined" translate="no">
                                                 <?php echo $isLiked ? 'favorite' : 'favorite_border'; ?>
                                             </span>
                                             <span class="review__like-count">
@@ -57,7 +57,7 @@
                                         </button>
                                     </div>
                                     <div class="review__comments">
-                                        <span class="material-symbols-outlined">comment</span>
+                                        <span class="material-symbols-outlined" translate="no">comment</span>
                                         0
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                     ?>
 
                         <button class="review__save-button <?php echo $isSaved ? 'saved' : ''; ?>" data-review-id="<?php echo $review->id; ?>">
-                            <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined" translate="no">
                                 <?php echo $isSaved ? 'bookmark_added' : 'bookmark'; ?>
                             </span>
                         </button>

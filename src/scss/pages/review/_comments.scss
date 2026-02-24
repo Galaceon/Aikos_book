@@ -1,0 +1,139 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.comments {
+    @include m.contenedor;
+    margin: 8rem auto;
+    color: var(--color-text);
+
+    h3 {
+        color: var(--color-text);
+        border-bottom: solid 1px var(--color-text-muted);
+    }
+
+    &__button {
+        all: unset;
+        background-color: var(--color-primary);
+        border-radius: 5rem;
+        color: var(--blanco);
+        padding: 1rem 2rem;
+        width: auto;
+        margin: 2rem 0 4rem 0;
+        transition: all .1s ease-in-out;
+        align-self: flex-start;
+        cursor: pointer;
+        
+
+        &:hover {
+            background-color: var(--color-primary-hover);
+        }
+    }
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+   
+
+    textarea {
+        all: unset;
+        min-height: 13rem;
+        background-color: var(--color-surface);
+        padding: 2rem;
+        color: var(--color-text);
+        border-radius: 2rem;
+    }
+}
+
+.comment {
+    background-color: var(--color-surface-lightness);
+    padding: 2rem;
+    margin: 3rem 0;
+    color: var(--color-text);
+    border-radius: 3rem;
+
+    &--response {
+        border-left: solid 2px var(--color-primary);
+        border-radius: 0;
+        margin-left: 2rem;
+    }
+    &__textarea-response {
+        all: unset;
+        width: 100%;
+        max-width: 70rem;
+        background-color: var(--color-surface-lightness-alt);
+        border-radius: 2rem;
+        padding: 2rem;
+    }
+    &__reply-btn {
+        all: unset;
+        background-color: var(--color-primary);
+        padding: .4rem 2rem;
+        margin: 1rem 1rem 0 1rem;
+        border-radius: 5rem;
+        cursor: pointer;
+        color: var(--blanco);
+        transition: all .1s ease-in-out;
+        border: solid 1px var(--color-primary);
+
+        &:hover {
+            background-color: transparent;
+            color: var(--color-primary);
+        }
+
+        @include m.tablet {
+            margin: 0 1rem;
+        }
+    }
+    &__reply-submit-btn {
+        all: unset;
+        background-color: var(--color-primary);
+        padding: .4rem 2rem;
+        margin: 0 1rem;
+        border-radius: 5rem;
+        cursor: pointer;
+        color: var(--blanco);
+        transition: all .1s ease-in-out;
+        border: solid 1px var(--color-primary);
+        align-self: flex-start;
+        justify-self: flex-start;
+
+        &:hover {
+            background-color: transparent;
+            color: var(--color-primary);
+        }
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    &__user-image {
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
+        border: solid 2px var(--color-primary);
+    }
+    &__user-name {
+        font-weight: v.$bold;
+        font-size: 2rem;
+    }
+    &__content {
+        font-size: 1.7rem;
+        @include m.tablet {
+            font-size: 1.9rem;
+        }
+    }
+    &__content-response {
+        font-size: 1.7rem;
+        @include m.tablet {
+            font-size: 1.9rem;
+        }
+    }
+}
+
+.dynamic-reply-form {
+    display: flex;
+}

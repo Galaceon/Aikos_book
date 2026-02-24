@@ -252,6 +252,7 @@
         margin: 0;
         text-align: left;
         font-size: 3rem;
+        color: var(--color-text-titles);
         @include m.desktop {
             font-size: 4rem;
         }

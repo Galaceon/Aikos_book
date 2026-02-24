@@ -9,7 +9,7 @@
             <div class="formulario__input">
                 <label for="email">EMAIL</label>
                 <div class="formulario__input-group">
-                    <span class="material-symbols-outlined formulario__icon">
+                    <span class="material-symbols-outlined formulario__icon" translate="no">
                         alternate_email
                     </span>
                     <input type="email" id="email" placeholder="Tu email..." name="email" value=""/>

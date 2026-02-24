@@ -6,7 +6,7 @@
 
     <a href="/admin/tags/create">
         <div class="dashboard__button">
-            <span class="material-symbols-outlined">add</span>
+            <span class="material-symbols-outlined" translate="no">add</span>
             <p class="dashboard__add-button">Añadir Tag</p>
         </div>
     </a>
@@ -29,12 +29,12 @@
                         <td class="table__td table__td--first"><?php echo $tag->name; ?></td>
                         <td class="table__td--acciones">
                             <a href="/admin/tags/edit?id=<?php echo $tag->id; ?>" class="">
-                                <span class="material-symbols-outlined accion__editar">edit</span>
+                                <span class="material-symbols-outlined accion__editar" translate="no">edit</span>
                             </a>
                             <form action="/admin/tags/delete" method="POST" class="table__delete-form">
                                 <input type="hidden" name="id" value="<?php echo $tag->id; ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
-                                    <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                    <span class="material-symbols-outlined accion__eliminar" translate="no">delete</span>
                                 </button>
                             </form>
                         </td>
@@ -57,12 +57,12 @@
                     <div class="mobile-list__title"><?php echo $tag->name; ?></div>
                     <div class="mobile-list__acciones">
                         <a href="/admin/tags/edit?id=<?php echo $tag->id; ?>" class="">
-                            <span class="material-symbols-outlined accion__editar">edit</span>
+                            <span class="material-symbols-outlined accion__editar" translate="no">edit</span>
                         </a>
                         <form action="/admin/tags/delete" method="POST" class="table__delete-form">
                             <input type="hidden" name="id" value="<?php echo $tag->id; ?>">
                             <button class="table__accion table__accion--eliminar" type="submit">
-                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                <span class="material-symbols-outlined accion__eliminar" translate="no">delete</span>
                             </button>
                         </form>
                     </div>

@@ -7,6 +7,7 @@
 
         const formData = new FormData();
         formData.append('review_id', reviewId);
+        formData.append('csrf_token', window.CSRF_TOKEN);
 
         const response = await fetch('/api/likes', {
             method: 'POST',

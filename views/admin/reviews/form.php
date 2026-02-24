@@ -50,7 +50,7 @@
         >
         <div class="admin-formulario__slider__rating">
             <span id="rating-valor" class="admin-formulario__slider__rate"><?php echo $review->rating; ?></span>
-            <span class="material-symbols-outlined">star_rate</span>
+            <span class="material-symbols-outlined" translate="no">star_rate</span>
         </div>
         
     </div>

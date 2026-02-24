@@ -26,7 +26,7 @@
             <div class="profile__description">
                 <div class="profile__desp-head">
                     <div class="profile__titles">DESCRIPCIÓN</div>
-                    <label class="profile__desp-label" for="edit-desp-button"><span class="material-symbols-outlined">edit_note</span>EDITAR</label>
+                    <label class="profile__desp-label" for="edit-desp-button"><span class="material-symbols-outlined" translate="no">edit_note</span>EDITAR</label>
                 </div>
                 <textarea name="description" id="edit-desp-button" class="profile__desp-contenedor" maxlength="120" placeholder="Escribe tu descripción..."><?php echo $user->description; ?></textarea>
             </div>

@@ -82,8 +82,8 @@ class ReviewsController {
                     mkdir($carpeta_imagenes, 0755, true);
                 }
 
-                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('png', 80);
-                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp', 80);
+                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,1200)->encode('png', 80);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,1200)->encode('webp', 80);
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 
@@ -183,8 +183,8 @@ class ReviewsController {
                     mkdir($carpeta_imagenes, 0755, true);
                 }
 
-                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('png', 80);
-                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,800)->encode('webp', 80);
+                $imagen_png = Image::make($_FILES['imagen']['tmp_name'])->fit(800,1200)->encode('png', 80);
+                $imagen_webp = Image::make($_FILES['imagen']['tmp_name'])->fit(800,1200)->encode('webp', 80);
 
                 $nombre_imagen = md5(uniqid(rand(), true));
 

@@ -29,6 +29,7 @@
     }
     &__titulo {
         @include m.logo-titulo;
+        color: var(--color-text-titles);
     }
 
     &__social {

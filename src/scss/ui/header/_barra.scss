@@ -61,6 +61,7 @@
     }
     &__titulo {
         @include m.logo-titulo;
+        color: var(--color-text-titles);
     }
 
     // BUSCADORES

@@ -2,7 +2,9 @@
 
 namespace Controllers;
 
+
 use Model\Author;
+use Model\Comment;
 use Model\Review;
 use Model\ReviewLike;
 use Model\User;
@@ -24,13 +26,15 @@ class DashboardController {
         $totalReviews = Review::total();
         $totalLikes = ReviewLike::total();
         $totalAutores = Author::total();
+        $totalComments = Comment::total();
 
         $router->render('admin/dashboard/index', [
             'titulo' => 'Panel de Administración',
             'ultimosUsuarios' => $ultimosUsuarios,
             'totalReviews' => $totalReviews,
             'totalLikes' => $totalLikes,
-            'totalAutores' => $totalAutores
+            'totalAutores' => $totalAutores,
+            'totalComments' => $totalComments
         ]);
     }
 }

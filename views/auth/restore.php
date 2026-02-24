@@ -10,7 +10,7 @@
             <div class="formulario__input">
                 <label for="password">CONTRASEÑA</label>
                 <div class="formulario__input-group">
-                    <span class="material-symbols-outlined formulario__icon">
+                    <span class="material-symbols-outlined formulario__icon" translate="no">
                         lock
                     </span>
                     <input type="password" id="password" placeholder="Tu nueva contraseña..." name="password" value=""/>

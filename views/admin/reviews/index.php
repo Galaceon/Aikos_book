@@ -6,7 +6,7 @@
 
     <a href="/admin/reviews/create">
         <div class="dashboard__button">
-            <span class="material-symbols-outlined">add</span>
+            <span class="material-symbols-outlined" translate="no">add</span>
             <p class="dashboard__add-button">Añadir <span class="dashboard__add-button--span">Reseña<span></p>
         </div>
     </a>
@@ -33,12 +33,12 @@
                         <td class="table__td"><?php echo $review->rating; ?></td>
                         <td class="table__td--acciones">
                             <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>">
-                                <span class="material-symbols-outlined accion__editar">edit</span>
+                                <span class="material-symbols-outlined  translate="no"accion__editar">edit</span>
                             </a>
                             <form action="/admin/reviews/delete" method="POST" class="table__delete-form">
                                 <input type="hidden" name="id" value="<?php echo $review->id; ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
-                                    <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                    <span class="material-symbols-outlined  translate="no"accion__eliminar">delete</span>
                                 </button>
                             </form>
                         </td>
@@ -60,24 +60,24 @@
                     <div class="mobile-list__title"><?php echo $review->title; ?></div>
                     <div class="mobile-list__acciones">
                         <a href="/admin/reviews/edit?id=<?php echo $review->id; ?>" class="">
-                            <span class="material-symbols-outlined accion__editar">edit</span>
+                            <span class="material-symbols-outlined  translate="no"accion__editar">edit</span>
                         </a>
                         <form action="/admin/reviews/delete" method="POST" class="table__delete-form">
                             <input type="hidden" name="id" value="<?php echo $review->id; ?>">
                             <button class="table__accion table__accion--eliminar" type="submit">
-                                <span class="material-symbols-outlined accion__eliminar">delete</span>
+                                <span class="material-symbols-outlined  translate="no"accion__eliminar">delete</span>
                             </button>
                         </form>
                     </div>
                 </div>
                 <div class="mobile-list__foot">
                     <div class="mobile-list__date">
-                        <span class="material-symbols-outlined">calendar_today</span>
+                        <span class="material-symbols-outlined" translate="no">calendar_today</span>
                         <?php echo date('d-m-Y', strtotime($review->created_at)); ?>
                     </div>
                     <div class="mobile-list__rating">
                         <?php echo $review->rating; ?>
-                        <span class="material-symbols-outlined">star_rate</span>
+                        <span class="material-symbols-outlined" translate="no">star_rate</span>
                     </div>
                 </div>
             </div>
