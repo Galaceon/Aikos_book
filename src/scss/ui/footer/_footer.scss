@@ -59,13 +59,34 @@
         color: var(--color-primary);
         font-weight: v.$bold;
     }
+
+    &__about {
+        color: var(--color-text-muted);
+        transition: all .1s ease-in-out;
+        border-bottom: solid 0px var(--color-primary);
+
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        span {
+            color: var(--color-text-muted);
+            transition: all .1s ease-in-out;
+            font-size: 3rem;
+        }
+
+        &:hover {
+            transform: translateY(-7px) scale(1.2);
+            border-bottom: solid 3px var(--color-primary);
+        }
+    }
 }
 
 // Redes Sociales
 .menu-redes {
     @include m.menu-social(var(--color-text-muted), 2.6rem);
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     align-items: center;
 
     &__enlace {

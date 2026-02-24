@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/app.php';
 
+use Controllers\AboutController;
 use Controllers\APIAuthors;
 use Controllers\APILikes;
 use Controllers\APISaved;
@@ -45,6 +46,7 @@ $router->get('/profile', [PagesController::class, 'profile']);
 $router->post('/profile', [PagesController::class, 'profile']);
 $router->get('/saved', [PagesController::class, 'saved']);
 $router->post('/comment/create', [CommentController::class, 'create']);
+$router->get('/about', [AboutController::class, 'index']);
 
 
 // ADMIN & APIs

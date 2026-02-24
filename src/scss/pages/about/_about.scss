@@ -1,0 +1,43 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.about {
+    @include m.contenedor-l;
+    color: var(--color-text);
+
+    &__head {
+        text-align: center;
+    }
+    &__title {
+        font-size: 4rem;
+        margin: 6rem 0 1rem 0;
+    }
+    &__subtitle {
+        margin: 0 0 6rem 0;
+        font-weight: v.$delgada;
+        font-size: 1.8rem;
+        border-bottom: solid 1px var(--color-text-muted);
+        padding-bottom: .6rem;
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 9rem 0;
+
+        @include m.tablet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            gap: 3rem;
+        }
+    }
+    &__image {
+        margin: 0 auto;
+        max-width: 50rem;
+        width: 100%;
+    }
+    &__text {
+        grid-column: span 2;
+    }
+}

@@ -10,6 +10,12 @@
 
         <div class="footer__social">
             <nav class="menu-redes"> 
+                <a href="/about" class="footer__about">
+                    <span class="material-symbols-outlined">text_ad</span>
+                    SOBRE MI
+                    
+                </a>
+
                 <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://www.instagram.com/notaikita/">
                     <span class="menu-redes__ocultar">Instagram</span>
                 </a>
