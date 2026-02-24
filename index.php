@@ -52,6 +52,7 @@ $router->get('/about', [AboutController::class, 'index']);
 // ADMIN & APIs
 // ADMIN
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->post('/admin/dashboard', [DashboardController::class, 'index']);
 
 $router->get('/admin/reviews', [ReviewsController::class, 'index']);
 $router->get('/admin/reviews/create', [ReviewsController::class, 'create']);
