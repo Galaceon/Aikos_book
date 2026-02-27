@@ -69,4 +69,20 @@ class Comment extends ActiveRecord {
 
         return self::consultarSQL($query);
     }
+
+    public static function countByReview($review_id) {
+
+        $review_id = self::$db->escape_string($review_id);
+
+        $query = "
+            SELECT COUNT(*) as total
+            FROM " . static::$tabla . "
+            WHERE review_id = '{$review_id}'
+        ";
+
+        $resultado = self::$db->query($query);
+        $data = $resultado->fetch_assoc();
+
+        return (int) $data['total'];
+    }
 }

@@ -22,6 +22,7 @@ class PagesController {
 
         $likedReviews = [];
         $likesCount = [];
+        $commentsCount = [];
         $savedReviews = [];
 
         $user = null;
@@ -75,8 +76,12 @@ class PagesController {
             $paginacionHTML = $paginacion->paginacion();
         }
 
+        
+
         foreach($reviews as $review) {
             $likesCount[$review->id] = ReviewLike::countByReview($review->id);
+
+            $commentsCount[$review->id] = Comment::countByReview($review->id);
 
             if(is_auth()) {
                 $likedReviews[$review->id] = ReviewLike::exists(
@@ -103,7 +108,8 @@ class PagesController {
             'user' => $user,
             'likesCount' => $likesCount,
             'likedReviews' => $likedReviews,
-            'savedReviews' => $savedReviews
+            'savedReviews' => $savedReviews,
+            'commentsCount' => $commentsCount
         ]);
     }
 

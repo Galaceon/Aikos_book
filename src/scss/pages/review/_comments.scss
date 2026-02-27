@@ -60,11 +60,15 @@
     }
     &__textarea-response {
         all: unset;
-        width: 100%;
+        width: auto;
         max-width: 70rem;
         background-color: var(--color-surface-lightness-alt);
         border-radius: 2rem;
         padding: 2rem;
+
+        @include m.tablet {
+            width: 100%;
+        }
     }
     &__reply-btn {
         all: unset;
@@ -136,4 +140,11 @@
 
 .dynamic-reply-form {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 4rem;
+
+    @include m.tablet {
+        flex-direction: row;
+    }
 }

@@ -11,7 +11,7 @@
         <div class="footer__social">
             <nav class="menu-redes"> 
                 <a href="/about" class="footer__about">
-                    <span class="material-symbols-outlined">text_ad</span>
+                    <span translate="no" class="material-symbols-outlined">text_ad</span>
                     SOBRE MI
                     
                 </a>

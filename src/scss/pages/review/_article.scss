@@ -5,6 +5,17 @@
 .article {
     @include m.contenedor-l;
 
+    &__content {
+        display: flex;
+        gap: 3rem;
+        margin-top: 4rem;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row;
+        }
+    }
+
     &__title {
         color: var(--color-text-titles);
         @include m.texto-fluido(3.5rem, 6rem);
@@ -121,25 +132,32 @@
         margin: 1rem 0;
     }
     &__image-contenedor {
-        width: 60%;
-        min-width: 300px;
         margin: 0 auto;
-        border-radius: 3rem;
-        overflow: hidden;
-        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        width: 75%;
+        min-width: 250px;
 
-        img {
+        @include m.tablet {
             width: 100%;
-            min-width: 300px;
-            height: auto;
-            object-fit: cover;
+
+            img {
+                height: auto;
+                object-fit: cover;
+            }
         }
     }
     &__text {
-        margin-top: 5rem;
         color: var(--color-text);
         line-height: 1.4;
         font-size: 1.75rem;
+        
+        p:first-of-type,
+        h1:first-of-type,
+        h2:first-of-type,
+        h3:first-of-type,
+        h4:first-of-type,
+        h5:first-of-type {
+            margin: 0;
+        }
 
         a {
             color: var(--color-primary);

@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="review__comments">
                                         <span class="material-symbols-outlined" translate="no">comment</span>
-                                        0
+                                        <?php echo $commentsCount[$review->id] ?? 0; ?>
                                     </div>
                                 </div>
 
