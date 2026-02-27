@@ -30,19 +30,6 @@ class Comment extends ActiveRecord {
         $this->created_at = $args['created_at'] ?? null;
     }
 
-    public function validar() {
-
-        if(!$this->content) {
-            self::$alertas['error'][] = 'El comentario no puede estar vacío';
-        }
-
-        if(strlen($this->content) < 2) {
-            self::$alertas['error'][] = 'El comentario es demasiado corto';
-        }
-
-        return self::$alertas;
-    }
-
     public static function comentariosPrincipales($review_id) {
 
         $review_id = self::$db->escape_string($review_id);
@@ -84,5 +71,42 @@ class Comment extends ActiveRecord {
         $data = $resultado->fetch_assoc();
 
         return (int) $data['total'];
+    }
+    public function validar() {
+
+        // Limpiar espacios
+        $this->content = trim($this->content);
+
+        if(!$this->content) {
+            self::$alertas['error'][] = 'El comentario no puede estar vacío.';
+        }
+
+        if(strlen($this->content) < 3) {
+            self::$alertas['error'][] = 'El comentario es demasiado corto.';
+        }
+
+        if(strlen($this->content) > 3000) {
+            self::$alertas['error'][] = 'El comentario no puede superar los 3000 caracteres.';
+        }
+
+        if(!$this->review_id || !filter_var($this->review_id, FILTER_VALIDATE_INT)) {
+            self::$alertas['error'][] = 'La reseña no es válida.';
+        }
+
+        if($this->parent_id !== null && $this->parent_id !== '') {
+            if(!filter_var($this->parent_id, FILTER_VALIDATE_INT)) {
+                self::$alertas['error'][] = 'Respuesta inválida.';
+            }
+        }
+        if($this->parent_id) {
+
+            $comentarioPadre = self::find($this->parent_id);
+
+            if(!$comentarioPadre || $comentarioPadre->review_id != $this->review_id) {
+                self::$alertas['error'][] = 'La respuesta no pertenece a esta reseña.';
+            }
+        }
+
+        return self::$alertas;
     }
 }

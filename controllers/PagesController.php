@@ -114,6 +114,10 @@ class PagesController {
     }
 
     public static function review(Router $router) {
+        
+        $alertas = $_SESSION['alertas'] ?? [];
+        unset($_SESSION['alertas']);
+
         $slug = $_GET['slug'];
         if(!$slug) header('Location: /');
 
@@ -130,18 +134,14 @@ class PagesController {
         $reviewAnterior = Review::anterior($review->created_at);
         $reviewSiguiente = Review::siguiente($review->created_at);
 
-        // 🔹 Obtener comentarios principales
         $comentarios = Comment::comentariosPrincipales($review->id);
 
         foreach($comentarios as $comentario) {
 
-            // 🔹 Añadir usuario al comentario
             $comentario->usuario = Users::find($comentario->user_id);
 
-            // 🔹 Obtener respuestas
             $comentario->respuestas = Comment::respuestas($comentario->id);
 
-            // 🔹 Añadir usuario a cada respuesta
             foreach($comentario->respuestas as $respuesta) {
                 $respuesta->usuario = Users::find($respuesta->user_id);
             }
@@ -155,7 +155,8 @@ class PagesController {
             'admin' => $admin,
             'reviewAnterior' => $reviewAnterior,
             'reviewSiguiente' => $reviewSiguiente,
-            'comentarios' => $comentarios
+            'comentarios' => $comentarios,
+            'alertas' => $alertas
         ]);
     }
 

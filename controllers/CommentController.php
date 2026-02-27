@@ -13,13 +13,21 @@ class CommentController {
                 header('Location: /');
                 exit;
             }
-            
-            $comment = new Comment($_POST);
+
+            $datos = [
+                'content' => $_POST['content'] ?? '',
+                'review_id' => $_POST['review_id'] ?? null,
+                'parent_id' => $_POST['parent_id'] ?? null
+            ];
+
+            $comment = new Comment($datos);
+
+            $comment->user_id = $_SESSION['id'];
+            $comment->created_at = date('Y-m-d H:i:s');
+
             if(empty($comment->parent_id)) {
                 $comment->parent_id = null;
             }
-            $comment->user_id = $_SESSION['id'];
-            $comment->created_at = date('Y-m-d H:i:s');
 
             $alertas = $comment->validar();
 
@@ -32,6 +40,10 @@ class CommentController {
                     exit;
                 }
             }
+
+            $_SESSION['alertas'] = $alertas;
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
         }
     }
 }

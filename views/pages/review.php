@@ -111,6 +111,14 @@
 
     <h3>Comentarios</h3>
 
+    <?php if(!empty($alertas['error'])): ?>
+        <?php foreach($alertas['error'] as $error): ?>
+            <div class="alerta alerta__error">
+                <?php echo htmlspecialchars($error); ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <?php if(is_auth()) { ?>
 
         <form method="POST" action="/comment/create" class="comment-form" id="comment-form">
@@ -132,7 +140,6 @@
         </form>
 
     <?php } else { ?>
-
     <p class="comments__no-session">Debes iniciar sesión para comentar.</p>
 
 <?php } ?>
